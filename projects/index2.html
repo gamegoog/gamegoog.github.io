@@ -32,9 +32,12 @@
             background-color: #121212; 
             padding: 20px;
             border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .search-input {
-            width: 100%;
+            flex: 1;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -42,48 +45,19 @@
             box-sizing: border-box;
             background-color: #121212; 
             color: #ffffff; 
-        }
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            grid-gap: 20px;
-            background-color: #121212;
-            padding: 20px;
-            border-radius: 5px;
-            position: relative;
-        }
-        .game {
-            text-align: center;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
-        }
-        .game img {
-            width: 100px; 
-            height: 100px; 
-            display: block;
-            margin: 0 auto 10px; 
-            cursor: default; 
-            border-radius: 10px; 
-        }
-        .game h3 {
-            margin: 0;
-        }
-        .lucky-container {
-            text-align: center;
+            margin-right: 10px;
         }
         .lucky-button {
-            display: inline-block;
-            margin-top: 10px;
+            background-color: transparent;
             color: #fff;
-            text-decoration: none;
+            border: none;
             cursor: pointer;
             font-size: 16px;
-            font-weight: bold;
+            text-decoration: none;
+            padding: 10px;
         }
         .lucky-button:hover {
-            text-decoration: none;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -95,6 +69,7 @@
         </div>
         <div class="search-container">
             <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
+            <button class="lucky-button" onclick="feelingLucky()">I'm Feeling Lucky</button>
         </div>
         <div class="game-grid" id="gameGrid">
             <div class="game">
@@ -104,9 +79,6 @@
                 <h3>WebGL Fluid Simulation</h3>
             </div>
             <!-- Add other game elements here -->
-        </div>
-        <div class="lucky-container">
-            <a href="javascript:void(0);" class="lucky-button" onclick="feelingLucky()">I'm Feeling Lucky</a>
         </div>
     </div>
     <script>
@@ -142,16 +114,6 @@
             const link = luckyGame.querySelector('a').href;
             window.open(link, '_blank');
         }
-    </script>
-    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            new cursoreffects.trailingCursor({
-                particles: 15,
-                rate: 0.854454,
-                baseImageSrc: "https://i.imgur.com/Mbj7eJt.png"
-            });
-        });
     </script>
 </body>
 </html>
