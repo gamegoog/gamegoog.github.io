@@ -1,119 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google</title>
-    <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212; 
-        }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-            position: relative;
-        }
-        .header {
-            text-align: center;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-        .quote {
-            color: #ccc;
-            font-style: italic;
-        }
-        .search-container {
-            margin-bottom: 20px;
-            background-color: #121212; 
-            padding: 20px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .search-input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #121212; 
-            color: #ffffff; 
-            margin-right: 10px;
-        }
-        .lucky-button {
-            background-color: transparent;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            text-decoration: none;
-            padding: 10px;
-        }
-        .lucky-button:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google</title>
+<link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; 
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quote {
+    color: #ccc;
+    font-style: italic;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.search-input {
+    width: calc(100% - 140px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #121212; 
+    color: #ffffff; 
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 20px;
+    background-color: #121212;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.game {
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.game img {
+    width: 100px; 
+    height: 100px; 
+    display: block;
+    margin: 0 auto 10px; 
+    cursor: pointer; 
+    border-radius: 10px; 
+}
+
+.game h3 {
+    margin: 0;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Google</h1>
-            <p class="quote" id="quote"></p>
-        </div>
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
-            <button class="lucky-button" onclick="feelingLucky()">I'm Feeling Lucky</button>
-        </div>
-        <div class="game-grid" id="gameGrid">
-            <div class="game">
-                <a href="/projects/webgl-fluid-simulation/">
-                    <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
-                </a>
-                <h3>WebGL Fluid Simulation</h3>
-            </div>
-            <!-- Add other game elements here -->
-        </div>
-    </div>
-    <script>
-        function filterGames(searchTerm) {
-            const games = document.querySelectorAll('.game');
-            games.forEach(game => {
-                const title = game.querySelector('h3').textContent.toLowerCase();
-                const match = title.includes(searchTerm.toLowerCase());
-                game.style.display = match ? 'block' : 'none';
-            });
-        }
+<div class="container">
+<div class="header">
+<h1>Google</h1>
+<p class="quote" id="quote"></p>
+</div>
+<div class="search-container">
+<input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
+<button onclick="randomGame()">I'm Feeling Lucky</button>
+</div>
+<div class="game-grid" id="gameGrid">
+<!-- Your game entries here -->
+</div>
+</div>
+<script>
+// Your existing JavaScript code
 
-        const quotes = [
-            "Some games may not work.",
-            "There's a fullscreen button in the top left on all games!",
-            "R.I.P 3kh0! -2024\nKilled by some middle schooler...",
-            "Proud sponsor of https://cornhub.website!",
-            "https://floatindustries.github.io/images/image1.png",
-            "chicken sandwich"
-        ];
+function filterGames(searchTerm) {
+    const games = document.querySelectorAll('.game');
+    games.forEach(game => {
+        const title = game.querySelector('h3').textContent.toLowerCase();
+        const match = title.includes(searchTerm.toLowerCase());
+        game.style.display = match ? 'block' : 'none';
+    });
+}
 
-        function displayRandomQuote() {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            document.getElementById('quote').textContent = quotes[randomIndex];
-        }
+function randomGame() {
+    const games = document.querySelectorAll('.game');
+    const randomIndex = Math.floor(Math.random() * games.length);
+    const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
+    window.location.href = randomGameUrl;
+}
 
-        displayRandomQuote();
+const quotes = [
+    "Some games may not work.",
+    "There's a fullscreen button in the top left on all games!",
+    "R.I.P 3kh0! -2024\nKilled by some middle schooler...",
+    "Proud sponsor of https://cornhub.website!",
+    "https://floatindustries.github.io/images/image1.png",
+    "chicken sandwich"
+];
 
-        function feelingLucky() {
-            const games = document.querySelectorAll('.game');
-            const randomIndex = Math.floor(Math.random() * games.length);
-            const luckyGame = games[randomIndex];
-            const link = luckyGame.querySelector('a').href;
-            window.open(link, '_blank');
-        }
-    </script>
+function displayRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById('quote').textContent = quotes[randomIndex];
+}
+
+displayRandomQuote();
+</script>
 </body>
 </html>
