@@ -32,6 +32,15 @@
       height: 100%;
       border: none; /* Remove border */
     }
+
+    #fullscreen-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      cursor: pointer;
+      width: 30px; /* Adjust width */
+      height: 30px; /* Adjust height */
+    }
   </style>
 </head>
 <body>
@@ -41,6 +50,20 @@
         <iframe src="game.html" id="gameframe"></iframe>
       </div>
     </div>
+    <img src="fs.png" id="fullscreen-button" alt="Fullscreen" title="" onclick="toggleFullScreen()">
   </div>
+
+  <script>
+    function toggleFullScreen() {
+      var iframe = document.getElementById("gameframe");
+      if (!document.fullscreenElement) {
+        iframe.requestFullscreen().catch(err => {
+          alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
