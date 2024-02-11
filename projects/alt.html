@@ -1,62 +1,106 @@
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212; 
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
-  }
-  
-  .search-container {
-    margin-bottom: 20px;
-    background-color: #121212; 
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
-  .search-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-    background-color: #121212; 
-    color: #ffffff; 
-  }
-  
-  .game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-gap: 20px;
-    background-color: #121212;
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
-  .game {
-    text-align: center;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-  }
-  
-  .game img {
-    max-width: 100px;
-    max-height: 100px;
-    display: block;
-    margin: 0 auto 10px; /* Center image and create space between image and title */
-    cursor: pointer; /* Add pointer cursor to indicate clickable */
-    border-radius: 50%; /* Make the image rounded */
-  }
-  
-  .game h3 {
-    margin: 0; /* Reset margin to prevent space above title */
-  }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Grid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212; 
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    
+    .search-container {
+      margin-bottom: 20px;
+      background-color: #121212; 
+      padding: 20px;
+      border-radius: 5px;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+      background-color: #121212; 
+      color: #ffffff; 
+    }
+    
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-gap: 20px;
+      background-color: #121212;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    
+    .game {
+      text-align: center;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 20px;
+    }
+    
+    .game img {
+      width: 100px; /* Adjust as needed */
+      height: 100px; /* Adjust as needed */
+      display: block;
+      margin: 0 auto 10px; /* Center image and create space between image and title */
+      cursor: pointer; /* Add pointer cursor to indicate clickable */
+      border-radius: 10px; /* Make the image rounded with a pixel value */
+    }
+    
+    .game h3 {
+      margin: 0; /* Reset margin to prevent space above title */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
+    </div>
+    <div class="game-grid" id="gameGrid">
+      
+      <div class="game">
+        <a href="/projects/webgl-fluid-simulation/">
+          <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
+        </a>
+        <h3>WebGL Fluid Simulation</h3>
+      </div>
+      
+      <div class="game">
+        <a href="/projects/elastic-face/">
+          <img src="/images/face.png" alt="Elastic Face">
+        </a>
+        <h3>Elastic Face</h3>
+      </div>
+      
+    </div>
+  </div>
+
+  <script>
+    function filterGames(searchTerm) {
+      const games = document.querySelectorAll('.game');
+      
+      games.forEach(game => {
+        const title = game.querySelector('h3').textContent.toLowerCase();
+        const match = title.includes(searchTerm.toLowerCase());
+        game.style.display = match ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
