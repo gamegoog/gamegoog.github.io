@@ -3,126 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Games</title>
+  <title>Google</title>
+  <link rel="icon" type="image/x-icon" href="www.google.com/s2/favicons?domain=google.com&sz=128">
+  <!-- Importing Roboto font from Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #121212; 
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-    
-    .search-container {
-      margin-bottom: 20px;
-      background-color: #121212; 
-      padding: 20px;
-      border-radius: 5px;
-    }
-    
-    .search-input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      box-sizing: border-box;
-      background-color: #121212; 
-      color: #ffffff; 
-    }
-    
-    .game-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      grid-gap: 20px;
-      background-color: #121212;
-      padding: 20px;
-      border-radius: 5px;
-    }
-    
-    .game {
-      text-align: center;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 20px;
-    }
-    
-    .game img {
-      width: 100px; /* Adjust as needed */
-      height: 100px; /* Adjust as needed */
-      display: block;
-      margin: 0 auto 10px; /* Center image and create space between image and title */
-      cursor: pointer; /* Add pointer cursor to indicate clickable */
-      border-radius: 10px; /* Make the image rounded with a pixel value */
-    }
-    
-    .game h3 {
-      margin: 0; /* Reset margin to prevent space above title */
-    }
+    body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  /* Applying Roboto font to all text */
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212; /* Setting background color */
+  color: white; /* Setting text color */
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white; /* Setting hyperlink text color to white */
+}
+
+a:hover {
+  text-decoration: none;
+}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="search-container">
-      <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
-    </div>
-    <div class="game-grid" id="gameGrid">
-      
-      <div class="game">
-        <a href="/projects/webgl-fluid-simulation/">
-          <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
-        </a>
-        <h3>WebGL Fluid Simulation</h3>
-      </div>
-      
-      <div class="game">
-        <a href="/projects/elastic-face/">
-          <img src="/images/face.png" alt="Elastic Face">
-        </a>
-        <h3>Elastic Face</h3>
-      </div>
+  <h1>Google?</h1>
+  <a href="/projects/">I'm Feeling Lucky</a>
 
-      <div class="game">
-        <a href="/projects/jetpack-joyride/">
-          <img src="/images/joyride.jpg" alt="Jetpack Joyride">
-        </a>
-        <h3>Jetpack Joyride</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/wordle/">
-          <img src="/images/wordleplus.png" alt="Wordle+">
-        </a>
-        <h3>Wordle+</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/eel-slap/">
-          <img src="/images/favicon.ico" alt="eelslap">
-        </a>
-        <h3>eelslap</h3>
-      </div>
-      
-    </div>
-  </div>
-
-  <script>
-    function filterGames(searchTerm) {
-      const games = document.querySelectorAll('.game');
-      
-      games.forEach(game => {
-        const title = game.querySelector('h3').textContent.toLowerCase();
-        const match = title.includes(searchTerm.toLowerCase());
-        game.style.display = match ? 'block' : 'none';
-      });
-    }
-  </script>
+  <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc: "https://i.imgur.com/Mbj7eJt.png"});
