@@ -5,6 +5,11 @@
   <title>Folder List</title>
   <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
 </head>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      new cursoreffects.trailingCursor({particles: 15, rate: 0.8, baseImageSrc: "https://i.imgur.com/RhLFXTv.png"});
+    });
+  </script>
 <body>
   <h1>/projects/</h1>
   <ul id="folder-list">
@@ -15,9 +20,4 @@
     <li><a href="wordle/">/wordle/</a></li>
   </ul>
 </body>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      new cursoreffects.trailingCursor({particles: 15, rate: 0.8, baseImageSrc: "https://i.imgur.com/RhLFXTv.png"});
-    });
-  </script>
 </html>
