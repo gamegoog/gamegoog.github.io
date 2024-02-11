@@ -19,6 +19,17 @@
       padding: 0 20px;
       position: relative;
     }
+
+    .header {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .quote {
+      color: #ccc;
+      font-style: italic;
+    }
     
     .search-container {
       margin-bottom: 20px;
@@ -72,11 +83,15 @@
 </head>
 <body>
   <div class="container">
+    <div class="header">
+      <h1>Google</h1>
+      <p class="quote" id="quote"></p>
+    </div>
     <div class="search-container">
       <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
     </div>
     <div class="game-grid" id="gameGrid">
-      
+
       <div class="game">
         <a href="/projects/webgl-fluid-simulation/">
           <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
@@ -192,6 +207,8 @@
         </a>
         <h3>Riddleschool 5</h3>
       </div>
+
+      <!-- Add more game entries here -->
     </div>
   </div>
   <script>
@@ -204,12 +221,26 @@
         game.style.display = match ? 'block' : 'none';
       });
     }
-  </script>
-  <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc: "https://i.imgur.com/Mbj7eJt.png"});
-    });
+
+    // Random quotes array
+    const quotes = [
+      "The only way to do great work is to love what you do. – Steve Jobs",
+      "Innovation distinguishes between a leader and a follower. – Steve Jobs",
+      "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. – Steve Jobs",
+      "The only limit to our realization of tomorrow will be our doubts of today. – Franklin D. Roosevelt",
+      "The only source of knowledge is experience. – Albert Einstein",
+      "It does not matter how slowly you go as long as you do not stop. – Confucius",
+      "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt"
+    ];
+
+    // Function to display a random quote
+    function displayRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quote').textContent = quotes[randomIndex];
+    }
+
+    // Call the function to display a random quote initially
+    displayRandomQuote();
   </script>
 </body>
 </html>
