@@ -207,8 +207,6 @@
         </a>
         <h3>Riddleschool 5</h3>
       </div>
-
-      <!-- Add more game entries here -->
     </div>
   </div>
   <script>
@@ -221,8 +219,6 @@
         game.style.display = match ? 'block' : 'none';
       });
     }
-
-    // Random quotes array
     const quotes = [
       "Some games may not work.",
       "There's a fullscreen button in the top left on all games!",
@@ -231,15 +227,17 @@
       "https://floatindustries.github.io/images/image1.png",
       "chicken sandwich"
     ];
-
-    // Function to display a random quote
     function displayRandomQuote() {
       const randomIndex = Math.floor(Math.random() * quotes.length);
       document.getElementById('quote').textContent = quotes[randomIndex];
     }
-
-    // Call the function to display a random quote initially
     displayRandomQuote();
+  </script>
+  <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc: "https://i.imgur.com/Mbj7eJt.png"});
+    });
   </script>
 </body>
 </html>
