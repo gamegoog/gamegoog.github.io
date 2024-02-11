@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #121212; /* Updated background color to black */
+      background-color: #121212; 
     }
     
     .container {
@@ -20,7 +20,7 @@
     
     .search-container {
       margin-bottom: 20px;
-      background-color: #121212; /* Set black background color for search container */
+      background-color: #121212; 
       padding: 20px;
       border-radius: 5px;
     }
@@ -32,15 +32,15 @@
       border-radius: 5px;
       font-size: 16px;
       box-sizing: border-box;
-      background-color: #ffffff; /* White background color for search input */
-      color: #121212; /* Dark text color for search input */
+      background-color: #121212; 
+      color: #ffffff; 
     }
     
     .game-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       grid-gap: 20px;
-      background-color: #121212; /* Set black background color for game grid */
+      background-color: #121212;
       padding: 20px;
       border-radius: 5px;
     }
@@ -71,21 +71,22 @@
     <div class="search-container">
       <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
     </div>
-
     <div class="game-grid" id="gameGrid">
+      
       <div class="game">
         <a href="/projects/webgl-fluid-simulation/">
           <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
         </a>
         <h3>WebGL Fluid Simulation</h3>
       </div>
+      
       <div class="game">
         <a href="/projects/elastic-face/">
           <img src="/images/face.png" alt="Elastic Face">
         </a>
         <h3>Elastic Face</h3>
       </div>
-      <!-- Add more game items as needed -->
+      
     </div>
   </div>
 
