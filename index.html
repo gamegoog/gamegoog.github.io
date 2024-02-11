@@ -1,245 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google</title>
-  <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #121212; 
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 20px;
-      position: relative;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
 
-    .header {
-      text-align: center;
-      color: #fff;
-      margin-bottom: 20px;
-    }
+        .error-container {
+            text-align: center;
+        }
 
-    .quote {
-      color: #ccc;
-      font-style: italic;
-    }
-    
-    .search-container {
-      margin-bottom: 20px;
-      background-color: #121212; 
-      padding: 20px;
-      border-radius: 5px;
-    }
-    
-    .search-input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      box-sizing: border-box;
-      background-color: #121212; 
-      color: #ffffff; 
-    }
-    
-    .game-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      grid-gap: 20px;
-      background-color: #121212;
-      padding: 20px;
-      border-radius: 5px;
-      position: relative;
-    }
-    
-    .game {
-      text-align: center;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 20px;
-    }
-    
-    .game img {
-      width: 100px; 
-      height: 100px; 
-      display: block;
-      margin: 0 auto 10px; 
-      cursor: default; 
-      border-radius: 10px; 
-    }
-    
-    .game h3 {
-      margin: 0;
-    }
-  </style>
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Google</h1>
-      <p class="quote" id="quote"></p>
+    <div class="error-container">
+        <h1>404 Not Found</h1>
+        <p>The page you are looking for could not be found.</p>
+        <p>Return <a href="/">home</a>.</p>
     </div>
-    <div class="search-container">
-      <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
-    </div>
-    <div class="game-grid" id="gameGrid">
-
-      <div class="game">
-        <a href="/projects/webgl-fluid-simulation/">
-          <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
-        </a>
-        <h3>WebGL Fluid Simulation</h3>
-      </div>
-      
-      <div class="game">
-        <a href="/projects/elastic-face/">
-          <img src="/images/face.png" alt="Elastic Face">
-        </a>
-        <h3>Elastic Face</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/jetpack-joyride/">
-          <img src="/images/joyride.jpg" alt="Jetpack Joyride">
-        </a>
-        <h3>Jetpack Joyride</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/wordle/">
-          <img src="/images/wordleplus.png" alt="Wordle+">
-        </a>
-        <h3>Wordle+</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/eel-slap/">
-          <img src="/images/favicon.ico" alt="eelslap">
-        </a>
-        <h3>eelslap</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/slope/">
-          <img src="/images/slope.png" alt="slope">
-        </a>
-        <h3>Slope</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/slope-2/">
-          <img src="/images/slope2.png" alt="Slope 2">
-        </a>
-        <h3>Slope 2</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/sm64/">
-          <img src="/images/sm64.png" alt="Super Mario 64">
-        </a>
-        <h3>Super Mario 64 (Controller)</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/bitlife/">
-          <img src="/images/bitlife.png" alt="Bitlife">
-        </a>
-        <h3>Bitlife</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/baldis/">
-          <img src="/images/baldis.png" alt="Baldis Basics">
-        </a>
-        <h3>Baldis Basics</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/paperio2/">
-          <img src="/images/paperio2.png" alt="Paper.io 2">
-        </a>
-        <h3>Paper.io 2</h3>
-      </div>
-
-      <div class="game">
-        <a href="/projects/edge-surf/">
-          <img src="/images/edgesurf.png" alt="Edge Surfing Game">
-        </a>
-        <h3>Edge Surfing Game</h3>
-      </div>
-      
-      
-      <div class="game">
-          <a href="/projects/riddleschool/">
-            <img src="/images/riddleschool.png" alt="Riddleschool logo">
-          </a>
-          <h3>Riddleschool 1</h3>
-        </div>
-        <div class="game">
-        <a href="/projects/riddleschool2/">
-          <img src="/images/riddleschool.png" alt="Riddleschool logo">
-        </a>
-        <h3>Riddleschool 2</h3>
-      </div>
-      <div class="game">
-        <a href="/projects/riddleschool3/">
-          <img src="/images/riddleschool.png" alt="Riddleschool logo">
-        </a>
-        <h3>Riddleschool 3</h3>
-      </div>
-      <div class="game">
-        <a href="/projects/riddleschool4/">
-          <img src="/images/riddleschool.png" alt="Riddleschool logo">
-        </a>
-        <h3>Riddleschool 4</h3>
-      </div>
-      <div class="game">
-        <a href="/projects/riddleschool5/">
-          <img src="/images/riddleschool.png" alt="Riddleschool logo">
-        </a>
-        <h3>Riddleschool 5</h3>
-      </div>
-
-      <!-- Add more game entries here -->
-    </div>
-  </div>
-  <script>
-    function filterGames(searchTerm) {
-      const games = document.querySelectorAll('.game');
-      
-      games.forEach(game => {
-        const title = game.querySelector('h3').textContent.toLowerCase();
-        const match = title.includes(searchTerm.toLowerCase());
-        game.style.display = match ? 'block' : 'none';
-      });
-    }
-
-    // Random quotes array
-    const quotes = [
-      "Some games may not work.",
-      "There's a fullscreen button in the top left on all games!",
-      "R.I.P 3kh0! -2024, killed by some middle schooler.",
-      "Proud sponsor of https://cornhub.website!",
-      "https://floatindustries.github.io/images/image1.png",
-      "chicken sandwich"
-    ];
-
-    // Function to display a random quote
-    function displayRandomQuote() {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById('quote').textContent = quotes[randomIndex];
-    }
-
-    // Call the function to display a random quote initially
-    displayRandomQuote();
-  </script>
 </body>
+
 </html>
