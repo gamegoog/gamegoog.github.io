@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Games</title>
-  <style>
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -122,6 +122,11 @@
         game.style.display = match ? 'block' : 'none';
       });
     }
+  </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc: "https://i.imgur.com/Mbj7eJt.png"});
+    });
   </script>
 </body>
 </html>
