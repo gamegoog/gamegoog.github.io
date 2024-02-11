@@ -1,11 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+
+      .game-container {
+        width: 100%;
+        height: 100%;
+      }
+
+      .game-related {
+        width: 100%;
+        height: 100%;
+      }
+
+      .actual {
+        width: 100%;
+        height: 100%;
+      }
+
+      #gameframe {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
   <body>
     <div class="game-container">
       <div class="game-related">
         <div class="actual" id="gameframe">
-          <iframe src="game.html" frameborder="0" id="iframe" >
-          </iframe>
+          <iframe src="game.html" id="iframe" frameborder="0"></iframe>
+        </div>
       </div>
+    </div>
+
+    <script>
+      // Function to make the iframe fullscreen
+      function toggleFullScreen() {
+        var iframe = document.getElementById("iframe");
+        if (!document.fullscreenElement) {
+          iframe.requestFullscreen().catch(err => {
+            alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      }
+
+      // Event listener for fullscreen toggle
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("gameframe").addEventListener("click", toggleFullScreen);
+      });
+    </script>
   </body>
 </html>
