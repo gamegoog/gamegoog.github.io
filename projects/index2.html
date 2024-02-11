@@ -10,7 +10,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212; 
+    background-color: #121212;
     color: #fff;
 }
 
@@ -52,13 +52,13 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #f0f0f0;
 }
 
 .game-grid {
@@ -92,24 +92,7 @@ button:hover {
     margin: 0;
 }
 </style>
-</head>
-<body>
-<div class="container">
-<div class="header">
-<h1>Google</h1>
-<p class="quote" id="quote"></p>
-</div>
-<div class="search-container">
-<input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
-<button onclick="randomGame()">I'm Feeling Lucky</button>
-</div>
-<div class="game-grid" id="gameGrid">
-<!-- Your game entries here -->
-</div>
-</div>
 <script>
-// Your existing JavaScript code
-
 function filterGames(searchTerm) {
     const games = document.querySelectorAll('.game');
     games.forEach(game => {
@@ -117,13 +100,6 @@ function filterGames(searchTerm) {
         const match = title.includes(searchTerm.toLowerCase());
         game.style.display = match ? 'block' : 'none';
     });
-}
-
-function randomGame() {
-    const games = document.querySelectorAll('.game');
-    const randomIndex = Math.floor(Math.random() * games.length);
-    const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
-    window.location.href = randomGameUrl;
 }
 
 const quotes = [
@@ -141,6 +117,28 @@ function displayRandomQuote() {
 }
 
 displayRandomQuote();
+
+function randomGame() {
+    const games = document.querySelectorAll('.game');
+    const randomIndex = Math.floor(Math.random() * games.length);
+    const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
+    window.location.href = randomGameUrl;
+}
 </script>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>Google</h1>
+<p class="quote" id="quote"></p>
+</div>
+<div class="search-container">
+<input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
+<button onclick="randomGame()">I'm Feeling Lucky</button>
+</div>
+<div class="game-grid" id="gameGrid">
+
+</div>
+</div>
 </body>
 </html>
