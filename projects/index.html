@@ -1,212 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Google</title>
-<link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
-<style>
-body {
-font-family: Arial, sans-serif;
-margin: 0;
-padding: 0;
-background-color: #121212; 
-}
-.container {
-max-width: 1200px;
-margin: 20px auto;
-padding: 0 20px;
-position: relative;
-}
-.header {
-text-align: center;
-color: #fff;
-margin-bottom: 20px;
-}
-.quote {
-color: #ccc;
-font-style: italic;
-}
-.search-container {
-margin-bottom: 20px;
-background-color: #121212; 
-padding: 20px;
-border-radius: 5px;
-}
-.search-input {
-width: 100%;
-padding: 10px;
-border: 1px solid #ccc;
-border-radius: 5px;
-font-size: 16px;
-box-sizing: border-box;
-background-color: #121212; 
-color: #ffffff; 
-}
-.game-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-grid-gap: 20px;
-background-color: #121212;
-padding: 20px;
-border-radius: 5px;
-position: relative;
-}
-.game {
-text-align: center;
-background-color: #fff;
-border: 1px solid #ddd;
-border-radius: 5px;
-padding: 20px;
-}
-.game img {
-width: 100px; 
-height: 100px; 
-display: block;
-margin: 0 auto 10px; 
-cursor: default; 
-border-radius: 10px; 
-}
-.game h3 {
-margin: 0;
-}
-</style>
-</head>
-<body>
-<div class="container">
-<div class="header">
-<h1>Google</h1>
-<p class="quote" id="quote"></p>
-</div>
-<div class="search-container">
-<input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
-</div>
-<div class="game-grid" id="gameGrid">
-<div class="game">
-<a href="/projects/webgl-fluid-simulation/">
-<img src="/images/fluid.png" alt="WebGL Fluid Simulation">
-</a>
-<h3>WebGL Fluid Simulation</h3>
-</div>
-<div class="game">
-<a href="/projects/elastic-face/">
-<img src="/images/face.png" alt="Elastic Face">
-</a>
-<h3>Elastic Face</h3>
-</div>
-<div class="game">
-<a href="/projects/jetpack-joyride/">
-<img src="/images/joyride.jpg" alt="Jetpack Joyride">
-</a>
-<h3>Jetpack Joyride</h3>
-</div>
-<div class="game">
-<a href="/projects/wordle/">
-<img src="/images/wordleplus.png" alt="Wordle+">
-</a>
-<h3>Wordle+</h3>
-</div>
-<div class="game">
-<a href="/projects/eel-slap/">
-<img src="/images/favicon.ico" alt="eelslap">
-</a>
-<h3>eelslap</h3>
-</div>
-<div class="game">
-<a href="/projects/slope/">
-<img src="/images/slope.png" alt="slope">
-</a>
-<h3>Slope</h3>
-</div>
-<div class="game">
-<a href="/projects/slope-2/">
-<img src="/images/slope2.png" alt="Slope 2">
-</a>
-<h3>Slope 2</h3>
-</div>
-<div class="game">
-<a href="/projects/sm64/">
-<img src="/images/sm64.png" alt="Super Mario 64">
-</a>
-<h3>Super Mario 64 (Controller)</h3>
-</div>
-<div class="game">
-<a href="/projects/bitlife/">
-<img src="/images/bitlife.png" alt="Bitlife">
-</a>
-<h3>Bitlife</h3>
-</div>
-<div class="game">
-<a href="/projects/baldis/">
-<img src="/images/baldis.png" alt="Baldis Basics">
-</a>
-<h3>Baldis Basics</h3>
-</div>
-<div class="game">
-<a href="/projects/paperio2/">
-<img src="/images/paperio2.png" alt="Paper.io 2">
-</a>
-<h3>Paper.io 2</h3>
-</div>
-<div class="game">
-<a href="/projects/edge-surf/">
-<img src="/images/edgesurf.png" alt="Edge Surfing Game">
-</a>
-<h3>Edge Surfing Game</h3>
-</div>
-<div class="game">
-<a href="/projects/riddleschool/">
-<img src="/images/riddleschool.png" alt="Riddleschool logo">
-</a>
-<h3>Riddleschool 1</h3>
-</div>
-<div class="game">
-<a href="/projects/riddleschool2/">
-<img src="/images/riddleschool.png" alt="Riddleschool logo">
-</a>
-<h3>Riddleschool 2</h3>
-</div>
-<div class="game">
-<a href="/projects/riddleschool3/">
-<img src="/images/riddleschool.png" alt="Riddleschool logo">
-</a>
-<h3>Riddleschool 3</h3>
-</div>
-<div class="game">
-<a href="/projects/riddleschool4/">
-<img src="/images/riddleschool.png" alt="Riddleschool logo">
-</a>
-<h3>Riddleschool 4</h3>
-</div>
-<div class="game">
-<a href="/projects/riddleschool5/">
-<img src="/images/riddleschool.png" alt="Riddleschool logo">
-</a>
-<h3>Riddleschool 5</h3>
-</div>
-</div>
-</div>
-<script>
-function filterGames(searchTerm) {
-const games = document.querySelectorAll('.game');
-games.forEach(game => {
-const title = game.querySelector('h3').textContent.toLowerCase();
-const match = title.includes(searchTerm.toLowerCase());
-game.style.display = match ? 'block' : 'none';
-});
-}
-const quotes = [
-"Some games may not work.",
-"There's a fullscreen button in the top left on all games!",
-"R.I.P 3kh0! -2024\nKilled by some middle schooler...",
-"Proud sponsor of https://cornhub.website!",
-"https://floatindustries.github.io/images/image1.png",
-"chicken sandwich"
-];
-function displayRandomQuote() {
-const randomIndex = Math.floor(Math.random() * quotes.length);
-document.getElementById('quote').textContent = quotes[randomIndex];
-}
-displayRandomQuote();
-</script><script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script><script>document.addEventListener("DOMContentLoaded", function() {new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc: "https://i.imgur.com/Mbj7eJt.png"});});
-</script></body></html>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Google</title>
+      <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+      <style>
+         body {
+         font-family: 'Roboto', sans-serif;
+         margin: 0;
+         padding: 0;
+         background-color: #121212;
+         color: #ffffff; /* Changed text color to white */
+         }
+         .container {
+         max-width: 1200px;
+         margin: 20px auto;
+         padding: 0 20px;
+         position: relative;
+         }
+         .header {
+         text-align: center;
+         margin-bottom: 20px;
+         }
+         .quote {
+         color: #ccc;
+         font-style: italic;
+         }
+         .search-container {
+         margin-bottom: 20px;
+         text-align: center;
+         position: relative; /* Add position relative */
+         }
+         .search-input {
+         width: calc(100% - 140px);
+         padding: 10px;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         font-size: 16px;
+         box-sizing: border-box;
+         background-color: #121212; 
+         color: #ffffff; 
+         margin-right: 10px;
+         }
+         .feeling-lucky-container {
+         text-align: center; /* Center the button */
+         margin-bottom: 20px; /* Added margin */
+         }
+         .feeling-lucky-link {
+         padding: 10px 20px;
+         border: none;
+         border-radius: 5px;
+         background-color: transparent; /* Transparent background */
+         color: #ffffff; /* White text color */
+         cursor: pointer;
+         text-decoration: none; /* Remove underline */
+         }
+         .feeling-lucky-link:hover {
+         color: #f0f0f0; /* Hover text color */
+         }
+         .game-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted minmax value */
+         grid-gap: 20px;
+         background-color: #121212;
+         padding: 20px;
+         border-radius: 5px;
+         position: relative;
+         z-index: 0; /* Ensure the grid stays behind other elements */
+         margin-top: 20px; /* Added margin to separate from the text */
+         }
+         .game {
+         text-align: center;
+         background-color: #fff;
+         color: #000000; /* Set game text color to black */
+         border: 1px solid #ddd;
+         border-radius: 5px;
+         padding: 20px;
+         }
+         .game img {
+         width: 100px; 
+         height: 100px; 
+         display: block;
+         margin: 0 auto 10px; 
+         cursor: pointer; 
+         border-radius: 10px; 
+         }
+         .game h3 {
+         margin: 0;
+         }
+      </style>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <div class="container">
+         <div class="header">
+            <h1>Google</h1>
+            <p class="quote" id="quote"></p>
+         </div>
+         <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
+         </div>
+         <div class="feeling-lucky-container">
+            <a onclick="randomGame();" class="feeling-lucky-link">I'm Feeling Lucky</a>
+         </div>
+         <!-- What are you doing here lol -->
+         <div class="game-grid" id="gameGrid">
+            <div class="game">
+               <a href="/projects/webgl-fluid-simulation/">
+               <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
+               </a>
+               <h3>WebGL Fluid Simulation</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/elastic-face/">
+               <img src="/images/face.png" alt="Elastic Face">
+               </a>
+               <h3>Elastic Face</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/jetpack-joyride/">
+               <img src="/images/joyride.jpg" alt="Jetpack Joyride">
+               </a>
+               <h3>Jetpack Joyride</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/wordle/">
+               <img src="/images/wordleplus.png" alt="Wordle+">
+               </a>
+               <h3>Wordle+</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/eel-slap/">
+               <img src="/images/favicon.ico" alt="eelslap">
+               </a>
+               <h3>eelslap</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/slope/">
+               <img src="/images/slope.png" alt="slope">
+               </a>
+               <h3>Slope</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/slope-2/">
+               <img src="/images/slope2.png" alt="Slope 2">
+               </a>
+               <h3>Slope 2</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/sm64/">
+               <img src="/images/sm64.png" alt="Super Mario 64">
+               </a>
+               <h3>Super Mario 64 (Controller)</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/bitlife/">
+               <img src="/images/bitlife.png" alt="Bitlife">
+               </a>
+               <h3>Bitlife</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/baldis/">
+               <img src="/images/baldis.png" alt="Baldis Basics">
+               </a>
+               <h3>Baldis Basics</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/paperio2/">
+               <img src="/images/paperio2.png" alt="Paper.io 2">
+               </a>
+               <h3>Paper.io 2</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/edge-surf/">
+               <img src="/images/edgesurf.png" alt="Edge Surfing Game">
+               </a>
+               <h3>Edge Surfing Game</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3>Riddleschool 1</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool2/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3>Riddleschool 2</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool3/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3>Riddleschool 3</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool4/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3>Riddleschool 4</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool5/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3>Riddleschool 5</h3>
+            </div>
+         </div>
+      </div>
+      <script>
+         function randomGame() {
+           const games = document.querySelectorAll('.game');
+           const randomIndex = Math.floor(Math.random() * games.length);
+           const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
+           window.location.href = randomGameUrl;
+         }
+         function filterGames(searchTerm) {
+         const games = document.querySelectorAll('.game');
+         games.forEach(game => {
+         const title = game.querySelector('h3').textContent.toLowerCase();
+         const match = title.includes(searchTerm.toLowerCase());
+         game.style.display = match ? 'block' : 'none';
+         });
+         }
+         const quotes = [
+         "Some games may not work.",
+         "There's a fullscreen button in the top left on all games!",
+         "R.I.P 3kh0! -2024\nKilled by some middle schooler...",
+         "Proud sponsor of https://cornhub.website!",
+         "https://floatindustries.github.io/images/image1.png",
+         "chicken sandwich"
+         ];
+         function displayRandomQuote() {
+         const randomIndex = Math.floor(Math.random() * quotes.length);
+         document.getElementById('quote').textContent = quotes[randomIndex];
+         }
+         displayRandomQuote();
+      </script>
+      <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+      <script>document.addEventListener("DOMContentLoaded", function() {new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc:"https://i.imgur.com/Mbj7eJt.png"});});</script>
+   </body>
+</html>
