@@ -61,10 +61,10 @@
 <body>
   <div class="container">
     <div class="search-container">
-      <input type="text" class="search-input" placeholder="Search for games...">
+      <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
     </div>
 
-    <div class="game-grid">
+    <div class="game-grid" id="gameGrid">
       <div class="game">
         <a href="/projects/webgl-fluid-simulation/">
           <img src="game1.png" alt="Game 1">
@@ -80,5 +80,17 @@
       <!-- Add more game items as needed -->
     </div>
   </div>
+
+  <script>
+    function filterGames(searchTerm) {
+      const games = document.querySelectorAll('.game');
+      
+      games.forEach(game => {
+        const title = game.querySelector('h3').textContent.toLowerCase();
+        const match = title.includes(searchTerm.toLowerCase());
+        game.style.display = match ? 'block' : 'none';
+      });
+    }
+  </script>
 </body>
 </html>
