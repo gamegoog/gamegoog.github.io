@@ -1,144 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Google</title>
-<link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-    color: #fff;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
-    position: relative;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.quote {
-    color: #ccc;
-    font-style: italic;
-}
-
-.search-container {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.search-input {
-    width: calc(100% - 140px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-    background-color: #121212; 
-    color: #ffffff; 
-    margin-right: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ffffff;
-    color: #000000;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #f0f0f0;
-}
-
-.game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-gap: 20px;
-    background-color: #121212;
-    padding: 20px;
-    border-radius: 5px;
-    position: relative;
-}
-
-.game {
-    text-align: center;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-}
-
-.game img {
-    width: 100px; 
-    height: 100px; 
-    display: block;
-    margin: 0 auto 10px; 
-    cursor: pointer; 
-    border-radius: 10px; 
-}
-
-.game h3 {
-    margin: 0;
-}
-</style>
-<script>
-function filterGames(searchTerm) {
-    const games = document.querySelectorAll('.game');
-    games.forEach(game => {
-        const title = game.querySelector('h3').textContent.toLowerCase();
-        const match = title.includes(searchTerm.toLowerCase());
-        game.style.display = match ? 'block' : 'none';
-    });
-}
-
-const quotes = [
-    "Some games may not work.",
-    "There's a fullscreen button in the top left on all games!",
-    "R.I.P 3kh0! -2024\nKilled by some middle schooler...",
-    "Proud sponsor of https://cornhub.website!",
-    "https://floatindustries.github.io/images/image1.png",
-    "chicken sandwich"
-];
-
-function displayRandomQuote() {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    document.getElementById('quote').textContent = quotes[randomIndex];
-}
-
-displayRandomQuote();
-
-function randomGame() {
-    const games = document.querySelectorAll('.game');
-    const randomIndex = Math.floor(Math.random() * games.length);
-    const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
-    window.location.href = randomGameUrl;
-}
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+    <link rel="stylesheet" href="/catalog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-<div class="header">
-<h1>Google</h1>
-<p class="quote" id="quote"></p>
-</div>
-<div class="search-container">
-<input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
-<button onclick="randomGame()">I'm Feeling Lucky</button>
-</div>
-<div class="game-grid" id="gameGrid">
+<script>
+    // Check if the page is about:blank
+    if (window.location.href === 'about:blank') {
+        // Define a function to open links in about:blank pages
+        function openAboutBlank(href) {
+            var newWindow = window.open('about:blank', '_blank');
+            fetch(href)
+                .then(response => response.text())
+                .then(htmlContent => {
+                    newWindow.document.write(htmlContent);
+                    newWindow.document.close();
+                })
+                .catch(error => console.error('Error fetching content:', error));
+        }
 
+        // Example usage: openAboutBlank('HREF OF GAME TO GO TO');
+    } else {
+        // Define other functionality here (existing script)
+        function randomGame() {
+            const games = document.querySelectorAll('.game');
+            const randomIndex = Math.floor(Math.random() * games.length);
+            const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
+            window.location.href = randomGameUrl;
+        }
+
+        function filterGames(searchTerm) {
+            const games = document.querySelectorAll('.game');
+            games.forEach(game => {
+                const title = game.querySelector('h3').textContent.toLowerCase();
+                const match = title.includes(searchTerm.toLowerCase());
+                game.style.display = match ? 'block' : 'none';
+            });
+        }
+
+        const quotes = [
+            "Some games may not work.",
+            "There's a fullscreen button in the top left on all games!",
+            "R.I.P 3kh0! -2024\nKilled by some middle schooler...",
+            "Proud sponsor of https://cornhub.website!",
+            "https://floatindustries.github.io/images/image1.png",
+            "chicken sandwich"
+        ];
+
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quote').textContent = quotes[randomIndex];
+        }
+
+        displayRandomQuote();
+    }
+</script>
+<div class="container">
+    <div class="header">
+        <h1>Google</h1>
+        <p class="quote" id="quote"></p>
+    </div>
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
+    </div>
+    <div class="feeling-lucky-container">
+        <a onclick="randomGame();" class="feeling-lucky-link">I'm Feeling Lucky</a>
+    </div>
+    <div class="game-grid" id="gameGrid">
+        <!-- Game grid content goes here -->
+    </div>
 </div>
-</div>
+<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function() {new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc:"https://i.imgur.com/Mbj7eJt.png"});});</script>
 </body>
 </html>
