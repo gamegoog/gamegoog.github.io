@@ -7,6 +7,41 @@
       <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
       <link rel="stylesheet" href="/catalog.css">
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+      <script>
+         function randomGame() {
+             const games = document.querySelectorAll('.game');
+             const randomIndex = Math.floor(Math.random() * games.length);
+             const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
+             window.location.href = randomGameUrl;
+         }
+         
+         function filterGames(searchTerm) {
+             const games = document.querySelectorAll('.game');
+             games.forEach(game => {
+                 const title = game.querySelector('h3').textContent.toLowerCase();
+                 const match = title.includes(searchTerm.toLowerCase());
+                 game.style.display = match ? 'block' : 'none';
+             });
+         }
+         
+         const quotes = [
+             "Some games may not work.",
+             "There's a fullscreen button in the top left on all games!",
+             "R.I.P 3kh0! -2024\nKilled by some middle schooler...",
+             "Proud sponsor of https://cornhub.website!",
+             "https://floatindustries.github.io/images/image1.png",
+             "chicken sandwich"
+         ];
+         
+         function displayRandomQuote() {
+             const randomIndex = Math.floor(Math.random() * quotes.length);
+             document.getElementById('quote').textContent = quotes[randomIndex];
+         }
+         
+         document.addEventListener("DOMContentLoaded", function() {
+             displayRandomQuote();
+         });
+   </script>
    </head>
    <body>
       <div class="container">
@@ -143,42 +178,6 @@
             </div>
          </div>
       </div>
-      <script>
-         // Define other functionality here (existing script)
-         function randomGame() {
-             const games = document.querySelectorAll('.game');
-             const randomIndex = Math.floor(Math.random() * games.length);
-             const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
-             window.location.href = randomGameUrl;
-         }
-         
-         function filterGames(searchTerm) {
-             const games = document.querySelectorAll('.game');
-             games.forEach(game => {
-                 const title = game.querySelector('h3').textContent.toLowerCase();
-                 const match = title.includes(searchTerm.toLowerCase());
-                 game.style.display = match ? 'block' : 'none';
-             });
-         }
-         
-         const quotes = [
-             "Some games may not work.",
-             "There's a fullscreen button in the top left on all games!",
-             "R.I.P 3kh0! -2024\nKilled by some middle schooler...",
-             "Proud sponsor of https://cornhub.website!",
-             "https://floatindustries.github.io/images/image1.png",
-             "chicken sandwich"
-         ];
-         
-         function displayRandomQuote() {
-             const randomIndex = Math.floor(Math.random() * quotes.length);
-             document.getElementById('quote').textContent = quotes[randomIndex];
-         }
-         
-         document.addEventListener("DOMContentLoaded", function() {
-             displayRandomQuote();
-         });
-      </script>
       <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
       <script>document.addEventListener("DOMContentLoaded", function() {new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc:"https://i.imgur.com/Mbj7eJt.png"});});</script>
    </body>
