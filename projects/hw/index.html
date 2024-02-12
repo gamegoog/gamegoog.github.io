@@ -5,22 +5,16 @@
     </head>
     <body>
         <div id='ruffle'></div>
-        <script src='https://e9x.github.io/ruffle-example/ruffle.js'></script>
+        <script src='https://cdn.jsdelivr.net/npm/@rufflejs/ruffle@latest/dist/ruffle.js'></script>
         <script>
-var swfobject = {};
-
-swfobject.embedSWF = function(url, cont, width, height){
-    var ruffle = window.RufflePlayer.newest(),
-        player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
-            width: width,
-            height: height,
-            style: 'width: ' + width + 'px; height: ' + height + 'px',
-        });
-    
-    player.load({ url: url });
-}
-
-swfobject.embedSWF('https://floatindustries.github.io/projects/hw/HappyWheels.swf', 'ruffle', 500, 500);
+            var ruffle = window.RufflePlayer.newest(),
+                player = Object.assign(document.getElementById('ruffle').appendChild(ruffle.createPlayer()), {
+                    width: 500,
+                    height: 500,
+                    style: 'width: 500px; height: 500px',
+                });
+            
+            player.load({ url: 'https://floatindustries.github.io/projects/hw/HappyWheels.swf' });
         </script>
     </body>
 </html>
