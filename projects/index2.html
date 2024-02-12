@@ -9,57 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<script>
-    // Check if the page is about:blank
-    if (window.location.href === 'about:blank') {
-        // Define a function to open links in about:blank pages
-        function openAboutBlank(href) {
-            var newWindow = window.open('about:blank', '_blank');
-            fetch(href)
-                .then(response => response.text())
-                .then(htmlContent => {
-                    newWindow.document.write(htmlContent);
-                    newWindow.document.close();
-                })
-                .catch(error => console.error('Error fetching content:', error));
-        }
-
-        // Example usage: openAboutBlank('HREF OF GAME TO GO TO');
-    } else {
-        // Define other functionality here (existing script)
-        function randomGame() {
-            const games = document.querySelectorAll('.game');
-            const randomIndex = Math.floor(Math.random() * games.length);
-            const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
-            window.location.href = randomGameUrl;
-        }
-
-        function filterGames(searchTerm) {
-            const games = document.querySelectorAll('.game');
-            games.forEach(game => {
-                const title = game.querySelector('h3').textContent.toLowerCase();
-                const match = title.includes(searchTerm.toLowerCase());
-                game.style.display = match ? 'block' : 'none';
-            });
-        }
-
-        const quotes = [
-            "Some games may not work.",
-            "There's a fullscreen button in the top left on all games!",
-            "R.I.P 3kh0! -2024\nKilled by some middle schooler...",
-            "Proud sponsor of https://cornhub.website!",
-            "https://floatindustries.github.io/images/image1.png",
-            "chicken sandwich"
-        ];
-
-        function displayRandomQuote() {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            document.getElementById('quote').textContent = quotes[randomIndex];
-        }
-
-        displayRandomQuote();
-    }
-</script>
 <div class="container">
     <div class="header">
         <h1>Google</h1>
@@ -72,129 +21,45 @@
         <a onclick="randomGame();" class="feeling-lucky-link">I'm Feeling Lucky</a>
     </div>
     <div class="game-grid" id="gameGrid">
-            <!-- What are you doing here lol -->
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/webgl-fluid-simulation/"">
-               <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
-               </a>
-               <h3>WebGL Fluid Simulation</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/elastic-face/"">
-               <img src="/images/face.png" alt="Elastic Face">
-               </a>
-               <h3>Elastic Face</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/jetpack-joyride/"">
-               <img src="/images/joyride.jpg" alt="Jetpack Joyride">
-               </a>
-               <h3>Jetpack Joyride</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/wordle/"">
-               <img src="/images/wordleplus.png" alt="Wordle+">
-               </a>
-               <h3>Wordle+</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/eel-slap/"">
-               <img src="/images/favicon.ico" alt="eelslap">
-               </a>
-               <h3>eelslap</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/slope/"">
-               <img src="/images/slope.png" alt="slope">
-               </a>
-               <h3>Slope</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/slope-2/"">
-               <img src="/images/slope2.png" alt="Slope 2">
-               </a>
-               <h3>Slope 2</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/sm64/"">
-               <img src="/images/sm64.png" alt="Super Mario 64">
-               </a>
-               <h3>Super Mario 64 (Controller)</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/bitlife/"">
-               <img src="/images/bitlife.png" alt="Bitlife">
-               </a>
-               <h3>Bitlife</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/baldis/"">
-               <img src="/images/baldis.png" alt="Baldis Basics">
-               </a>
-               <h3>Baldis Basics</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/paperio2/"">
-               <img src="/images/paperio2.png" alt="Paper.io 2">
-               </a>
-               <h3>Paper.io 2</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/edge-surf/"">
-               <img src="/images/edgesurf.png" alt="Edge Surfing Game">
-               </a>
-               <h3>Edge Surfing Game</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/subway-surfers-ny/"">
-               <img src="/images/subwaysurf.png" alt="Subway Surfers NY">
-               </a>
-               <h3>Subway Surfers</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/retro-bowl/"">
-               <img src="/images/retrobowl.png" alt="Retrobowl">
-               </a>
-               <h3>Retrobowl</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/sandboxels/"">
-               <img src="/images/sandboxels.png" alt="Sandboxels">
-               </a>
-               <h3>Sandboxels</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/riddleschool/"">
-               <img src="/images/riddleschool.png" alt="Riddleschool logo">
-               </a>
-               <h3>Riddleschool 1</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/riddleschool2/"">
-               <img src="/images/riddleschool.png" alt="Riddleschool logo">
-               </a>
-               <h3>Riddleschool 2</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/riddleschool3/"">
-               <img src="/images/riddleschool.png" alt="Riddleschool logo">
-               </a>
-               <h3>Riddleschool 3</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/riddleschool4/"">
-               <img src="/images/riddleschool.png" alt="Riddleschool logo">
-               </a>
-               <h3>Riddleschool 4</h3>
-            </div>
-            <div class="game">
-               <a onclick="openAboutBlank("/projects/riddleschool5/"">
-               <img src="/images/riddleschool.png" alt="Riddleschool logo">
-               </a>
-               <h3>Riddleschool 5</h3>
-            </div>
+        <!-- Your game items -->
     </div>
 </div>
+<script>
+    // Define other functionality here (existing script)
+    function randomGame() {
+        const games = document.querySelectorAll('.game');
+        const randomIndex = Math.floor(Math.random() * games.length);
+        const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
+        window.location.href = randomGameUrl;
+    }
+
+    function filterGames(searchTerm) {
+        const games = document.querySelectorAll('.game');
+        games.forEach(game => {
+            const title = game.querySelector('h3').textContent.toLowerCase();
+            const match = title.includes(searchTerm.toLowerCase());
+            game.style.display = match ? 'block' : 'none';
+        });
+    }
+
+    const quotes = [
+        "Some games may not work.",
+        "There's a fullscreen button in the top left on all games!",
+        "R.I.P 3kh0! -2024\nKilled by some middle schooler...",
+        "Proud sponsor of https://cornhub.website!",
+        "https://floatindustries.github.io/images/image1.png",
+        "chicken sandwich"
+    ];
+
+    function displayRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById('quote').textContent = quotes[randomIndex];
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        displayRandomQuote();
+    });
+</script>
 <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
 <script>document.addEventListener("DOMContentLoaded", function() {new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc:"https://i.imgur.com/Mbj7eJt.png"});});</script>
 </body>
