@@ -1,48 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Google</title>
   <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
-    }
-
-    .game-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .game-related {
-      width: 100%;
-      height: 100%;
-    }
-
-    .actual {
-      width: 100%;
-      height: 100%;
-    }
-
-    #gameframe {
-      width: 100%;
-      height: 100%;
-      border: none; /* Remove border */
-    }
-
-    #fullscreen-button {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      cursor: pointer;
-      width: 30px; /* Adjust width */
-      height: 30px; /* Adjust height */
-    }
-  </style>
+  <link rel="stylesheet" href="/games.css">
 </head>
 <body>
   <div class="game-container">
@@ -51,7 +11,7 @@
         <iframe src="game.html" id="gameframe"></iframe>
       </div>
     </div>
-    <img src="/projects/elastic-face/fs.png" id="fullscreen-button" alt="Fullscreen" title="" onclick="toggleFullScreen()">
+    <img src="/images/fs.png" id="fullscreen-button" alt="Fullscreen" title="" onclick="toggleFullScreen()">
   </div>
 
   <script>
