@@ -1,0 +1,95 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff; /* Changed text color to white */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quote {
+    color: #ccc;
+    font-style: italic;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative; /* Add position relative */
+}
+
+.search-input {
+    width: calc(100% - 140px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #121212;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.feeling-lucky-container {
+    text-align: center; /* Center the button */
+    margin-bottom: 20px; /* Added margin */
+}
+
+.feeling-lucky-link {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent; /* Transparent background */
+    color: #ffffff; /* White text color */
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+}
+
+.feeling-lucky-link:hover {
+    color: #f0f0f0; /* Hover text color */
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted minmax value */
+    grid-gap: 20px;
+    background-color: #121212;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 0; /* Ensure the grid stays behind other elements */
+    margin-top: 20px; /* Added margin to separate from the text */
+}
+
+.game {
+    text-align: center;
+    background-color: #fff;
+    color: #000000; /* Set game text color to black */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.game img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.game h3 {
+    margin: 0;
+}
