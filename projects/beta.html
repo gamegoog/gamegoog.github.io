@@ -3,7 +3,7 @@
    <script>
         function openAboutBlank() {
             var newWindow = window.open('about:blank', '_blank');
-            fetch('/projects/')
+            fetch('/projects/index2.html')
                 .then(response => response.text())
                 .then(htmlContent => {
                     newWindow.document.write(htmlContent);
