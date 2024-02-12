@@ -1,0 +1,38 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.game-related {
+  width: 100%;
+  height: 100%;
+}
+
+.actual {
+  width: 100%;
+  height: 100%;
+}
+
+#gameframe {
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove border */
+}
+
+#fullscreen-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  width: 30px; /* Adjust width */
+  height: 30px; /* Adjust height */
+}
