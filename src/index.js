@@ -1,3 +1,15 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyCVHc8D3fp91tz1vTr5VMQhttpcaKy3JFY",
+  authDomain: "userapi-f77ee.firebaseapp.com",
+  projectId: "userapi-f77ee",
+  storageBucket: "userapi-f77ee.appspot.com",
+  messagingSenderId: "311858865906",
+  appId: "1:311858865906:web:d7fb22ed7440112de8d26b",
+  measurementId: "G-Y5K25NKXBL"
+};
+function updateUsersDisplay(numUsers) {
+  document.getElementById("userCount").textContent = numUsers;
+}
 function randomGame() {
     const games = document.querySelectorAll('.game');
     const randomIndex = Math.floor(Math.random() * games.length);
@@ -33,3 +45,7 @@ function displayRandomQuote() {
     document.getElementById('quote').textContent = quotes[randomIndex];
 }
 check();
+userCountRef.on('value', (snapshot) => {
+  const userCount = snapshot.val();
+  updateUsersDisplay(userCount);
+});
