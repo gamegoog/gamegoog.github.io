@@ -15,7 +15,7 @@ function check() {
     }
 };
 function updateUsersDisplay(numUsers) {
-  document.getElementById("userCount").textContent = "| Users: ".. numUsers;
+  document.getElementById("userCount").textContent = "| Users: ". numUsers;
 };
 function randomGame() {
     const games = document.querySelectorAll('.game');
