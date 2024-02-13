@@ -81,6 +81,15 @@ body {
     padding: 20px;
 }
 
+.sponsored {
+    text-align: center;
+    background-color: #fff;
+    color: #000000; /* Set game text color to black */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
 .game img {
     width: 100px;
     height: 100px;
