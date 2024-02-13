@@ -46,17 +46,17 @@ body {
     margin-bottom: 20px; /* Added margin */
 }
 
-.feeling-lucky-link {
+.hyperlink {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     background-color: transparent; /* Transparent background */
     color: #ffffff; /* White text color */
-    cursor: pointer;
+    cursor: default;
     text-decoration: none; /* Remove underline */
 }
 
-.feeling-lucky-link:hover {
+.hyperlink:hover {
     color: #f0f0f0; /* Hover text color */
 }
 
@@ -95,7 +95,7 @@ body {
     height: 100px;
     display: block;
     margin: 0 auto 10px;
-    cursor: pointer;
+    cursor: default;
     border-radius: 10px;
 }
 
@@ -108,7 +108,7 @@ body {
     height: 100px;
     display: block;
     margin: 0 auto 10px;
-    cursor: pointer;
+    cursor: default;
     border-radius: 10px;
 }
 
