@@ -1,13 +1,3 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyCVHc8D3fp91tz1vTr5VMQhttpcaKy3JFY",
-  authDomain: "userapi-f77ee.firebaseapp.com",
-  projectId: "userapi-f77ee",
-  storageBucket: "userapi-f77ee.appspot.com",
-  messagingSenderId: "311858865906",
-  appId: "1:311858865906:web:d7fb22ed7440112de8d26b",
-  measurementId: "G-Y5K25NKXBL"
-};
-const database = firebase.database();const userCountRef = database.ref('userCount');firebase.initializeApp(firebaseConfig);
 function check() {
     var currentURL = window.location.href;
     var pattern = /^https?:\/\/floatindustries\.github\.io\//;
