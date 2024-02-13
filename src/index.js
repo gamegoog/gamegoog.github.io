@@ -14,6 +14,12 @@ function check() {
         window.location.href = "/";
     }
 };
+function sponsor() {
+    var randomNumber = getRandomInt(0, 100);
+    if (randomNumber <= 20) {
+        document.getElementById("sponsored").style.display = "block";
+    }
+};
 function updateUsersDisplay(numUsers) {
   document.getElementById("userCount").textContent = "|      Users: ". numUsers;
 };
@@ -44,7 +50,9 @@ function displayRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     document.getElementById('quote').textContent = quotes[randomIndex];
 };
-
+window.onload = function() {
+  sponsor();
+};
 userCountRef.on('value', (snapshot) => {
   const userCount = snapshot.val();
   updateUsersDisplay(userCount);
