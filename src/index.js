@@ -7,6 +7,7 @@ const firebaseConfig = {
   appId: "1:311858865906:web:d7fb22ed7440112de8d26b",
   measurementId: "G-Y5K25NKXBL"
 };
+const database = firebase.database();const userCountRef = database.ref('userCount');firebase.initializeApp(firebaseConfig);
 function check() {
     var currentURL = window.location.href;
     var pattern = /^https?:\/\/floatindustries\.github\.io\//;
