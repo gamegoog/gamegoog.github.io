@@ -9,8 +9,14 @@
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
       <script>
          function openAboutBlank(url) {
-          var newWindow = window.open(url, '_blank');
-          newWindow.document.close();
+             var newWindow = window.open('about:blank', '_blank');
+             fetch(url)
+                 .then(response => response.text())
+                 .then(htmlContent => {
+                     newWindow.document.write(htmlContent);
+                     newWindow.document.close();
+                 })
+                 .catch(error => alert('Error fetching content, try again, error:\n', error));
          }
 
          function randomGame() {
