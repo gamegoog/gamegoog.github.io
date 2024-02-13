@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-   <script>
-        function openAboutBlank(url) {
-            var newWindow = window.open('about:blank', '_blank');
-            fetch(url)
-                .then(response => response.text())
-                .then(htmlContent => {
-                    newWindow.document.write(htmlContent);
-                    newWindow.document.close();
-                })
-                .catch(error => console.error('Error fetching content:', error));
-        }
-    </script>
    <head>
       <meta http-equiv="Content-type" content="text/html; charset=utf-8">
       <title>Site not found · GitHub Pages</title>
