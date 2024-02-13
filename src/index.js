@@ -5,12 +5,15 @@ function check() {
         window.location.href = "/";
     }
 };
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 function sponsor() {
     var randomNumber = getRandomInt(0, 100);
     if (randomNumber <= 20) {
         document.getElementById("sponsored").style.display = "block";
     }
-};
+}
 function updateUsersDisplay(numUsers) {
   document.getElementById("userCount").textContent = "|      Users: ". numUsers;
 };
