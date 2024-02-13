@@ -1,20 +1,30 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset='utf8'>
-    </head>
-    <body>
-        <div id='ruffle'></div>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/ruffle/0.3.2/ruffle.js'></script>
-        <script>
-            var ruffle = window.RufflePlayer,
-                player = Object.assign(document.getElementById('ruffle').appendChild(ruffle.createPlayer()), {
-                    width: 500,
-                    height: 500,
-                    style: 'width: 500px; height: 500px',
-                });
-            
-            player.load({ url: 'https://floatindustries.github.io/projects/hw/HappyWheels.swf' });
-        </script>
-    </body>
+<html lang="en">
+<head>
+  <title>Google</title>
+  <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+  <link rel="stylesheet" href="/games.css">
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-related">
+      <div class="actual">
+        <iframe src="game.html" id="gameframe"></iframe>
+      </div>
+    </div>
+    <img src="/images/fs.png" id="fullscreen-button" alt="Fullscreen" title="" onclick="toggleFullScreen()">
+  </div>
+
+  <script>
+    function toggleFullScreen() {
+      var iframe = document.getElementById("gameframe");
+      if (!document.fullscreenElement) {
+        iframe.requestFullscreen().catch(err => {
+          alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  </script>
+</body>
 </html>
