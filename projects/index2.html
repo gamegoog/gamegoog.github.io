@@ -8,6 +8,9 @@
       <link rel="stylesheet" href="/catalog.css">
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
       <script>
+         function openAboutBlank(url) {
+          window.open(url, '_blank');
+         }
          function randomGame() {
              const games = document.querySelectorAll('.game');
              const randomIndex = Math.floor(Math.random() * games.length);
