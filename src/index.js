@@ -44,7 +44,7 @@ function displayRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     document.getElementById('quote').textContent = quotes[randomIndex];
 };
-check();
+
 userCountRef.on('value', (snapshot) => {
   const userCount = snapshot.val();
   updateUsersDisplay(userCount);
