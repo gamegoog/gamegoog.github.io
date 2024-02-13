@@ -8,7 +8,7 @@ const firebaseConfig = {
   measurementId: "G-Y5K25NKXBL"
 };
 function updateUsersDisplay(numUsers) {
-  document.getElementById("userCount").textContent = numUsers;
+  document.getElementById("userCount").textContent = "| Users: ".. numUsers;
 }
 function randomGame() {
     const games = document.querySelectorAll('.game');
