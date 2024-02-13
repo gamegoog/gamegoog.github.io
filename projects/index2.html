@@ -11,15 +11,21 @@
 <body>
    <script>
       function openAboutBlank(url) {
-         var newWindow = window.open('about:blank', '_blank');
-         fetch(url)
-            .then(response => response.text())
-            .then(htmlContent => {
-               newWindow.document.write(htmlContent);
-               newWindow.document.close();
-            })
-            .catch(error => alert('Error fetching content, try again, error:\n', error));
-      }
+    console.log("Fetching URL:", url); // Log the URL being fetched
+    var newWindow = window.open('about:blank', '_blank');
+    fetch(url)
+        .then(response => {
+            console.log("Response status:", response.status); // Log the response status
+            return response.text();
+        })
+        .then(htmlContent => {
+            console.log("Fetched HTML content:", htmlContent); // Log the fetched HTML content
+            newWindow.document.write(htmlContent);
+            newWindow.document.close();
+        })
+        .catch(error => alert('Error fetching content, try again, error:\n', error));
+}
+
 
       function randomGame() {
          const games = document.querySelectorAll('.game');
