@@ -90,6 +90,19 @@ body {
     padding: 20px;
 }
 
+.sponsored img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.sponsored h3 {
+    margin: 0;
+}
+
 .game img {
     width: 100px;
     height: 100px;
