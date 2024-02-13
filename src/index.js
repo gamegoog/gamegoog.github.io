@@ -45,9 +45,5 @@ function displayRandomQuote() {
     document.getElementById('quote').textContent = quotes[randomIndex];
 };
 window.onload = function() {
-  sponsor();
+  check();displayRandomQuote();sponsor();
 };
-userCountRef.on('value', (snapshot) => {
-  const userCount = snapshot.val();
-  updateUsersDisplay(userCount);
-});
