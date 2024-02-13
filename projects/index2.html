@@ -6,6 +6,21 @@
       <link rel="stylesheet" href="/catalog.css">
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
       <script src="/src/index.js"></script><style type="text/css" id="operaUserStyle"></style>
+      <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+              const firebaseConfig = {
+                apiKey: "AIzaSyCVHc8D3fp91tz1vTr5VMQhttpcaKy3JFY",
+                authDomain: "userapi-f77ee.firebaseapp.com",
+                projectId: "userapi-f77ee",
+                storageBucket: "userapi-f77ee.appspot.com",
+                messagingSenderId: "311858865906",
+                appId: "1:311858865906:web:d7fb22ed7440112de8d26b",
+                measurementId: "G-Y5K25NKXBL"
+              };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
    </head>
    <body>
       <div class="container">
