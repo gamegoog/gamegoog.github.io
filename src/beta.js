@@ -37,14 +37,10 @@ function check() {
     }
 };
 const quotes = [
-    "Some games may not work.",
-    "There's a fullscreen button in the top left on all games!",
-    "R.I.P 3kh0! -2024, yes I did make this website.",
-    "R.I.P 3kh0! -2024, killed by some middle schooler.",
-    "Proud sponsor of https://cornhub.website!",
-    "Link to some private stuff... Don't look! https://floatindustries.github.io/images/image1.png",
-    "chicken sandwich",
-    "Uncaught ReferenceError: getRandomInt is not defined"
+    "Beta branch, what's that? 😺",
+    "Jacob Mitchell is a monkey 🤞",
+    "This you Mr. Iorio? 5416 Hutchinson St 💀"
+
 ];
 function displayRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
