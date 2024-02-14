@@ -1,17 +1,17 @@
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-};
 function sponsor() {
-    var randomNumber = getRandomInt(0, 100);
+    var randomNumber = Math.floor(Math.random() * 100);
     if (randomNumber <= 20) {
-        var sponsoredDiv = document.getElementById("sponsored");
-        if (sponsoredDiv) { // Check if the element exists
-            sponsoredDiv.remove();console.log("Sponsorship quota not met")// Remove the div
-        } else
-        console.log("Here goes the cycle!");
-        sponsor();console.warn("eatmydust.zip")
+        var sponsoredDiv = document.querySelector(".sponsored");
+        if (sponsoredDiv) {
+            sponsoredDiv.remove();
+            console.log("Sponsored content removed");
+        } else {
+            console.log("Sponsored content not found");
+        }
+    } else {
+        console.log("Sponsorship quota not met");
     }
-}
+};
 function updateUsersDisplay(numUsers) {
   document.getElementById("userCount").textContent = "|      Users: ". numUsers;
 };
