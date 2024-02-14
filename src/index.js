@@ -6,9 +6,10 @@ function sponsor() {
     if (randomNumber <= 20) {
         var sponsoredDiv = document.getElementById("sponsored");
         if (sponsoredDiv) { // Check if the element exists
-            sponsoredDiv.remove(); // Remove the div
+            sponsoredDiv.remove();console.log("Sponsorship quota not met")// Remove the div
         } else
-        sponsor()
+        console.log("Here goes the cycle!");
+        sponsor();console.warn("eatmydust.zip")
     }
 }
 function updateUsersDisplay(numUsers) {
