@@ -8,7 +8,7 @@ function sponsor() {
         if (sponsoredDiv) { // Check if the element exists
             sponsoredDiv.remove(); // Remove the div
         } else
-        alert('how did you make it go bye bye without even loading the site yet what')
+        sponsor()
     }
 }
 function updateUsersDisplay(numUsers) {
