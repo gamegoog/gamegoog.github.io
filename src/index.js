@@ -10,7 +10,7 @@ function sponsor() {
             console.log("Sponsored content not found");
         }
     } else {
-        console.log("Sponsorship quota not met");
+        console.log("Sponsorship quota not met, sponsor not deleted.");
     }
 };
 function updateUsersDisplay(numUsers) {
