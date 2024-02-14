@@ -1,6 +1,7 @@
 function sponsor() {
+    var percent = 80        // Percent chance of deleting content
     var randomNumber = Math.floor(Math.random() * 100);
-    if (randomNumber <= 20) {
+    if (randomNumber <= percent) {
         var sponsoredDiv = document.querySelector(".sponsored");
         if (sponsoredDiv) {
             sponsoredDiv.remove();
