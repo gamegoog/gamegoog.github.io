@@ -1,78 +1,228 @@
-<!DOCTYPE html>
-<html lang="en">
-   <script>
-        function openAboutBlank() {
-            var newWindow = window.open('about:blank', '_blank');
-            fetch('/projects/index2.html')
-                .then(response => response.text())
-                .then(htmlContent => {
-                    newWindow.document.write(htmlContent);
-                    newWindow.document.close();
-                })
-                .catch(error => console.error('Error fetching content:', error));
-        }
-    </script>
-   <head>
-      <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-      <title>Site not found · GitHub Pages</title>
-      <style type="text/css" media="screen">
-         body {
-         background-color: #f1f1f1;
-         margin: 0;
-         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-         }
-         .container { margin: 50px auto 40px auto; width: 600px; text-align: center; }
-         a { color: #4183c4; text-decoration: none; }
-         a:hover { text-decoration: underline; }
-         h1 { width: 800px; position:relative; left: -100px; letter-spacing: -1px; line-height: 60px; font-size: 60px; font-weight: 100; margin: 0px 0 50px 0; text-shadow: 0 1px 0 #fff; }
-         p { color: rgba(0, 0, 0, 0.5); margin: 20px 0; line-height: 1.6; }
-         ul { list-style: none; margin: 25px 0; padding: 0; }
-         li { display: table-cell; font-weight: bold; width: 1%; }
-         .logo { display: inline-block; margin-top: 35px; }
-         .logo-img-2x { display: none; }
-         @media
-         only screen and (-webkit-min-device-pixel-ratio: 2),
-         only screen and (   min--moz-device-pixel-ratio: 2),
-         only screen and (     -o-min-device-pixel-ratio: 2/1),
-         only screen and (        min-device-pixel-ratio: 2),
-         only screen and (                min-resolution: 192dpi),
-         only screen and (                min-resolution: 2dppx) {
-         .logo-img-1x { display: none; }
-         .logo-img-2x { display: inline-block; }
-         }
-         #suggestions {
-         margin-top: 35px;
-         color: #ccc;
-         }
-         #suggestions a {
-         color: #666666;
-         font-weight: 200;
-         font-size: 14px;
-         margin: 0 10px;
-         }
-      </style>
-      <style type="text/css" id="operaUserStyle"></style>
+<html lang="en"><head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Google</title>
+      <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+      <link rel="stylesheet" href="/catalog.css">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
+      <script src="/src/beta.js"></script><style type="text/css" id="operaUserStyle"></style>
    </head>
    <body>
       <div class="container">
-         <h1>404</h1>
-         <p><strong>There isn't a GitHub Pages site here.</strong></p>
-         <p>
-            If you're trying to publish one,
-            <a href="https://floatindustries.github.io/">read the full documentation</a>
-            to learn how to set up <strong>GitHub Pages</strong>
-            for your repository, organization, or user account.
-         </p>
-         <div id="suggestions">
-            <a href="javascript:void(0);" onclick="openAboutBlank()" alt="About:blank Visit">GitHub Status</a> —
-            <a href="/projects/index2.html" alt="Normal visit">@githubstatus</a>
+         <div class="header">
+            <h1>Google</h1>
+            <p class="quote" id="quote">Some games may not work.</p>
          </div>
-         <a href="/" class="logo logo-img-1x">
-         <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMTZCRDY3REIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMTZCRDY3RUIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdCQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjdDQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SM9MCAAAA+5JREFUeNrEV11Ik1EY3s4+ddOp29Q5b0opCgKFsoKoi5Kg6CIhuwi6zLJLoYLopq4qsKKgi4i6CYIoU/q5iDAKs6syoS76IRWtyJ+p7cdt7sf1PGOD+e0c3dygAx/67ZzzPM95/877GYdHRg3ZjMXFxepQKNS6sLCwJxqNNuFpiMfjVs4ZjUa/pmmjeD6VlJS8NpvNT4QQ7mxwjSsJiEQim/1+/9lgMHgIr5ohuxG1WCw9Vqv1clFR0dCqBODElV6v90ogEDjGdYbVjXhpaendioqK07CIR7ZAqE49PT09BPL2PMgTByQGsYiZlQD4uMXtdr+JxWINhgINYhGT2MsKgMrm2dnZXgRXhaHAg5jEJodUAHxux4LudHJE9RdEdA+i3Juz7bGHe4mhE9FNrgwBCLirMFV9Okh5eflFh8PR5nK5nDabrR2BNJlKO0T35+Li4n4+/J+/JQCxhmu5h3uJoXNHPbmWZAHMshWB8l5/ipqammaAf0zPDDx1ONV3vurdidqwAQL+pEc8sLcAe1CCvQ3YHxIW8Pl85xSWNC1hADDIv0rIE/o4J0k3kww4xSlwIhcq3EFFOm7KN/hUGOQkt0CFa5WpNJlMvxBEz/IVQAxg/ZRZl9wiHA63yDYieM7DnLP5CiAGsC7I5sgtYKJGWe2A8seFqgFJrJjEPY1Cn3pJ8/9W1e5VWsFDTEmFrBcoDhZJEQkXuhICMyKpjhahqN21hRYATKfUOlDmkygrR4o4C0VOLGJKrOITKB4jijzdXygBKixyC5TDQdnk/Pz8qRw6oOWGlsTKGOQW6OH6FBWsyePxdOXLTgxiyebILZCjz+GLgMIKnXNzc49YMlcRdHXcSwxFVgTInQhC9G33UhNoJLuqq6t345p9y3eUy8OTk5PjAHuI9uo4b07FBaOhsu0A4Unc+T1TU1Nj3KsSSE5yJ65jqF2DDd8QqWYmAZrIM2VlZTdnZmb6AbpdV9V6ec9znf5Q7HjYumdRE0JOp3MjitO4SFa+cZz8Umqe3TCbSLvdfkR/kWDdNQl5InuTcysOcpFT35ZrbBxx4p3JAHlZVVW1D/634VRt+FvLBgK/v5LV9WS+10xMTEwtRw7XvqOL+e2Q8V3AYIOIAXQ26/heWVnZCVfcyKHg2CBgTpmPmjYM8l24GyaUHyaIh7XwfR9ErE8qHoDfn2LTNAVC0HX6MFcBIP8Bi+6F6cdW/DICkANRfx99fEYFQ7Nph5i/uQiA214gno7K+guhaiKg9gC62+M8eR7XsBsYJ4ilam60Fb7r7uAj8wFyuwM1oIOWgfmDy6RXEEQzJMPe23DXrVS7rtyD3Df8z/FPgAEAzWU5Ku59ZAUAAAAASUVORK5CYII=">
-         </a>
-         <a href="/" class="logo logo-img-2x">
-         <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEQUM1QkUxRUI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEQUM1QkUxRkI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdGQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjgwQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hfPRaQAAB6lJREFUeNrsW2mM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">
-         </a>
+         <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
+         </div>
+         <div class="feeling-lucky-container">
+            <a onclick="randomGame();" class="hyperlink">I'm Feeling Lucky</a>
+            <a href="index2.html" class="hyperlink">Beta Branch</a>
+         </div>
+         <div class="game-grid" id="gameGrid">
+            <!-- What are you doing here lol -->
+            <div class="sponsored">
+               <a href="https://cornhub.website/">
+               <img src="/images/cornhub.jpg" alt="Cornhub">
+               </a>
+               <h3 href="https://cornhub.website/">[<span style="color: Green;">Sponsored</span>] CornHub</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/webgl-fluid-simulation/">
+               <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
+               </a>
+               <h3 href="">WebGL Fluid Simulation</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/elastic-face/">
+               <img src="/images/face.png" alt="Elastic Face">
+               </a>
+               <h3 href="/projects/elastic-face/">Elastic Face</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/jetpack-joyride/">
+               <img src="/images/joyride.jpg" alt="Jetpack Joyride">
+               </a>
+               <h3 href="/projects/jetpack-joyride/">Jetpack Joyride</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/among-us/">
+               <img src="/images/amongus.png" alt="Among Us">
+               </a>
+               <h3 href="/projects/among-us/">Among Us</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/impossiblequiz/">
+               <img src="/images/impossiblequiz.png" alt="The Impossibe Quiz">
+               </a>
+               <h3 href="/projects/impossiblequiz/">The Impossible Quiz</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/1v1lol/">
+               <img src="/images/1v1.png" alt="1v1.lol">
+               </a>
+               <h3 href="/projects/1v1lol/">1v1.lol</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/wordle/">
+               <img src="/images/wordleplus.png" alt="Wordle+">
+               </a>
+               <h3 href="/projects/wordle/">Wordle+</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/eel-slap/">
+               <img src="/images/favicon.ico" alt="eelslap">
+               </a>
+               <h3 href="/projects/eel-slap/">eelslap</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/slope/">
+               <img src="/images/slope.png" alt="slope">
+               </a>
+               <h3 href="/projects/slope/">Slope</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/slope-2/">
+               <img src="/images/slope2.png" alt="Slope 2">
+               </a>
+               <h3 href="/projects/slope-2/">Slope 2</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/sm64/">
+               <img src="/images/sm64.png" alt="Super Mario 64">
+               </a>
+               <h3 href="/projects/sm64/">Super Mario 64 <span style="color: Red;">(Controller Required)</span></h3>
+            </div>
+            <div class="game">
+               <a href="/projects/bitlife/">
+               <img src="/images/bitlife.png" alt="Bitlife">
+               </a>
+               <h3 href="/projects/bitlife/">Bitlife</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/baldis/">
+               <img src="/images/baldis.png" alt="Baldis Basics">
+               </a>
+               <h3 href="/projects/baldis/">Baldis Basics (Not Working)</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/paperio2/">
+               <img src="/images/paperio2.png" alt="Paper.io 2">
+               </a>
+               <h3 href="/projects/paperio2/">Paper.io 2</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/cc/">
+               <img src="/images/cookieclicker.png" alt="Cookie Clicker">
+               </a>
+               <h3 href="/projects/cc/">Cookie Clicker</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/basket-random/">
+               <img src="/images/basketrandom.png" alt="Basket Random">
+               </a>
+               <h3 href="/projects/basket-random/">Basket Random</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/basketball-stars/">
+               <img src="/images/basketballstars.png" alt="Basketball Stars">
+               </a>
+               <h3 href="/projects/basketball-stars/">Basketball Stars</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/edge-surf/">
+               <img src="/images/edgesurf.png" alt="Edge Surfing Game">
+               </a>
+               <h3 href="/projects/edge-surf/">Edge Surfing Game</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/subway-surfers-ny/">
+               <img src="/images/subwaysurf.png" alt="Subway Surfers NY">
+               </a>
+               <h3 href="/projects/subway-surfers-ny/">Subway Surfers</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/retro-bowl/">
+               <img src="/images/retrobowl.png" alt="Retrobowl">
+               </a>
+               <h3 href="/projects/retro-bowl/">Retrobowl</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/sandboxels/">
+               <img src="/images/sandboxels.png" alt="Sandboxels">
+               </a>
+               <h3 href="/projects/sandboxels/">Sandboxels</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/hw/">
+               <img src="/images/hw.png" alt="Happy Wheels (demo)">
+               </a>
+               <h3 href="/projects/hw/">Happy Wheels (Demo/Laggy)</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/TempleRun2/">
+               <img src="/images/tr2.png" alt="Temple Run 2">
+               </a>
+               <h3 href="/projects/TempleRun2/">Temple Run 2</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/minecraft-classic/">
+               <img src="/images/mcc.png" alt="Minecraft Classic">
+               </a>
+               <h3 href="/projects/minecraft-classic/">Minecraft Classic</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/ctr/">
+               <img src="/images/cuttherope.png" alt="Cut the Rope">
+               </a>
+               <h3 href="/projects/ctr/">Cut the Rope</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/run3/">
+               <img src="/images/run.png" alt="Run 3">
+               </a>
+               <h3 href="/projects/run3/">Run 3</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/townscaper/">
+               <img src="/images/townscaper.png" alt="Townscaper Logo">
+               </a>
+               <h3 href="/projects/townscaper/">Townscaper</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3 href="/projects/riddleschool/">Riddleschool 1</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool2/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3 href="/projects/riddleschool2/">Riddleschool 2</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool3/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3 href="/projects/riddleschool3/">Riddleschool 3</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool4/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3 href="/projects/riddleschool4/">Riddleschool 4</h3>
+            </div>
+            <div class="game">
+               <a href="/projects/riddleschool5/">
+               <img src="/images/riddleschool.png" alt="Riddleschool logo">
+               </a>
+               <h3 href="/projects/riddleschool5/">Riddleschool 5</h3>
+            </div>
       </div>
+      <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script> -
+      <script>document.addEventListener("DOMContentLoaded", function() {new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc:"/images/cursor.png"});});</script>
+      <script>check();displayRandomQuote();</script><canvas width="885" height="931" style="top: 0px; left: 0px; pointer-events: none; position: fixed;"></canvas>
    </body>
 </html>
