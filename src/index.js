@@ -4,9 +4,13 @@ function getRandomInt(min, max) {
 function sponsor() {
     var randomNumber = getRandomInt(0, 100);
     if (randomNumber <= 20) {
-        document.getElementById("sponsored").style.display = "block";
+        var sponsoredDiv = document.getElementById("sponsored");
+        if (sponsoredDiv) { // Check if the element exists
+            sponsoredDiv.remove(); // Remove the div
+        } else
+        alert('how did you make it go bye bye without even loading the site yet what')
     }
-};
+}
 function updateUsersDisplay(numUsers) {
   document.getElementById("userCount").textContent = "|      Users: ". numUsers;
 };
