@@ -8,18 +8,16 @@
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </head>
 <body>
-    <div id="container"></div>
-
+<div id="container"></div>
     <script>
+        window.RufflePlayer = window.RufflePlayer || {};
         window.addEventListener("load", (event) => {
-            const container = document.getElementById("container");
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
-            player.style.width = "100%";
-            player.style.height = "100%";
+            const container = document.getElementById("container");
             container.appendChild(player);
-            player.load("Jacksmith.swf");
+            player.load("movie.swf");
         });
-    </script>
+</script>
 </body>
 </html>
