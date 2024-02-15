@@ -21,7 +21,7 @@ function randomGame() {
     const randomIndex = Math.floor(Math.random() * games.length);
     const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
     window.location.href = randomGameUrl;
-};var a = /^https?:\/\/floatindustries\.github\.io\//;
+};var a = /^https?:\/\/gamegoog\.github\.io\//;
 function filterGames(searchTerm) {
     const games = document.querySelectorAll('.game');
     games.forEach(game => {
