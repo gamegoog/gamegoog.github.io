@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+  <title>Google</title>
+  <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+  <link rel="stylesheet" href="/games.css">
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-related">
+      <div class="actual">
+        <iframe src="game.html" id="gameframe"></iframe>
+      </div>
+    </div>
+    <img src="/images/fs.png" id="fullscreen-button" alt="Fullscreen" title="" onclick="toggleFullScreen()">
+  </div>
+
+  <script>
+    function toggleFullScreen() {
+      var iframe = document.getElementById("gameframe");
+      if (!document.fullscreenElement) {
+        iframe.requestFullscreen().catch(err => {
+          alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  </script>
+</body>
+</html>
