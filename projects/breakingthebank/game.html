@@ -1,21 +1,30 @@
 <html>
-   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-   </head>
-   <body>
-      <div id="container" style="width:100%; height:100%;"></div>
-      <script>
-         window.addEventListener("load", (event) => {
-             const ruffle = window.Ruffle;
-             const player = ruffle.createPlayer();
-             const container = document.getElementById("container");
-             player.id = "player";
-             player.style.width = "100%";
-             player.style.height = "100%";
-             container.appendChild(player);
-             player.load("breaking-the-bank.swf");
-         });
-      </script>
-      <script src="/src/ruffle/ruffle.js"></script>
-   </body>
+  <body>
+    <div id="ruffle" width="100%" height="100%"></div>
+    <script>
+      function loadLocalRuffle() {
+          var script = document.createElement('script');
+          script.src = '/src/ruffle/ruffle.js';
+          document.body.appendChild(script);
+      }
+
+      var cdnScript = document.createElement('script');
+      cdnScript.src = 'https://unpkg.com/@ruffle-rs/ruffle';
+      cdnScript.onerror = loadLocalRuffle;
+      document.body.appendChild(cdnScript);
+    </script>
+    <script>
+      window.RufflePlayer = window.RufflePlayer || {};
+      window.addEventListener("load", (event) => {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        const container = document.getElementById("ruffle");
+        player.id = "player";
+        player.style.width = "100%";
+        player.style.height = "100%";
+        container.appendChild(player);
+        player.load("breaking-the-bank.swf");
+      });
+    </script>
+  </body>
 </html>
