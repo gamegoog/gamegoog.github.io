@@ -21,7 +21,7 @@ function randomGame() {
     const randomIndex = Math.floor(Math.random() * games.length);
     const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
     window.location.href = randomGameUrl;
-};var a = /^https?:\/\/gamegoog\.github\.io\//;
+};var a = /^https?:\/\/gloabe\.github\.io\//;
 function filterGames(searchTerm) {
     const games = document.querySelectorAll('.game');
     games.forEach(game => {
@@ -30,12 +30,12 @@ function filterGames(searchTerm) {
         game.style.display = match ? 'block' : 'none';
     });
 };
-function check() {
-    var currentURL = window.location.href;
-    if (!a.test(currentURL)) {
-        window.location.href = "/404.html";
-    }
-};
+//function check() {
+//    var currentURL = window.location.href;
+//    if (!a.test(currentURL)) {
+//        window.location.href = "/404.html";
+//    }
+//};
 const quotes = [
     "Some games may not work.",
     "There's a fullscreen button in the top left on all games!",
