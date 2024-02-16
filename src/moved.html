@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <script>
+        function openAboutBlank() {
+            var newWindow = window.open('about:blank', '_blank');
+            fetch('/projects/')
+                .then(response => response.text())
+                .then(htmlContent => {
+                    newWindow.document.write(htmlContent);
+                    newWindow.document.close();
+                })
+                .catch(error => console.error('Error fetching content:', error));
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .error-container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-container">
+        <h1>404 Not Found</h1>
+        <p>The page you are looking for could not be found.</p>
+        <p>Return <a href="javascript:void(0);" onclick="openAboutBlank()">home (about:blank)</a> or <a href="/projects/">home.</a></p>
+    </div>
+</body>
+</html>
