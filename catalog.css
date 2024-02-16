@@ -72,14 +72,16 @@ body {
 
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted minmax value */
+    grid-template-columns: repeat(5, 1fr); /* Maximum of 5 games per row */
     grid-gap: 20px;
     background-color: #121212;
     padding: 20px;
     border-radius: 5px;
     position: relative;
     z-index: 0; /* Ensure the grid stays behind other elements */
+    margin-top: 20px; /* Added margin to separate from the text */
 }
+
 
 .game {
     text-align: center;
