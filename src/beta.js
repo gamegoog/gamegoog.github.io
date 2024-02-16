@@ -1,5 +1,5 @@
 function sponsor() {
-    var percent = 80        // Percent chance of deleting content
+    var percent = 17        // Percent chance of deleting content
     var randomNumber = Math.floor(Math.random() * 100);
     if (randomNumber <= percent) {
         var sponsoredDiv = document.querySelector(".sponsored");
@@ -13,15 +13,12 @@ function sponsor() {
         console.log("Sponsorship quota not met, sponsor not deleted.");
     }
 };
-function updateUsersDisplay(numUsers) {
-  document.getElementById("userCount").textContent = "|      Users: ". numUsers;
-};
 function randomGame() {
     const games = document.querySelectorAll('.game');
     const randomIndex = Math.floor(Math.random() * games.length);
     const randomGameUrl = games[randomIndex].querySelector('a').getAttribute('href');
     window.location.href = randomGameUrl;
-};var a = /^https?:\/\/gamegoog\.github\.io\//;
+};var a = /^https?:\/\/gloabe\.github\.io\//;
 function filterGames(searchTerm) {
     const games = document.querySelectorAll('.game');
     games.forEach(game => {
@@ -46,6 +43,5 @@ function displayRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     document.getElementById('quote').textContent = quotes[randomIndex];
 };
-window.onload = function() {
-  check();displayRandomQuote();sponsor();
-};
+//check();
+displayRandomQuote();sponsor();
