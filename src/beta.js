@@ -30,12 +30,12 @@ function filterGames(searchTerm) {
         game.style.display = match ? 'block' : 'none';
     });
 };
-function check() {
-    var currentURL = window.location.href;
-    if (!a.test(currentURL)) {
-        window.location.href = "/404.html";
-    }
-};
+//function check() {
+//    var currentURL = window.location.href;
+//    if (!a.test(currentURL)) {
+//        window.location.href = "/404.html";
+//    }
+//};
 const quotes = [
     "Beta branch, what's that? 😺",
     "Jacob Mitchell is a monkey 🤞",
