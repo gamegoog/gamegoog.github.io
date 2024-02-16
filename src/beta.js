@@ -45,7 +45,6 @@ function displayRandomQuote() {
 };
 
 document.addEventListener("DOMContentLoaded", function() {
-    displayRandomQuote();
-    sponsor();//check();
+// check();
 });
 
