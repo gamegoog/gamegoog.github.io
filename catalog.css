@@ -60,6 +60,14 @@ body {
     color: #f0f0f0; /* Hover text color */
 }
 
+.category {
+    text-align: center; /* Center the category text */
+}
+
+.category h2 {
+    margin-bottom: 10px; /* Add some bottom margin to separate the category heading from the games */
+}
+
 .game-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted minmax value */
