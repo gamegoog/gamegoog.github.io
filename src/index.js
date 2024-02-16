@@ -44,6 +44,7 @@ const quotes = [
     "Proud sponsor of https://cornhub.website!",
     "Link to some private stuff... Don't look! https://floatindustries.github.io/images/image1.png",
     "chicken sandwich",
+    "Jacob Mitchell is a monkey 🤞",
     "Uncaught ReferenceError: getRandomInt is not defined"
 ];
 function displayRandomQuote() {
