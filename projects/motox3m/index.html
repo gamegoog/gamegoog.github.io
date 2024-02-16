@@ -23,16 +23,17 @@
       <script type="text/javascript" src="assets/lib/dragonBones.min.js"></script>
       <script type="text/javascript" src="motox3m.min.js?4e65ed0ec1976a14ed60"></script>
       <script>
-         function toggleFullScreen() {
-             var iframe = document.getElementById("gameframe");
-             if (!document.fullscreenElement) {
-                 iframe.requestFullscreen().catch(err => {
-                     alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-                 });
-             } else {
-                 document.exitFullscreen();
-             }
-         }
+function toggleFullScreen() {
+    var iframe = document.getElementById("gameframe");
+    if (!document.fullscreenElement) {
+        iframe.requestFullscreen().catch(err => {
+            alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+}
+
       </script>
    </body>
 </html>
