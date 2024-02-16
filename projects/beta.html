@@ -1,4 +1,5 @@
 <html lang="en">
+   <!-- Noowuhh!! Get out of my code!!! Ugh! -->
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,13 +7,14 @@
       <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
       <link rel="stylesheet" href="/catalog.css">
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
-      <script src="/src/index.js"></script>
+      <script src="/src/beta.js"></script>
+      <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
       <style type="text/css" id="operaUserStyle"></style>
    </head>
    <body>
       <div class="container">
          <div class="header">
-            <h1>Gloabe Games</h1>
+            <h1>🌎 Gloabe</h1>
             <p class="quote" id="quote">Some games may not work.</p>
          </div>
          <div class="search-container">
@@ -20,7 +22,7 @@
          </div>
          <div class="feeling-lucky-container">
             <a onclick="randomGame();" class="hyperlink">I'm Feeling Lucky</a>
-            <a href="beta.html" class="hyperlink">Beta Branch</a>
+            <a href="/projects/" class="hyperlink">Normal Branch</a>
          </div>
          <div class="category">
             <h2 class="category">New Games</h2>
@@ -303,9 +305,12 @@
             </div>
          </div>
       </div>
-      <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script> -
-      <script>document.addEventListener("DOMContentLoaded", function() {new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc:"/images/cursor.png"});});</script>
-      <script>check();displayRandomQuote();</script>
+      <script>
+         document.addEventListener("DOMContentLoaded", function () {
+             new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc: "/images/cur.png"});
+         });
+         displayRandomQuote();
+      </script>
       <canvas width="885" height="931" style="top: 0px; left: 0px; pointer-events: none; position: fixed;"></canvas>
    </body>
 </html>
