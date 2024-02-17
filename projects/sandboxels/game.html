@@ -9910,7 +9910,7 @@
             var mod = enabledMods[i];
             // modName is the last part of the mod's path
             var modName = mod.split("/").pop();
-            modManagerList.innerHTML += "<li><a id="rt" href='https://sandboxels.r74n.com/&quot;&#32;+&#32;mod&#32;+&#32;&quot;' target='_blank'>" + modName + "</a> <span class='removeModX' onclick='removeMod(\"" + mod + "\")'>X</span></li>";
+            modManagerList.innerHTML += "<li><a href='https://sandboxels.r74n.com/&quot;&#32;+&#32;mod&#32;+&#32;&quot;' target='_blank'>" + modName + "</a> <span class='removeModX' onclick='removeMod(\"" + mod + "\")'>X</span></li>";
           }
         } else {
           document.getElementById("noMods").style.display = "block";
