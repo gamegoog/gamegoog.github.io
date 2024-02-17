@@ -180,11 +180,8 @@ for (var i = 0; i < enabledMods.length; i++) {
         console.log("Error in mod: " + enabledMods[i]);
         console.log(e);
     }
-} <
-/script> <
-script >
-    // If settings is in localStorage, load it. If not, create an empty object.
-    settings = localStorage.getItem("settings") ? JSON.parse(localStorage.getItem("settings")) : {};
+}
+settings = localStorage.getItem("settings") ? JSON.parse(localStorage.getItem("settings")) : {};
 if (!settings["unlocked"]) {
     settings["unlocked"] = {};
 }
