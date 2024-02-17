@@ -9280,7 +9280,7 @@
         // add to modManagerList
         var modManagerList = document.getElementById("modManagerList");
         var modName = url.split("/").pop();
-        modManagerList.innerHTML += "<li><a href='https://gloabe.github.io/projects/sandboxels/mods/" + modName + "</a> <span class='removeModX' onclick='removeMod(\"" + url + "\")'>X</span></li>";
+        modManagerList.innerHTML += "<li><a href='gloabe.github.io/projects/sandboxels/mods/' target='_blank'>" + modName + "</a> <span 
         document.getElementById("noMods").style.display = "none";
         alert("Added mod. Refresh the page to see changes.");
       }
