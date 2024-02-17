@@ -22,9 +22,29 @@ body {
     left: 0;
 }
 
+a {color: rgb(255, 0, 255);text-decoration: none;}
+a:hover {color: rgb(255, 121, 255);}
+a:active, a:hover:active {color: rgb(255, 179, 255);}
 
-a:hover {}
-a:active, a:hover:active {}
+  #rt {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    animation: rainbow 4s infinite linear; /* Adjust timing as needed */
+  }
+
+  @keyframes rainbow {
+    0% { color: #ff0000; text-shadow: 0px 2px 10px #ff0000; }
+    14.28% { color: #ff7f00; text-shadow: 0px 2px 10px #ff7f00; }
+    28.57% { color: #ffff00; text-shadow: 0px 2px 10px #ffff00; }
+    42.85% { color: #00ff00; text-shadow: 0px 2px 10px #00ff00; }
+    57.14% { color: #0000ff; text-shadow: 0px 2px 10px #0000ff; }
+    71.42% { color: #4b0082; text-shadow: 0px 2px 10px #4b0082; }
+    85.71% { color: #9400d3; text-shadow: 0px 2px 10px #9400d3; }
+    100% { color: #ff0000; text-shadow: 0px 2px 10px #ff0000; }
+  }
+
 #gameDiv { /*game canvas*/
     border: 2px solid #121212;
     position: absolute;
