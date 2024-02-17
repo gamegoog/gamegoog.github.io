@@ -136,3 +136,4 @@ window.addEventListener("keydown", function(e) {
 });
 
 });
+rainbowText();
