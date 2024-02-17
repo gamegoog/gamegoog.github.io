@@ -117,7 +117,16 @@ function callRue() {
 if (urlParams.get("rue") && urlParams.get("rue") !== "false" && urlParams.get("rue") !== "off") {
 	callRue();
 }
-
+	
+  function rainbowText() {
+    const link = document.getElementById('rt');
+    let hue = 0;
+    setInterval(() => {
+      hue = (hue + 1) % 360;
+      link.style.color = `hsl(${hue}, 100%, 50%)`;
+    }, 50); // Adjust the interval for the speed of the color change
+  }
+	
 // if metaKey + shift + R is pressed, add Rue script to the head
 window.addEventListener("keydown", function(e) {
 	if (e.shiftKey && (e.metaKey||e.ctrlKey) && e.key.toLowerCase() === "e") {
