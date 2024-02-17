@@ -118,15 +118,6 @@ if (urlParams.get("rue") && urlParams.get("rue") !== "false" && urlParams.get("r
 	callRue();
 }
 	
-  function rainbowText() {
-    const link = document.getElementById('rt');
-    let hue = 0;
-    setInterval(() => {
-      hue = (hue + 1) % 360;
-      link.style.color = `hsl(${hue}, 100%, 50%)`;
-    }, 72); // Adjust the interval for the speed of the color change
-  }
-	
 // if metaKey + shift + R is pressed, add Rue script to the head
 window.addEventListener("keydown", function(e) {
 	if (e.shiftKey && (e.metaKey||e.ctrlKey) && e.key.toLowerCase() === "e") {
@@ -136,4 +127,3 @@ window.addEventListener("keydown", function(e) {
 });
 
 });
-rainbowText();
