@@ -21,9 +21,9 @@ body {
     top: 0;
     left: 0;
 }
-a {color: rgb(255, 0, 255);text-decoration: none;}
-a:hover {color: rgb(255, 121, 255);}
-a:active, a:hover:active {color: rgb(255, 179, 255);}
+a {text-decoration: none;}
+a:hover {}
+a:active, a:hover:active {}
 #gameDiv { /*game canvas*/
     border: 1px solid #ffffff;
     position: absolute;
