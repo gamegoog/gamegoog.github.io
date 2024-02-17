@@ -126,6 +126,7 @@ if (urlParams.get("rue") && urlParams.get("rue") !== "false" && urlParams.get("r
       link.style.color = `hsl(${hue}, 100%, 50%)`;
     }, 50); // Adjust the interval for the speed of the color change
   }
+	rainbowText();
 	
 // if metaKey + shift + R is pressed, add Rue script to the head
 window.addEventListener("keydown", function(e) {
