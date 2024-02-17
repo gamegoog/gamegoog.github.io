@@ -39,7 +39,7 @@ a {
 a:hover {}
 a:active, a:hover:active {}
 #gameDiv { /*game canvas*/
-    border: 1px solid #ffffff;
+    border: 2px solid #121212;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -0%);
@@ -49,7 +49,8 @@ a:active, a:hover:active {}
         -moz-user-select: none; /* Old versions of Firefox */
             -ms-user-select: none; /* Internet Explorer/Edge */
                 user-select: none;
-    margin-top: 15px;
+    margin-top: 0px;
+    height: 100%
 }
 #infoParent, #modParent, #settingsParent, .menuParent {
     display: none;
