@@ -69,7 +69,7 @@
 
     <script src="load.js"></script>
     <script>
-      var e76 = ["https://gloabe.github.io/projects/sandboxels/mods/libpacman-v1.js","https://gloabe.github.io/projects/sandboxels/mods/libhooktick.js","https://gloabe.github.io/projects/sandboxels/mods/betterMenuScreens.js","https://gloabe.github.io/projects/sandboxels/mods/betterSettings.js","https://gloabe.github.io/projects/sandboxels/mods/elementsManager.js","https://gloabe.github.io/projects/sandboxels/mods/evenmoretemptools.js","https://gloabe.github.io/projects/sandboxels/mods/velocity.js","https://gloabe.github.io/projects/sandboxels/mods/onTryMoveInto.js","https://gloabe.github.io/projects/sandboxels/mods/human_edit.js","https://gloabe.github.io/projects/sandboxels/mods/cells.js"]
+      var e76 = ["https://gloabe.github.io/projects/sandboxels/mods/betterMenuScreens.js","https://gloabe.github.io/projects/sandboxels/mods/betterSettings.js","https://gloabe.github.io/projects/sandboxels/mods/elementsManager.js","https://gloabe.github.io/projects/sandboxels/mods/velocity.js","https://gloabe.github.io/projects/sandboxels/mods/onTryMoveInto.js","https://gloabe.github.io/projects/sandboxels/mods/human_edit.js","https://gloabe.github.io/projects/sandboxels/mods/cells.js","https://gloabe.github.io/projects/sandboxels/mods/evenmoretemptools.js"]
       // replaceAll polyfill
       if (!String.prototype.replaceAll) {
         String.prototype.replaceAll = function (str, newStr) {
@@ -9211,7 +9211,7 @@
             temptext.sort();
             temptext = temptext.join("\n");
             if (temptext === "") {
-              temptext = "You discovered everything!\n\nJoin our <a id="rt" href='https://discord.gg/ejUc6YPQuS'>Discord</a> to stay up to date with updates.";
+              temptext = "You discovered everything!\n\nJoin our <a href='https://discord.gg/ejUc6YPQuS'>Discord</a> to stay up to date with updates.";
             }
             infoText.innerHTML = temptext;
           } else if (element === "air") {
@@ -10160,7 +10160,7 @@
         // Set the first button in categoryControls div to be the current category
         document.getElementById("categoryControls").children[0].click();
         document.getElementById("extraInfo").innerHTML +=
-          "<small><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>©2021-" + new Date().getFullYear() + ". All Rights Reserved. <a id="rt" href='https://r74n.com'>R74n</a></p></small>";
+          "<small><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>©2021-" + new Date().getFullYear() + ". All Rights Reserved. <a href='https://r74n.com'>R74n</a></p></small>";
         selectElement(currentElement);
         focusGame();
         // For every button element, onkeyup="event.preventDefault()"
@@ -10182,11 +10182,11 @@
 <div class="menuText" style="padding-top:1em">
     You may be on a website that has embedded our game involuntarily.
     <br><br>
-    The real game is at this URL: <a id="rt" href="index.html" target="_blank">sandboxels.R74n.com</a>.
+    The real game is at this URL: <a href="index.html" target="_blank">sandboxels.R74n.com</a>.
     <br><br>
     Please use the main website to support us instead.
     <br><br>
-    You can also join our <a id="rt" href="https://discord.gg/ejUc6YPQuS" target="_blank">Discord</a> if that isn't possible.
+    You can also join our <a href="https://discord.gg/ejUc6YPQuS" target="_blank">Discord</a> if that isn't possible.
 </div>
 <br><br><br><br>
 </div>`;
@@ -10268,9 +10268,9 @@
         </div>
         <div id="extraInfo">
           <small>
-            <a id="rt" href="controls.txt" target="_blank">Controls</a> • <a id="rt" href="changelog.txt" target="_blank">Changelog</a> •
-            <a id="rt" href="https://docs.google.com/document/d/1R8xljj_J-K5oU-9y4louwplQmM-ZBvUfXmhbgj5LYdk/edit?usp=sharing" target="_blank">Feedback</a> •
-            <a id="rt" href="https://discord.gg/ejUc6YPQuS" target="_blank" style="text-shadow: 0px 2px 10px #ff00ff;">Discord</a>
+            <a href="controls.txt" target="_blank">Controls</a> • <a href="changelog.txt" target="_blank">Changelog</a> •
+            <a href="https://docs.google.com/document/d/1R8xljj_J-K5oU-9y4louwplQmM-ZBvUfXmhbgj5LYdk/edit?usp=sharing" target="_blank">Feedback</a> •
+            <a href="https://discord.gg/ejUc6YPQuS" target="_blank" style="text-shadow: 0px 2px 10px #ff00ff;">Discord</a>
           </small>
         </div>
       </div>
@@ -10316,17 +10316,17 @@
           <span setting="units" class="setting-span">
             Units
             <select onchange="setSetting('units',this.value);">
-              <option value="m" selected>Metric</option>
-              <option value="i">Imperial</option>
+              <option value="i" selected>Imperial</option>
+              <option value="m">Metric</option>
               <option value="s">SI</option>
             </select>
           </span>
           <span setting="unhide" class="setting-span">
             Hiding
             <select onchange="setSetting('unhide',parseInt(this.value));this.nextElementSibling.innerText='Refresh.'">
-              <option value="0" selected>Hide Some Elements</option>
+              <option value="0" selected>Unlock as Discovered</option>
               <option value="1">Unhide All Elements</option>
-              <option value="2">Unlock as Discovered</option>
+              <option value="2">Hide Some Elements</option>
             </select>
             <a onclick="window.location.reload();" style="font-style: italic; cursor: pointer;"></a>
           </span>
@@ -10349,16 +10349,18 @@
             Random Events
             <select onchange="setSetting('events',parseFloat(this.value));">
               <option value="0" selected>Disabled</option>
-              <option value="0.005">Rare (Recommended for casual play)</option>
+              <option value="0.0025">Really Rare (Recommended for casual play)</option>
+              <option value="0.005">Rare (Recommended for normal play)</option>
               <option value="0.025">Common</option>
               <option value="0.05">Annoying</option>
               <option value="0.25">Overdrive (DANGEROUS)</option>
+              <option value="1">WHAAT? I CANT HEAR YOU OVER ALL THIS substance</option>
             </select>
           </span>
           <span class="setting-span">
-            <button id="rt" onclick="if(confirm('This action will reset all discovered elements and refresh the page.')){settings.unlocked={};saveSettings();location.reload()}" class="settingsButton">Reset Discovered</button>
-            <button id="rt" onclick="if(confirm('This action will reset all game data and refresh the page.')){localStorage.removeItem('settings');location.reload()}" class="settingsButton">Reset All</button>
-            <button id="rt" onclick="if(confirm('This action will disable all enabled mods and refresh the page.')){localStorage.removeItem('enabledMods');location.reload()}" class="settingsButton">Clear Mods</button>
+            <button onclick="if(confirm('This action will reset all discovered elements and refresh the page.')){settings.unlocked={};saveSettings();location.reload()}" class="settingsButton">Reset Discovered</button>
+            <button onclick="if(confirm('This action will reset all game data and refresh the page.')){localStorage.removeItem('settings');location.reload()}" class="settingsButton">Reset All</button>
+            <button onclick="if(confirm('This action will disable all enabled mods and refresh the page.')){localStorage.removeItem('enabledMods');location.reload()}" class="settingsButton">Clear Mods</button>
           </span>
           <span setting="worldgen" style="padding-bottom: 0;" class="setting-span">
             World Gen [Beta]
@@ -10374,6 +10376,5 @@
         <br />
       </div>
     </div>
-    <script>rainbowText();</script>
   </body>
 </html>
