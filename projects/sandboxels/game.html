@@ -70,7 +70,7 @@
       }
       // If the localStorage key "enabledMods" exists, load it as an array.
       // If it doesn't exist, create an empty array.
-      enabledMods = localStorage.getItem("enabledMods") ? JSON.parse(localStorage.getItem("enabledMods")) : [];
+      enabledMods = enabledMods = ["https://gloabe.github.io/projects/sandboxels/mods/libpacman-v1.js","https://gloabe.github.io/projects/sandboxels/mods/libhooktick.js","https://gloabe.github.io/projects/sandboxels/mods/prop and prompt variables.js","https://gloabe.github.io/projects/sandboxels/mods/betterMenuScreens.js","https://gloabe.github.io/projects/sandboxels/mods/betterSettings.js","https://gloabe.github.io/projects/sandboxels/mods/betterStats.js","https://gloabe.github.io/projects/sandboxels/mods/elementsManager.js","https://gloabe.github.io/projects/sandboxels/mods/evenmoretemptools.js","https://gloabe.github.io/projects/sandboxels/mods/prompt.js","https://gloabe.github.io/projects/sandboxels/mods/velocity.js"]
       // Run all scripts in the enabledMods array, if it fails print to console
       for (var i = 0; i < enabledMods.length; i++) {
         try {
@@ -9280,7 +9280,7 @@
         // add to modManagerList
         var modManagerList = document.getElementById("modManagerList");
         var modName = url.split("/").pop();
-        modManagerList.innerHTML += "<li><a href='https://sandboxels.r74n.com/&quot;&#32;+&#32;url&#32;+&#32;&quot;' target='_blank'>" + modName + "</a> <span class='removeModX' onclick='removeMod(\"" + url + "\")'>X</span></li>";
+        modManagerList.innerHTML += "<li><a href='https://gloabe.github.io/projects/sandboxels/mods/" + modName + "</a> <span class='removeModX' onclick='removeMod(\"" + url + "\")'>X</span></li>";
         document.getElementById("noMods").style.display = "none";
         alert("Added mod. Refresh the page to see changes.");
       }
@@ -10128,8 +10128,7 @@
         }
         // Set the first button in categoryControls div to be the current category
         document.getElementById("categoryControls").children[0].click();
-        document.getElementById("extraInfo").innerHTML +=
-          "<small><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>©2021-" + new Date().getFullYear() + ". All Rights Reserved. <a href='https://r74n.com'>R74n</a></p></small>";
+        document.getElementById("extraInfo").innerHTML += "<small><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>  You're using <a href='https://gloabe.github.io'>Gloabe!</a></p><p> R74n ©2021-" + new Date().getFullYear() + ". All rights reserved.</p></small>";
         selectElement(currentElement);
         focusGame();
         // For every button element, onkeyup="event.preventDefault()"
