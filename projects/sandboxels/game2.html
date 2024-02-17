@@ -10226,7 +10226,7 @@
               id="tpsButton"
               title="Change the simulation Ticks Per Second (TPS)"
               class="controlButton"
-              onclick='var newtps = parseInt(prompt("Enter the new simulation Ticks Per Second (TPS). This is how many updates per second the simulation will run.\n\nThe default is 30.\n\nThe current TPS is " + tps + "."));if (newtps !== null) {if (isNaN(newtps) || newtps == "" || newtps == "0") {alert("You did not enter a valid TPS.");}else if (newtps > 1000) {alert("You entered a TPS that is too high. The TPS will be set to the maximum, 1000.");tps = 1000;}else {tps = parseInt(newtps);if (isNaN(tps)) {alert("You did not enter a valid TPS.");tps = 30;}}resetInterval(tps);}focusGame();'
+              onclick='var newtps = parseInt(prompt("Enter the new simulation Ticks Per Second (TPS). This is how many updates per second the simulation will run.\n\nThe default is 22 for Gloabe users.\n\nThe current TPS is " + tps + "."));if (newtps !== null) {if (isNaN(newtps) || newtps == "" || newtps == "0") {alert("You did not enter a valid TPS.");}else if (newtps > 10000) {alert("You entered a TPS that is too high. The TPS will be set to the maximum, 10000.");tps = 10000;}else {tps = parseInt(newtps);if (isNaN(tps)) {alert("You did not enter a valid TPS.");tps = 22;}}resetInterval(tps);}focusGame();'
             >
               Tps
             </button>
