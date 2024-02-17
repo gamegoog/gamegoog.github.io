@@ -28,9 +28,6 @@ a:active, a:hover:active {color: rgb(255, 179, 255);}
 
   #rt {
     text-decoration: none;
-    font-weight: bold;
-    font-size: 24px;
-    font-family: Arial, sans-serif;
     animation: rainbow 4s infinite linear; /* Adjust timing as needed */
   }
 
