@@ -1,95 +1,46 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <title>Sandboxels - Experiment with Pixels</title>
-    <meta name="description" content="Relax or experiment with over 500 materials in this falling sand simulator, featuring heat, chemical reactions, density, burning, explosions.">
-    <meta name="keywords" content="falling sand, elements, pixel art, simulator, powder, toy, chemistry, science, educational">
-    <meta name="author" content="R74n">
-    <meta name="copyright" content="R74n">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all">
-    <meta name="contact" content="contact@R74n.com">
-
-    <!--Favicons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png?v=2">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png?v=2">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png?v=2">
-    <link rel="manifest" href="manifest.json">
-    <link rel="mask-icon" href="icons/safari-pinned-tab.svg?v=2" color="#2167ff">
-    <link rel="shortcut icon" href="icons/favicon.ico?v=2">
-    <link rel="help" href="https://sandboxels.R74n.com/help">
-    <link rel="search" href="https://R74n.com/search/#gsc.tab=0">
-    <link rel="license" href="https://sandboxels.R74n.com/license.txt">
-    <meta name="msapplication-TileColor" content="#e6d577">
-    <meta name="theme-color" content="#000000">
-
-    <!--OpenGraph-->
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Sandboxels - Experiment with Pixels">
-    <meta property="og:description" content="Relax or experiment with over 500 materials in this falling sand simulator.">
-    <meta property="og:url" content="https://sandboxels.r74n.com">
-    <meta property="og:site_name" content="Sandboxels">
-    <meta property="og:image" content="https://sandboxels.r74n.com/icons/wallpaper.png">
-    <meta property="og:image:width" content="1980">
-    <meta property="og:image:height" content="971">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:alt" content="A rainforest made in Sandboxels">
-
-    <!--Twitter-->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:description" content="Relax or experiment with over 500 materials in this falling sand simulator.">
-    <meta name="twitter:title" content="Sandboxels - Experiment with Pixels">
-    <meta name="twitter:site:id" content="1436857621827530753">
-    <meta name="twitter:image" content="https://sandboxels.r74n.com/icons/card.png">
-    <meta name="twitter:image:alt" content="A rainforest made in Sandboxels">
-    <meta name="twitter:creator:id" content="1436857621827530753">
-
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=UA-93720349-9&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-T6E9BCPM32&amp;l=dataLayer&amp;cx=c"></script><script> // versioning info
-        currentversion = "1.9.3";
-        saveVersion = 2;
-    </script>
+    <!-- Stop peeking at my code :( -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title class="cloak">Sandboxels</title>
+    <link class="favicon" rel="icon" href="sandboxels.ico" />
+    <link rel="stylesheet" href="styles.css">
     <style>
-        .setting-span {
-            display:block;padding-bottom:0.5em
-        }
+      .setting-span {
+        display: block;
+        padding-bottom: 0.5em;
+      }
     </style>
-    <!-- Schema -->
     <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": ["VideoGame","MobileApplication","WebApplication"],
-          "gamePlatform":"Web Browser",
-          "image":"https://sandboxels.r74n.com/icons/icon.png",
-          "url": "https://sandboxels.r74n.com",
-          "name":"Sandboxels",
-          "author":"R74n",
-          "creator":"R74n",
-          "description":"Sandboxels is an in-browser falling sand simulator, with mechanics such as heat simulation, electricity, density, chemical reactions, fire, and over 500 unique elements to play with.",
-          "offers":{
-            "@type":"Offer",
-            "price":"0",
-            "priceCurrency":"USD",
-            "availability":"https://schema.org/InStock"
-          },
-          "genre": "Falling-sand game",
-          "softwareVersion":"1.9.1",
-          "datePublished":"2021-12-15",
-          "dateCreated":"2021-12-15",
-          "gameTip":"https://sandboxels.r74n.com/controls",
-          "softwareHelp":"https://sandboxels.r74n.com/controls",
-          "releaseNotes":"https://sandboxels.r74n.com/changelog",
-          "screenshot": "https://sandboxels.r74n.com/icons/wallpaper.png",
-          "softwareRequirements": "HTML5",
-          "archivedAt": "https://web.archive.org/web/20230519005427/https://sandboxels.r74n.com/",
-          "copyrightYear": 2024,
-          "copyrightNotice": "©2021-2024. All Rights Reserved. R74n",
-          "license": "https://sandboxels.r74n.com/license.txt",
-          "discussionUrl": "https://link.r74n.com/discord",
-          "educationalUse": "Hands-on lab experiments and learning",
-          "headline": "Sandboxels",
-          "isAccessibleForFree": true,
-          "isFamilyFriendly": true
-    }</script>
+      {
+        "@context": "https://schema.org",
+        "@type": ["VideoGame", "MobileApplication", "WebApplication"],
+        "gamePlatform": "Web Browser",
+        "image": "https://sandboxels.r74n.com/icons/icon.png",
+        "url": "https://sandboxels.r74n.com",
+        "name": "Sandboxels",
+        "author": "R74n",
+        "creator": "R74n",
+        "description": "Sandboxels is an in-browser falling sand simulation game, with mechanics such as heat simulation, electricity, density, chemical reactions, fire, and over 200 unique elements to play with.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "genre": "Falling-sand game",
+        "softwareVersion": "1.2",
+        "datePublished": "2021-12-15",
+        "dateCreated": "2021-12-15",
+        "gameTip": "https://sandboxels.r74n.com/controls.txt",
+        "screenshot": "https://sandboxels.r74n.com/icons/wallpaper.png",
+        "softwareRequirements": "HTML5",
+        "archivedAt": "https://web.archive.org/web/20211230010640000/https://sandboxels.r74n.com/",
+        "copyrightYear": 2022
+      }
+    </script>
+    <script src="/projects/sandboxels/load.js"></script>
 
     <script>
         // replaceAll polyfill
@@ -110,7 +61,7 @@
     </script>
 
     <script>
-        console.log("%c WELCOME TO R74n ","position: absolute; top: 50%; right: 50%; transform: translate(50%,-50%); font-family: Arial; font-size: 3em; font-weight: 700; color: #00ffff; text-shadow: 1px 1px 1px #14c9c9, 1px 2px 1px #14c9c9, 1px 3px 1px #14c9c9, 1px 4px 1px #14c9c9, 1px 5px 1px #14c9c9, 1px 13px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.4);padding:10px");
+        console.log("%c WELCOME TO R74n, NEW BY GLOABE","position: absolute; top: 50%; right: 50%; transform: translate(50%,-50%); font-family: Arial; font-size: 3em; font-weight: 700; color: #00ffff; text-shadow: 1px 1px 1px #14c9c9, 1px 2px 1px #14c9c9, 1px 3px 1px #14c9c9, 1px 4px 1px #14c9c9, 1px 5px 1px #14c9c9, 1px 13px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.4);padding:10px");
         console.log("Sandboxels is developed by R74n and can be played on the official website: https://sandboxels.R74n.com/");
         console.log("Can't access? Join our Discord: https://link.R74n.com/discord");
         console.log("Found this on another website? Let us know!");
