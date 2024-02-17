@@ -22,20 +22,7 @@ body {
     left: 0;
 }
 
-a {
-    text-decoration: none;
-    animation: rainbow 2s infinite;
-  }
 
-  @keyframes rainbow {
-    0% { color: red; }
-    16.67% { color: orange; }
-    33.33% { color: yellow; }
-    50% { color: green; }
-    66.67% { color: blue; }
-    83.33% { color: indigo; }
-    100% { color: violet; }
-  }
 a:hover {}
 a:active, a:hover:active {}
 #gameDiv { /*game canvas*/
