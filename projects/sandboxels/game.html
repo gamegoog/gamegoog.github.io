@@ -37,6 +37,35 @@
         "copyrightYear": 2022
       }
     </script>
+    <!-- Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["VideoGame", "MobileApplication", "WebApplication"],
+        "gamePlatform": "Web Browser",
+        "image": "https://sandboxels.r74n.com/icons/icon.png",
+        "url": "https://sandboxels.r74n.com",
+        "name": "Sandboxels",
+        "author": "R74n",
+        "creator": "R74n",
+        "description": "Sandboxels is an in-browser falling sand simulation game, with mechanics such as heat simulation, electricity, density, chemical reactions, fire, and over 200 unique elements to play with.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "genre": "Falling-sand game",
+        "softwareVersion": "1.2",
+        "datePublished": "2021-12-15",
+        "dateCreated": "2021-12-15",
+        "gameTip": "https://sandboxels.r74n.com/controls.txt",
+        "screenshot": "https://sandboxels.r74n.com/icons/wallpaper.png",
+        "softwareRequirements": "HTML5",
+        "archivedAt": "https://web.archive.org/web/20211230010640000/https://sandboxels.r74n.com/",
+        "copyrightYear": 2022
+      }
+    </script>
 
     <script src="load.js"></script>
     <script>
@@ -63,7 +92,6 @@
         }
       }
     </script>
-
     <script>
       // Mod Loader
       runAfterLoadList = [];
@@ -9183,7 +9211,7 @@
             temptext.sort();
             temptext = temptext.join("\n");
             if (temptext === "") {
-              temptext = "You discovered everything!\n\nJoin our <a href='https://discord.gg/ejUc6YPQuS'>Discord</a> to stay up to date with updates.";
+              temptext = "You discovered everything!\n\nJoin our <a id="rt" href='https://discord.gg/ejUc6YPQuS'>Discord</a> to stay up to date with updates.";
             }
             infoText.innerHTML = temptext;
           } else if (element === "air") {
@@ -10131,7 +10159,8 @@
         }
         // Set the first button in categoryControls div to be the current category
         document.getElementById("categoryControls").children[0].click();
-        document.getElementById("extraInfo").innerHTML += "<small id="rt"><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>You're playing on <a href='https://gloabe.github.io'>Gloabe!</a></p><p>©2021-" + new Date().getFullYear() + ". All Rights Reserved. <a href='https://r74n.com'>R74n</a></p></small>";
+        document.getElementById("extraInfo").innerHTML +=
+          "<small><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>©2021-" + new Date().getFullYear() + ". All Rights Reserved. <a id="rt" href='https://r74n.com'>R74n</a></p></small>";
         selectElement(currentElement);
         focusGame();
         // For every button element, onkeyup="event.preventDefault()"
@@ -10141,7 +10170,7 @@
             e.preventDefault();
           };
         }
-        rainbowText();
+
         if (window.self !== window.top && !location.ancestorOrigins[0].includes("itch.io")) {
           // Open a message that tells the user they aren't on the real website
           var menuParent = document.createElement("div");
@@ -10175,7 +10204,7 @@
 
   <body>
     <h1 class="pagetitle" id="pagetitle"></h1>
-    <div id="gameDiv" height="100%">
+    <div id="gameDiv">
       <div id="canvasDiv">
         <canvas id="game" width="800" height="600">
           Your browser does not support the HTML5 canvas tag.<br />
@@ -10224,7 +10253,7 @@
               id="tpsButton"
               title="Change the simulation Ticks Per Second (TPS)"
               class="controlButton"
-              onclick='var newtps = parseInt(prompt("Enter the new simulation Ticks Per Second (TPS). This is how many updates per second the simulation will run.\n\nThe default is 30.\n\nThe current TPS is " + tps + "."));if (newtps !== null) {if (isNaN(newtps) || newtps == "" || newtps == "0") {alert("You did not enter a valid TPS.");}else if (newtps > 999999) {alert("You entered a TPS that is too high. The TPS will be set to the maximum, 999999.");tps = 1000;}else {tps = parseInt(newtps);if (isNaN(tps)) {alert("You did not enter a valid TPS.");tps = 30;}}resetInterval(tps);}focusGame();'
+              onclick='var newtps = parseInt(prompt("Enter the new simulation Ticks Per Second (TPS). This is how many updates per second the simulation will run.\n\nThe default is 30.\n\nThe current TPS is " + tps + "."));if (newtps !== null) {if (isNaN(newtps) || newtps == "" || newtps == "0") {alert("You did not enter a valid TPS.");}else if (newtps > 1000) {alert("You entered a TPS that is too high. The TPS will be set to the maximum, 1000.");tps = 1000;}else {tps = parseInt(newtps);if (isNaN(tps)) {alert("You did not enter a valid TPS.");tps = 30;}}resetInterval(tps);}focusGame();'
             >
               Tps
             </button>
@@ -10239,7 +10268,7 @@
         </div>
         <div id="extraInfo">
           <small>
-            <a id="rt" href="controls.txt" target="_blank">Controls</a> • <a href="changelog.txt" target="_blank">Changelog</a> •
+            <a id="rt" href="controls.txt" target="_blank">Controls</a> • <a id="rt" href="changelog.txt" target="_blank">Changelog</a> •
             <a id="rt" href="https://docs.google.com/document/d/1R8xljj_J-K5oU-9y4louwplQmM-ZBvUfXmhbgj5LYdk/edit?usp=sharing" target="_blank">Feedback</a> •
             <a id="rt" href="https://discord.gg/ejUc6YPQuS" target="_blank" style="text-shadow: 0px 2px 10px #ff00ff;">Discord</a>
           </small>
@@ -10267,7 +10296,7 @@
           You have no mods enabled.<br />
           <br />
         </span>
-        See the <a id="rt" href="https://docs.google.com/document/d/1YWPLKEvGeaaLuYWzObCyLK2Y09JPZgF1ODQQCbU3Sng/edit?usp=sharing" target="_blank">Mod List (not for this version)</a>. <br />
+        See the <a href="https://docs.google.com/document/d/1YWPLKEvGeaaLuYWzObCyLK2Y09JPZgF1ODQQCbU3Sng/edit?usp=sharing" target="_blank">Mod List</a>. <br />
         <br />
         <br />
         <br />
@@ -10327,9 +10356,9 @@
             </select>
           </span>
           <span class="setting-span">
-            <button onclick="if(confirm('This action will reset all discovered elements and refresh the page.')){settings.unlocked={};saveSettings();location.reload()}" class="settingsButton">Reset Discovered</button>
-            <button onclick="if(confirm('This action will reset all game data and refresh the page.')){localStorage.removeItem('settings');location.reload()}" class="settingsButton">Reset All</button>
-            <button onclick="if(confirm('This action will disable all enabled mods and refresh the page.')){localStorage.removeItem('enabledMods');location.reload()}" class="settingsButton">Clear Mods</button>
+            <button id="rt" onclick="if(confirm('This action will reset all discovered elements and refresh the page.')){settings.unlocked={};saveSettings();location.reload()}" class="settingsButton">Reset Discovered</button>
+            <button id="rt" onclick="if(confirm('This action will reset all game data and refresh the page.')){localStorage.removeItem('settings');location.reload()}" class="settingsButton">Reset All</button>
+            <button id="rt" onclick="if(confirm('This action will disable all enabled mods and refresh the page.')){localStorage.removeItem('enabledMods');location.reload()}" class="settingsButton">Clear Mods</button>
           </span>
           <span setting="worldgen" style="padding-bottom: 0;" class="setting-span">
             World Gen [Beta]
@@ -10345,5 +10374,6 @@
         <br />
       </div>
     </div>
+    <script>rainbowText();</script>
   </body>
 </html>
