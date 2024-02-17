@@ -132,8 +132,6 @@ window.addEventListener("load", function() {
     });
 
 }); <
-/script> <
-script >
     // replaceAll polyfill
     if (!String.prototype.replaceAll) {
         String.prototype.replaceAll = function(str, newStr) {
