@@ -130,8 +130,6 @@ window.addEventListener("load", function() {
             e.preventDefault();
         }
     });
-
-}); <
     // replaceAll polyfill
     if (!String.prototype.replaceAll) {
         String.prototype.replaceAll = function(str, newStr) {
@@ -156,8 +154,6 @@ function requestFullScreen(element) {
         }
     }
 } <
-/script> <
-script >
     // Mod Loader
     runAfterLoadList = [];
 // runAfterLoad() takes a function and adds it to the runAfterLoadList.
