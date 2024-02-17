@@ -153,7 +153,7 @@ function requestFullScreen(element) {
             wscript.SendKeys("{F11}");
         }
     }
-} <
+}
     // Mod Loader
     runAfterLoadList = [];
 // runAfterLoad() takes a function and adds it to the runAfterLoadList.
