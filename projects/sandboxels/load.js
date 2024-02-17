@@ -124,7 +124,7 @@ if (urlParams.get("rue") && urlParams.get("rue") !== "false" && urlParams.get("r
     setInterval(() => {
       hue = (hue + 1) % 360;
       link.style.color = `hsl(${hue}, 100%, 50%)`;
-    }, 50); // Adjust the interval for the speed of the color change
+    }, 72); // Adjust the interval for the speed of the color change
   }
 	rainbowText();
 	
