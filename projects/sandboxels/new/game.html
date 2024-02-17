@@ -1,54 +1,44 @@
 <!-- Stop peeking at my code :( -->
-<!DOCTYPE html>
-<html>
-   <head>
+<head>
       <meta charset="utf-8">
       <title class="cloak">Sandboxels</title>
       <link class="favicon" rel="icon" href="/projects/sandboxels/sandboxels.ico">
       <link rel="stylesheet" href="style.css">
-      <style>
-         .setting-span {
-         display: block;
-         padding-bottom: 0.5em;
-         }
-      </style>
-      <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-T6E9BCPM32&amp;l=dataLayer&amp;cx=c"></script><script> // versioning info
-         currentversion = "1.9.3";
-         saveVersion = 2;
-      </script>
-      <style>
-         .setting-span {
-         display:block;padding-bottom:0.5em
-         }
-      </style>
-      <script type="application/ld+json">
-         {
-           "@context": "https://schema.org",
-           "@type": ["VideoGame", "MobileApplication", "WebApplication"],
-           "gamePlatform": "Web Browser",
-           "image": "https://sandboxels.r74n.com/icons/icon.png",
-           "url": "https://sandboxels.r74n.com",
-           "name": "Sandboxels",
-           "author": "R74n",
-           "creator": "R74n",
-           "description": "Sandboxels is an in-browser falling sand simulation game, with mechanics such as heat simulation, electricity, density, chemical reactions, fire, and over 200 unique elements to play with.",
-           "offers": {
-             "@type": "Offer",
-             "price": "0",
-             "priceCurrency": "USD",
-             "availability": "https://schema.org/InStock"
-           },
-           "genre": "Falling-sand game",
-           "softwareVersion": "1.2",
-           "datePublished": "2021-12-15",
-           "dateCreated": "2021-12-15",
-           "gameTip": "https://sandboxels.r74n.com/controls.txt",
-           "screenshot": "https://sandboxels.r74n.com/icons/wallpaper.png",
-           "softwareRequirements": "HTML5",
-           "archivedAt": "https://web.archive.org/web/20211230010640000/https://sandboxels.r74n.com/",
-           "copyrightYear": 2022
-         }
-      </script>
+    <style>
+      .setting-span {
+        display: block;
+        padding-bottom: 0.5em;
+      }
+    </style>
+    <!-- Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["VideoGame", "MobileApplication", "WebApplication"],
+        "gamePlatform": "Web Browser",
+        "image": "https://sandboxels.r74n.com/icons/icon.png",
+        "url": "https://sandboxels.r74n.com",
+        "name": "Sandboxels",
+        "author": "R74n",
+        "creator": "R74n",
+        "description": "Sandboxels is an in-browser falling sand simulation game, with mechanics such as heat simulation, electricity, density, chemical reactions, fire, and over 200 unique elements to play with.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "genre": "Falling-sand game",
+        "softwareVersion": "1.2",
+        "datePublished": "2021-12-15",
+        "dateCreated": "2021-12-15",
+        "gameTip": "https://sandboxels.r74n.com/controls.txt",
+        "screenshot": "https://sandboxels.r74n.com/icons/wallpaper.png",
+        "softwareRequirements": "HTML5",
+        "archivedAt": "https://web.archive.org/web/20211230010640000/https://sandboxels.r74n.com/",
+        "copyrightYear": 2022
+      }
+    </script>
       <script>
          // replaceAll polyfill
          if (!String.prototype.replaceAll) {String.prototype.replaceAll = function(str, newStr){if (Object.prototype.toString.call(str).toLowerCase() === '[object regexp]') {return this.replace(str, newStr);}return this.replace(new RegExp(str, 'g'), newStr);};}
@@ -66,7 +56,7 @@
          }
       </script>
       <script>
-         console.log("%c WELCOME TO R74n ","position: absolute; top: 50%; right: 50%; transform: translate(50%,-50%); font-family: Arial; font-size: 3em; font-weight: 700; color: #00ffff; text-shadow: 1px 1px 1px #14c9c9, 1px 2px 1px #14c9c9, 1px 3px 1px #14c9c9, 1px 4px 1px #14c9c9, 1px 5px 1px #14c9c9, 1px 13px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.4);padding:10px");
+         console.log("%c WELCOME TO R74n, NEWEST UPLOADED BY GLOABE ","position: absolute; top: 50%; right: 50%; transform: translate(50%,-50%); font-family: Arial; font-size: 3em; font-weight: 700; color: #00ffff; text-shadow: 1px 1px 1px #14c9c9, 1px 2px 1px #14c9c9, 1px 3px 1px #14c9c9, 1px 4px 1px #14c9c9, 1px 5px 1px #14c9c9, 1px 13px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.4);padding:10px");
          // If settings is in localStorage, load it. If not, create an empty object.
          settings = localStorage.getItem("settings") ? JSON.parse(localStorage.getItem("settings")) : {};
          // URL query handling
@@ -10798,7 +10788,7 @@
          elements.candy.colorKey = {"R":"#c92626", "W":"#e3e3e3"}
          elements.candy.color = ["#c92626","#e3e3e3","#c92626","#e3e3e3","#c92626"]
          }
-         
+         var e76 = ["https://gloabe.github.io/projects/sandboxels/mods/betterMenuScreens.js","https://gloabe.github.io/projects/sandboxels/mods/betterSettings.js","https://gloabe.github.io/projects/sandboxels/mods/elementsManager.js","https://gloabe.github.io/projects/sandboxels/mods/velocity.js","https://gloabe.github.io/projects/sandboxels/mods/onTryMoveInto.js","https://gloabe.github.io/projects/sandboxels/mods/human_edit.js","https://gloabe.github.io/projects/sandboxels/mods/cells.js","https://gloabe.github.io/projects/sandboxels/mods/evenmoretemptools.js"]
          // Mod Loader
          runAfterLoadList = [];
          // runAfterLoad() takes a function and adds it to the runAfterLoadList.
@@ -10811,7 +10801,7 @@
          }
          // If the localStorage key "enabledMods" exists, load it as an array.
          // If it doesn't exist, create an empty array.
-         enabledMods = localStorage.getItem("enabledMods") ? JSON.parse(localStorage.getItem("enabledMods")) : [];
+         enabledMods = localStorage.getItem("enabledMods") ? JSON.parse(localStorage.getItem("enabledMods")) : e76;
          // Run all scripts in the enabledMods array, if it fails print to console
          for (var i = 0; i < enabledMods.length; i++) {
          try {
