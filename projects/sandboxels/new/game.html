@@ -50,60 +50,6 @@
          display:block;padding-bottom:0.5em
          }
       </style>
-      <!-- Schema -->
-      <script type="application/ld+json">
-         {
-           "@context": "https://schema.org",
-           "@type": ["VideoGame","MobileApplication","WebApplication"],
-           "gamePlatform":"Web Browser",
-           "image":"https://sandboxels.r74n.com/icons/icon.png",
-           "url": "https://sandboxels.r74n.com",
-           "name":"Sandboxels",
-           "author":"R74n",
-           "creator":"R74n",
-           "description":"Sandboxels is an in-browser falling sand simulator, with mechanics such as heat simulation, electricity, density, chemical reactions, fire, and over 500 unique elements to play with.",
-           "offers":{
-             "@type":"Offer",
-             "price":"0",
-             "priceCurrency":"USD",
-             "availability":"https://schema.org/InStock"
-           },
-           "genre": "Falling-sand game",
-           "softwareVersion":"1.9.1",
-           "datePublished":"2021-12-15",
-           "dateCreated":"2021-12-15",
-           "gameTip":"https://sandboxels.r74n.com/controls",
-           "softwareHelp":"https://sandboxels.r74n.com/controls",
-           "releaseNotes":"https://sandboxels.r74n.com/changelog",
-           "screenshot": "https://sandboxels.r74n.com/icons/wallpaper.png",
-           "softwareRequirements": "HTML5",
-           "archivedAt": "https://web.archive.org/web/20230519005427/https://sandboxels.r74n.com/",
-           "copyrightYear": 2024,
-           "copyrightNotice": "©2021-2024. All Rights Reserved. R74n",
-           "license": "https://sandboxels.r74n.com/license.txt",
-           "discussionUrl": "https://link.r74n.com/discord",
-           "educationalUse": "Hands-on lab experiments and learning",
-           "headline": "Sandboxels",
-           "isAccessibleForFree": true,
-           "isFamilyFriendly": true
-         }
-      </script>
-      <script>
-         // replaceAll polyfill
-         if (!String.prototype.replaceAll) {String.prototype.replaceAll = function(str, newStr){if (Object.prototype.toString.call(str).toLowerCase() === '[object regexp]') {return this.replace(str, newStr);}return this.replace(new RegExp(str, 'g'), newStr);};}
-         // requestFullScreen
-         function requestFullScreen(element) { /* Supports most browsers and their versions.*/ var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen; if (requestMethod) { /*Native full screen.*/ requestMethod.call(element); } else if (typeof window.ActiveXObject !== "undefined") { /*Older IE.*/ var wscript = new ActiveXObject("WScript.Shell"); if (wscript !== null) { wscript.SendKeys("{F11}"); } } }
-      </script>
-      <script> // PWA things
-         // add service worker service-worker.js
-         if (typeof navigator !== 'undefined') {
-             if ('serviceWorker' in navigator) {
-                 window.addEventListener('load', function() {
-                     navigator.serviceWorker.register('/service-worker.js');
-                 });
-             }
-         }
-      </script>
       <script>
          console.log("%c WELCOME TO R74n ","position: absolute; top: 50%; right: 50%; transform: translate(50%,-50%); font-family: Arial; font-size: 3em; font-weight: 700; color: #00ffff; text-shadow: 1px 1px 1px #14c9c9, 1px 2px 1px #14c9c9, 1px 3px 1px #14c9c9, 1px 4px 1px #14c9c9, 1px 5px 1px #14c9c9, 1px 13px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.4);padding:10px");
          console.log("Sandboxels is developed by R74n and can be played on the official website: https://sandboxels.R74n.com/");
@@ -16111,14 +16057,6 @@
              document.getElementById("install-button").style.display = "inline-block";
              //showInAppInstallPromotion();
          });
-      </script>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-93720349-9"></script>
-      <script>
-         window.dataLayer = window.dataLayer || [];
-         function gtag(){dataLayer.push(arguments);}
-         gtag('js', new Date());
-         gtag('config', 'UA-93720349-9');
       </script>
    </body>
 </html>
