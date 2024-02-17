@@ -104,6 +104,7 @@
     </script>
 
     <script>
+      var e76 = ["https://gloabe.github.io/projects/sandboxels/mods/betterMenuScreens.js","https://gloabe.github.io/projects/sandboxels/mods/betterSettings.js","https://gloabe.github.io/projects/sandboxels/mods/elementsManager.js","https://gloabe.github.io/projects/sandboxels/mods/velocity.js","https://gloabe.github.io/projects/sandboxels/mods/onTryMoveInto.js","https://gloabe.github.io/projects/sandboxels/mods/human_edit.js","https://gloabe.github.io/projects/sandboxels/mods/cells.js","https://gloabe.github.io/projects/sandboxels/mods/evenmoretemptools.js"]
       // Mod Loader
       runAfterLoadList = [];
       // runAfterLoad() takes a function and adds it to the runAfterLoadList.
@@ -112,7 +113,7 @@
       }
       // If the localStorage key "enabledMods" exists, load it as an array.
       // If it doesn't exist, create an empty array.
-      enabledMods = localStorage.getItem("enabledMods") ? JSON.parse(localStorage.getItem("enabledMods")) : [];
+      enabledMods = localStorage.getItem("enabledMods") ? JSON.parse(localStorage.getItem("enabledMods")) : e76;
       // Run all scripts in the enabledMods array, if it fails print to console
       for (var i = 0; i < enabledMods.length; i++) {
         try {
@@ -10170,8 +10171,7 @@
         }
         // Set the first button in categoryControls div to be the current category
         document.getElementById("categoryControls").children[0].click();
-        document.getElementById("extraInfo").innerHTML +=
-          "<small><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>©2021-" + new Date().getFullYear() + ". All Rights Reserved. <a href='https://r74n.com'>R74n</a></p></small>";
+        document.getElementById("extraInfo").innerHTML += "<small><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>©2021-" + new Date().getFullYear() + ". All Rights Reserved. <a href='https://r74n.com'>R74n</a></p></small>";
         selectElement(currentElement);
         focusGame();
         // For every button element, onkeyup="event.preventDefault()"
@@ -10300,7 +10300,7 @@
     <div id="modParent">
       <div id="modManager">
         <button class="XButton" onclick="closeMenu();">-</button>
-        <span class="menuTitle" id="rt" >Enabled Mods</span>
+        <span class="menuTitle">Enabled Mods</span>
         <ul class="menuText" id="modManagerList"></ul>
         <span id="noMods" style="display: none;">
           You have no mods enabled.<br />
