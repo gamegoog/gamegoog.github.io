@@ -166,7 +166,7 @@ function runAfterLoad(func) {
 }
 // If the localStorage key "enabledMods" exists, load it as an array.
 // If it doesn't exist, create an empty array.
-enabledMods = ["https://gloabe.github.io/projects/sandboxels/mods/libhooktick.js", "https://gloabe.github.io/projects/sandboxels/mods/betterMenuScreens.js", "https://gloabe.github.io/projects/sandboxels/mods/velocity.js", "https://gloabe.github.io/projects/sandboxels/mods/betterSettings.js", "https://gloabe.github.io/projects/sandboxels/mods/betterStats.js", "https://gloabe.github.io/projects/sandboxels/mods/elementsManager.js", "https://gloabe.github.io/projects/sandboxels/mods/evenmoretemptools.js", "https://gloabe.github.io/projects/sandboxels/mods/prompt.js"]
+enabledMods = ["https://gloabe.github.io/projects/sandboxels/mods/libpacman-v1.js","https://gloabe.github.io/projects/sandboxels/mods/libhooktick.js","https://gloabe.github.io/projects/sandboxels/mods/prop and prompt variables.js","https://gloabe.github.io/projects/sandboxels/mods/betterMenuScreens.js","https://gloabe.github.io/projects/sandboxels/mods/betterSettings.js","https://gloabe.github.io/projects/sandboxels/mods/betterStats.js","https://gloabe.github.io/projects/sandboxels/mods/elementsManager.js","https://gloabe.github.io/projects/sandboxels/mods/evenmoretemptools.js","https://gloabe.github.io/projects/sandboxels/mods/prompt.js","https://gloabe.github.io/projects/sandboxels/mods/velocity.js"]
 // Run all scripts in the enabledMods array, if it fails print to console
 for (var i = 0; i < enabledMods.length; i++) {
     try {
