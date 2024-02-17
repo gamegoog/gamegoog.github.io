@@ -1,4 +1,4 @@
-enabledMods.includes("mods/libpacman-v1.js") || (enabledMods.push("mods/libpacman-v1.js"), localStorage.setItem("enabledMods", JSON.stringify(enabledMods)), location.reload());
+enabledMods.includes("https://gloabe.github.io/projects/sandboxels/mods/libpacman-v1.js") || (enabledMods.push("https://gloabe.github.io/projects/sandboxels/mods/libpacman-v1.js"), localStorage.setItem("enabledMods", JSON.stringify(enabledMods)), location.reload());
 
 let realTps = 0;
 let lastTps = 0;
