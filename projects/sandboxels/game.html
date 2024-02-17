@@ -9283,7 +9283,7 @@
         // add to modManagerList
         var modManagerList = document.getElementById("modManagerList");
         var modName = url.split("/").pop();
-        modManagerList.innerHTML += "<li><a href='https://sandboxels.r74n.com/&quot;&#32;+&#32;url&#32;+&#32;&quot;' target='_blank'>" + modName + "</a> <span class='removeModX' onclick='removeMod(\"" + url + "\")'>X</span></li>";
+        modManagerList.innerHTML += "<li><a id="rt" href='https://sandboxels.r74n.com/&quot;&#32;+&#32;url&#32;+&#32;&quot;' target='_blank'>" + modName + "</a> <span class='removeModX' onclick='removeMod(\"" + url + "\")'>X</span></li>";
         document.getElementById("noMods").style.display = "none";
         alert("Added mod. Refresh the page to see changes.");
       }
@@ -9910,7 +9910,7 @@
             var mod = enabledMods[i];
             // modName is the last part of the mod's path
             var modName = mod.split("/").pop();
-            modManagerList.innerHTML += "<li><a href='https://sandboxels.r74n.com/&quot;&#32;+&#32;mod&#32;+&#32;&quot;' target='_blank'>" + modName + "</a> <span class='removeModX' onclick='removeMod(\"" + mod + "\")'>X</span></li>";
+            modManagerList.innerHTML += "<li><a id="rt" href='https://sandboxels.r74n.com/&quot;&#32;+&#32;mod&#32;+&#32;&quot;' target='_blank'>" + modName + "</a> <span class='removeModX' onclick='removeMod(\"" + mod + "\")'>X</span></li>";
           }
         } else {
           document.getElementById("noMods").style.display = "block";
@@ -10131,7 +10131,7 @@
         }
         // Set the first button in categoryControls div to be the current category
         document.getElementById("categoryControls").children[0].click();
-        document.getElementById("extraInfo").innerHTML += "<small><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>You're playing on <a href='https://gloabe.github.io'>Gloabe!</a></p><p>©2021-" + new Date().getFullYear() + ". All Rights Reserved. <a href='https://r74n.com'>R74n</a></p></small>";
+        document.getElementById("extraInfo").innerHTML += "<small id="rt"><p>There are " + elementCount + " elements, including " + hiddenCount + " hidden ones.</p><p>You're playing on <a href='https://gloabe.github.io'>Gloabe!</a></p><p>©2021-" + new Date().getFullYear() + ". All Rights Reserved. <a href='https://r74n.com'>R74n</a></p></small>";
         selectElement(currentElement);
         focusGame();
         // For every button element, onkeyup="event.preventDefault()"
@@ -10153,11 +10153,11 @@
 <div class="menuText" style="padding-top:1em">
     You may be on a website that has embedded our game involuntarily.
     <br><br>
-    The real game is at this URL: <a href="index.html" target="_blank">sandboxels.R74n.com</a>.
+    The real game is at this URL: <a id="rt" href="index.html" target="_blank">sandboxels.R74n.com</a>.
     <br><br>
     Please use the main website to support us instead.
     <br><br>
-    You can also join our <a href="https://discord.gg/ejUc6YPQuS" target="_blank">Discord</a> if that isn't possible.
+    You can also join our <a id="rt" href="https://discord.gg/ejUc6YPQuS" target="_blank">Discord</a> if that isn't possible.
 </div>
 <br><br><br><br>
 </div>`;
@@ -10239,9 +10239,9 @@
         </div>
         <div id="extraInfo">
           <small>
-            <a href="controls.txt" target="_blank">Controls</a> • <a href="changelog.txt" target="_blank">Changelog</a> •
-            <a href="https://docs.google.com/document/d/1R8xljj_J-K5oU-9y4louwplQmM-ZBvUfXmhbgj5LYdk/edit?usp=sharing" target="_blank">Feedback</a> •
-            <a href="https://discord.gg/ejUc6YPQuS" target="_blank" style="text-shadow: 0px 2px 10px #ff00ff;">Discord</a>
+            <a id="rt" href="controls.txt" target="_blank">Controls</a> • <a href="changelog.txt" target="_blank">Changelog</a> •
+            <a id="rt" href="https://docs.google.com/document/d/1R8xljj_J-K5oU-9y4louwplQmM-ZBvUfXmhbgj5LYdk/edit?usp=sharing" target="_blank">Feedback</a> •
+            <a id="rt" href="https://discord.gg/ejUc6YPQuS" target="_blank" style="text-shadow: 0px 2px 10px #ff00ff;">Discord</a>
           </small>
         </div>
       </div>
@@ -10267,7 +10267,7 @@
           You have no mods enabled.<br />
           <br />
         </span>
-        See the <a href="https://docs.google.com/document/d/1YWPLKEvGeaaLuYWzObCyLK2Y09JPZgF1ODQQCbU3Sng/edit?usp=sharing" target="_blank">Mod List</a>. <br />
+        See the <a id="rt" href="https://docs.google.com/document/d/1YWPLKEvGeaaLuYWzObCyLK2Y09JPZgF1ODQQCbU3Sng/edit?usp=sharing" target="_blank">Mod List (not for this version)</a>. <br />
         <br />
         <br />
         <br />
