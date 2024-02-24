@@ -13,6 +13,11 @@
     </div>
   </div>
   <script>
+    function loadURLToIframe(url) {
+        var iframe = document.getElementById('myIframe');
+        iframe.src = url;
+    }
+
     function addHeaderToIframe() {
         var iframe = document.getElementById('myIframe');
         var xhr = new XMLHttpRequest();
@@ -25,6 +30,7 @@
         xhr.open('HEAD', iframe.src, true);
         xhr.send();
     }
+
     function toggleFullScreen() {
       var iframe = document.getElementById("gameframe");
       if (!document.fullscreenElement) {
@@ -35,7 +41,10 @@
         document.exitFullscreen();
       }
     }
-    window.addEventListener('DOMContentLoaded', addHeaderToIframe);
+    window.addEventListener('DOMContentLoaded', function () {
+        loadURLToIframe("https://example.com");
+        addHeaderToIframe();
+    });
   </script>
 </body>
 </html>
