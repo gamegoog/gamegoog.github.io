@@ -8,11 +8,23 @@
   <div class="game-container">
     <div class="game-related">
       <div class="actual">
-        <iframe src="https://unfiltering.github.io/infinite-craft/" id="gameframe"></iframe>
+        <iframe id="myIframe" src="https://neal.fun/infinite-craft" width="100%" height="100%" frameborder="0"></iframe>
       </div>
     </div>
   </div>
   <script>
+    function addHeaderToIframe() {
+        var iframe = document.getElementById('myIframe');
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var responseHeaders = xhr.getAllResponseHeaders();
+                iframe.contentWindow.postMessage(responseHeaders, '*');
+            }
+        };
+        xhr.open('HEAD', iframe.src, true);
+        xhr.send();
+    }
     function toggleFullScreen() {
       var iframe = document.getElementById("gameframe");
       if (!document.fullscreenElement) {
@@ -23,6 +35,7 @@
         document.exitFullscreen();
       }
     }
+    window.addEventListener('DOMContentLoaded', addHeaderToIframe);
   </script>
 </body>
 </html>
