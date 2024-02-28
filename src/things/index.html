@@ -19,13 +19,12 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  .model-viewer {
+  canvas {
     width: 100%;
+    display: block;
     margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   .download-link {
     display: block;
@@ -42,14 +41,46 @@
 <div class="container">
   <h1>BurgerFurger</h1>
   
-  <model-viewer class="model-viewer" alt="BurgerBois Big" src="big_burgerboy.obj" ar environment-image="" poster="" shadow-intensity="0" camera-controls touch-action="pan-y"></model-viewer>
-  
-  <model-viewer class="model-viewer" alt="BurgerBois Small" src="small_burgerboy.obj" ar environment-image="" poster="" shadow-intensity="0" camera-controls touch-action="pan-y"></model-viewer>
+  <canvas id="3d-model" width="400" height="400"></canvas>
   
   <a href="CE3E3V2_burgerboy_small.gcode" class="download-link" download>Download Small BurgerBois GCODE</a>
   
   <a href="CE3E3V2_burgerboy_big.gcode" class="download-link" download>Download Big BurgerBois GCODE</a>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  const canvas = document.getElementById('3d-model');
+  const renderer = new THREE.WebGLRenderer({ canvas });
+
+  const fov = 75;
+  const aspect = 2;  // the canvas default
+  const near = 0.1;
+  const far = 5;
+  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+  camera.position.z = 2;
+
+  const scene = new THREE.Scene();
+  const loader = new THREE.OBJLoader();
+  loader.load(
+    'big_burgerboy.obj',
+    function (object) {
+      scene.add(object);
+    },
+    function (xhr) {
+      console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    function (error) {
+      console.error('An error happened', error);
+    }
+  );
+
+  function animate(time) {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+  }
+  animate();
+</script>
 
 </body>
 </html>
