@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BurgerFurger</title>
@@ -19,12 +17,18 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  canvas {
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  .model-viewer {
     width: 100%;
-    display: block;
     margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .download-links-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .download-link {
     display: block;
@@ -34,53 +38,28 @@
     color: #007bff;
     text-decoration: none;
   }
+.sketchfab-embed-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+    
 </style>
 </head>
 <body>
 
 <div class="container">
   <h1>BurgerFurger</h1>
+  <div class="sketchfab-embed-wrapper"> <iframe title="burgerbois!" frameborder="0" allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking="" execution-while-out-of-viewport="" execution-while-not-rendered="" web-share="" src="https://sketchfab.com/models/ee62ad83e1cf4f3282dd9a351fdebc0e/embed"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/burgerbois-ee62ad83e1cf4f3282dd9a351fdebc0e?utm_medium=embed&amp;utm_campaign=share-popup&amp;utm_content=ee62ad83e1cf4f3282dd9a351fdebc0e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"></p></div>
+  <div class="download-links-container">
+    <a href="CE3E3V2_burgerboy_small.gcode" class="download-link" download="">Download Small BurgerBois GCODE</a>
+    <a href="CE3E3V2_burgerboy_big.gcode" class="download-link" download="">Download Big BurgerBois GCODE</a>
+  </div>
   
-  <canvas id="3d-model" width="400" height="400"></canvas>
-  
-  <a href="CE3E3V2_burgerboy_small.gcode" class="download-link" download>Download Small BurgerBois GCODE</a>
-  
-  <a href="CE3E3V2_burgerboy_big.gcode" class="download-link" download>Download Big BurgerBois GCODE</a>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-  const canvas = document.getElementById('3d-model');
-  const renderer = new THREE.WebGLRenderer({ canvas });
 
-  const fov = 75;
-  const aspect = 2;  // the canvas default
-  const near = 0.1;
-  const far = 5;
-  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-  camera.position.z = 2;
 
-  const scene = new THREE.Scene();
-  const loader = new THREE.OBJLoader();
-  loader.load(
-    'big_burgerboy.obj',
-    function (object) {
-      scene.add(object);
-    },
-    function (xhr) {
-      console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-    },
-    function (error) {
-      console.error('An error happened', error);
-    }
-  );
 
-  function animate(time) {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-  }
-  animate();
-</script>
 
-</body>
-</html>
+</body></html>
