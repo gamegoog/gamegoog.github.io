@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateMoney();
 
     function updateMoney() {
-        moneyDisplay.textContent = money;
+        moneyDisplay.textContent = '$' + money;
     }
 
     function getRandomTexture() {
@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function spin() {
         const betAmount = parseInt(betInput.value);
-        if (betAmount <= 0 || betAmount > money) {
-            alert('Invalid bet amount!');
+        if (isNaN(betAmount) || betAmount <= 0 || betAmount > money) {
+            alert('Please enter a valid bet amount!');
             return;
         }
 
@@ -32,17 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
             slotImages[i].src = `textures/${result[i]}.png`;
         }
 
-        const uniqueTextures = new Set(result);
-        if (uniqueTextures.size === 1) {
+        if (result[0] === result[1] && result[1] === result[2]) {
             if (result[0] === 'bar') {
-                money -= betAmount * 2;
+                money += betAmount * 5; // Increase payout for three 'bar' textures
             } else {
-                money += betAmount * 2;
+                money += betAmount * 2; // Normal payout for other textures
             }
-        } else if (uniqueTextures.size === 2 && uniqueTextures.has('cherry')) {
-            money += betAmount * 1.5;
+        } else if (result.includes('cherry') && result.filter(texture => texture === 'cherry').length === 2) {
+            money += betAmount * 1.5; // Payout for two 'cherry' textures
         } else {
-            money -= betAmount;
+            money -= betAmount; // Loss if no winning combination
         }
 
         updateMoney();
