@@ -19,35 +19,45 @@ document.addEventListener('DOMContentLoaded', () => {
         return textures[Math.floor(Math.random() * textures.length)];
     }
 
-    function spin() {
-        const betAmount = parseInt(betInput.value);
-        if (isNaN(betAmount) || betAmount <= 0 || betAmount > money) {
-            alert('Please enter a valid bet amount!');
-            return;
-        }
-    
-        let result = [];
-        for (let i = 0; i < slotImages.length; i++) {
-            result.push(getRandomTexture());
-            slotImages[i].src = `textures/${result[i]}.png`;
-        }
-
-        const uniqueTextures = new Set(result);
-        if (uniqueTextures.size === 1) {
-            if (result[0] === 'bar') {
-                money -= betAmount * 2;
-            } else {
-                money += betAmount * 2;
-            }
-        } else if (uniqueTextures.size === 2 && uniqueTextures.has('cherry')) {
-            money += betAmount * 1.5;
-        } else {
-            money -= betAmount;
-        }
-    
-        updateMoney();
-        localStorage.setItem('money', money);
+function spin() {
+    const betAmount = parseInt(betInput.value);
+    if (isNaN(betAmount) || betAmount <= 0 || betAmount > money) {
+        alert('Please enter a valid bet amount!');
+        return;
     }
+
+    let result = [];
+    for (let i = 0; i < slotImages.length; i++) {
+        result.push(getRandomTexture());
+        slotImages[i].src = `textures/${result[i]}.png`;
+    }
+
+    const uniqueTextures = new Set(result);
+    let winMultiplier = 1; // Default multiplier for non-winning spins
+    if (uniqueTextures.size === 1) {
+        if (result[0] === 'bar') {
+            winMultiplier = 2; // Double the bet amount if all slots show 'bar'
+        } else {
+            winMultiplier = 3; // Triple the bet amount for any other winning combination
+        }
+    } else if (uniqueTextures.size === 2 && uniqueTextures.has('cherry')) {
+        winMultiplier = 1.5; // Increase money by 1.5 times the bet amount for two 'cherry' slots
+    }
+
+    let totalWinnings = betAmount * winMultiplier;
+    if (uniqueTextures.size > 1) {
+        totalWinnings += betAmount; // Add one more to the bet amount if there's more than one winning texture
+    }
+
+    if (totalWinnings > betAmount) {
+        money += totalWinnings - betAmount; // Add the net winnings to the money balance
+    } else {
+        money -= betAmount; // Deduct the bet amount if there is no winning combination
+    }
+
+    updateMoney();
+    localStorage.setItem('money', money);
+}
 
 
     window.spin = spin; // Expose spin function to global scope
