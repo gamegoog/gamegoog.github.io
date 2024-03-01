@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     workButton.addEventListener('click', work);
 
     function work() {
-        money += 0.5; // Earn $10 for each click
+        money += 1; // Earn $10 for each click
         moneyDisplay.textContent = money;
         localStorage.setItem('money', money);
     }
