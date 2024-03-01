@@ -39,25 +39,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateSlots(results) {
         slotContainers.forEach((slot, index) => {
-            slot.style.backgroundImage = `url(/projects/gamblr/textures/${results[index]}.png)`;
+            slot.style.backgroundImage = `url(textures/${results[index]}.png)`;
         });
     }
 
-function checkWin(results) {
-    const uniqueResults = new Set(results);
-    const matchingCount = results.filter(result => result === results[0]).length;
-
-    // Calculate winnings based on matching count
-    const winnings = betAmount * matchingCount;
-
-    if (matchingCount === 3) {
-        resultDisplay.textContent = "You won!";
-        money += winnings;
-    } else {
-        resultDisplay.textContent = "You lost!";
+    function checkWin(results) {
+        const uniqueResults = new Set(results);
+        if (uniqueResults.size === 1) {
+            resultDisplay.textContent = "You won!";
+            money += betAmount * 10 * slotContainers.length; // Update winning calculation
+        } else {
+            resultDisplay.textContent = "You lost!";
+        }
+        moneyDisplay.textContent = money;
+        localStorage.setItem('money', money);
     }
-    moneyDisplay.textContent = money;
-    localStorage.setItem('money', money);
-}
-
 });
