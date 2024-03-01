@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        money -= betAmount;
+        money -= betAmount; // Deduct the bet amount from the player's money
         moneyDisplay.textContent = money;
 
         resultDisplay.textContent = "";
@@ -42,10 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function checkWin(results) {
-        const uniqueResults = new Set(results);
-        if (uniqueResults.size === 1) {
+        // Simulate 50/50 chance of winning
+        const randomChance = Math.random();
+        if (randomChance < 0.5) {
             resultDisplay.textContent = "You won!";
-            money += betAmount * 10; // You can change the winning multiplier here
+            money += betAmount * 2; // Double the bet amount as winnings
         } else {
             resultDisplay.textContent = "You lost!";
         }
