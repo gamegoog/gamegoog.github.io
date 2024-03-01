@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let money = localStorage.getItem('money') || 100;
+    let money = parseInt(localStorage.getItem('money')) || 0;
 
     const moneyDisplay = document.getElementById('moneyAmount');
     const workButton = document.getElementById('workButton');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     workButton.addEventListener('click', work);
 
     function work() {
-        money = parseInt(money) + 1; // Earn $1 for each click
+        money = parseInt(localStorage.getItem('money')) + 1; // Add 1 to the value stored in localStorage
         moneyDisplay.textContent = money;
         localStorage.setItem('money', money);
     }
