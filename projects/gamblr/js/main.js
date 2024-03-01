@@ -13,12 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
     spinButton.addEventListener('click', spinSlots);
 
     function spinSlots() {
-        if (money < betAmount) {
+        const totalBetAmount = betAmount * slotContainers.length;
+        
+        if (money < totalBetAmount) {
             resultDisplay.textContent = "Not enough money to bet!";
             return;
         }
 
-        money -= betAmount; // Deduct the bet amount from the player's money
+        money -= totalBetAmount; // Deduct the total bet amount from the player's money
         moneyDisplay.textContent = money;
 
         resultDisplay.textContent = "";
@@ -46,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const randomChance = Math.random();
         if (randomChance < 0.5) {
             resultDisplay.textContent = "You won!";
-            money += betAmount * 2; // Double the bet amount as winnings
+            money += betAmount * 2 * slotContainers.length; // Double the bet amount as winnings for each slot
         } else {
             resultDisplay.textContent = "You lost!";
         }
