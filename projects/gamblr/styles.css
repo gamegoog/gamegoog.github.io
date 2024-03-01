@@ -41,9 +41,11 @@ h1 {
 
 .slot {
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 5px; /* Adjust the margin for spacing between slots */
     vertical-align: middle;
+    text-align: center; /* Center the content inside the slots */
 }
+
 
 .slot img {
     width: 100px;
