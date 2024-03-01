@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamblr</title>
-    <link rel="stylesheet" href="main.css">
+    <title>Slot Machine</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Gamblr</h1>
-        <div id="slot-container">
-            <div id="slot1"></div>
-            <div id="slot2"></div>
-            <div id="slot3"></div>
+    <div class="slot-machine">
+        <div class="slot">
+            <img id="slot1" src="" alt="">
         </div>
-        <div id="controls">
-            <label for="betAmount">Bet Amount:</label>
-            <input type="number" id="betAmount" min="1" value="1">
-            <button id="spinButton">Spin</button>
-            <div id="result"></div>
-            <div id="money">Money: <span id="moneyAmount">100</span></div>
+        <div class="slot">
+            <img id="slot2" src="" alt="">
+        </div>
+        <div class="slot">
+            <img id="slot3" src="" alt="">
+        </div>
+        <div class="controls">
+            <label for="bet">Bet Amount:</label>
+            <input type="number" id="bet" min="1">
+            <button onclick="spin()">Spin</button>
+            <p>Money: $<span id="money">100</span></p>
         </div>
     </div>
-    <script src="js/main.js"></script>
+    <script src="js/slots.js"></script>
 </body>
 </html>
