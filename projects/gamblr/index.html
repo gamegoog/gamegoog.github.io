@@ -7,21 +7,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="slot-machine">
-        <div class="slot">
-            <img id="slot1" src="" alt="">
-        </div>
-        <div class="slot">
-            <img id="slot2" src="" alt="">
-        </div>
-        <div class="slot">
-            <img id="slot3" src="" alt="">
-        </div>
-        <div class="controls">
-            <label for="bet">Bet Amount:</label>
-            <input type="number" id="bet" min="1">
-            <button onclick="spin()">Spin</button>
-            <p>Money: $<span id="money">100</span></p>
+    <div class="container">
+        <h1>Slot Machine</h1>
+        <div class="slot-machine">
+            <div class="slot">
+                <img id="slot1" src="" alt="">
+            </div>
+            <div class="slot">
+                <img id="slot2" src="" alt="">
+            </div>
+            <div class="slot">
+                <img id="slot3" src="" alt="">
+            </div>
+            <div class="controls">
+                <label for="bet">Bet Amount:</label>
+                <input type="number" id="bet" min="1">
+                <button onclick="spin()">Spin</button>
+                <p id="money">Money: </p>
+                <a href="work.html">Go to Work</a>
+            </div>
         </div>
     </div>
     <script src="js/slots.js"></script>
