@@ -43,6 +43,8 @@ function spin() {
             totalWinnings += count * betAmount * 1.5; // 1.5x multiplier for each 'bar'
         } else if (texture === 'cherry') {
             totalWinnings += count * betAmount * 1.25; // 1.25x multiplier for each 'cherry'
+        } else {
+            totalWinnings += count * betAmount * 1; // 1.25x multiplier for nothing
         }
     });
 
