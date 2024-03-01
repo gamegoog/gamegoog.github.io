@@ -50,7 +50,7 @@ function spin() {
     }
 
     if (totalWinnings > betAmount) {
-        money += totalWinnings - betAmount; // Add the net winnings to the money balance
+        money += totalWinnings; // Add the total winnings (including the original bet amount) to the money balance
     } else {
         money -= betAmount; // Deduct the bet amount if there is no winning combination
     }
@@ -58,6 +58,7 @@ function spin() {
     updateMoney();
     localStorage.setItem('money', money);
 }
+
 
 
     window.spin = spin; // Expose spin function to global scope
