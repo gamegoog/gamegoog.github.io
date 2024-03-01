@@ -38,3 +38,21 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
+.slot-machine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.slot {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+.slot img {
+    width: 100px;
+}
