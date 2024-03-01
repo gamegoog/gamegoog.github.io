@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const textures = ['cherry', 'lemon', 'orange', 'plum', 'bell', 'bar', 'bar', 'bar', 'bar', 'bar']; // Adjust probabilities
+    const textures = ['cherry', 'lemon', 'orange', 'plum', 'bell', 'bar', 'bar', 'bar', 'bar']; // Adjust probabilities
     const moneyDisplay = document.getElementById('money');
     const betInput = document.getElementById('bet');
     const slotImages = [
