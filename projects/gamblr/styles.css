@@ -1,0 +1,26 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#slot-container {
+    display: flex;
+    justify-content: center;
+}
+
+#slot-container div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 0 10px;
+    background-size: cover;
+}
+
+#controls {
+    margin-top: 20px;
+}
+
+#result {
+    margin-top: 10px;
+    font-weight: bold;
+}
