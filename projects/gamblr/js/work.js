@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     workButton.addEventListener('click', work);
 
     function work() {
-        money = parseInt(localStorage.getItem('money')) + 1; // Add 1 to the value stored in localStorage
+        money = parseInt(localStorage.getItem('money')) + 0.7; // Add 1 to the value stored in localStorage
         moneyDisplay.textContent = money;
         localStorage.setItem('money', money);
     }
