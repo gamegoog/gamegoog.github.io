@@ -1,5 +1,19 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 30px;
 }
 
 .slot-machine {
@@ -13,6 +27,7 @@ body {
 .slot {
     display: inline-block;
     margin: 0 10px;
+    vertical-align: middle;
 }
 
 .slot img {
@@ -25,12 +40,16 @@ body {
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
 }
