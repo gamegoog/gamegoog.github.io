@@ -43,16 +43,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function checkWin(results) {
-        // Simulate 50/50 chance of winning
-        const randomChance = Math.random();
-        if (randomChance < 0.5) {
-            resultDisplay.textContent = "You won!";
-            money += betAmount * 2 * slotContainers.length; // Double the bet amount as winnings for each slot
-        } else {
-            resultDisplay.textContent = "You lost!";
-        }
-        moneyDisplay.textContent = money;
-        localStorage.setItem('money', money);
+function checkWin(results) {
+    const uniqueResults = new Set(results);
+    const matchingCount = results.filter(result => result === results[0]).length;
+
+    // Calculate winnings based on matching count
+    const winnings = betAmount * matchingCount;
+
+    if (matchingCount === 3) {
+        resultDisplay.textContent = "You won!";
+        money += winnings;
+    } else {
+        resultDisplay.textContent = "You lost!";
     }
+    moneyDisplay.textContent = money;
+    localStorage.setItem('money', money);
+}
+
 });
