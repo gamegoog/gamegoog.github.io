@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateMoney();
 
     function updateMoney() {
-        moneyDisplay.textContent = '$' + money;
+        moneyDisplay.textContent = 'Money: $' + money;
     }
 
     function getRandomTexture() {
@@ -32,20 +32,25 @@ document.addEventListener('DOMContentLoaded', () => {
             slotImages[i].src = `textures/${result[i]}.png`;
         }
 
-        if (result[0] === result[1] && result[1] === result[2]) {
-            if (result[0] === 'bar') {
-                money += betAmount * 5; // Increase payout for three 'bar' textures
-            } else {
-                money += betAmount * 2; // Normal payout for other textures
-            }
-        } else if (result.includes('cherry') && result.filter(texture => texture === 'cherry').length === 2) {
-            money += betAmount * 1.5; // Payout for two 'cherry' textures
-        } else {
-            money -= betAmount; // Loss if no winning combination
-        }
+        let winAmount = calculateWinAmount(result, betAmount);
+        money += winAmount - betAmount;
 
         updateMoney();
         localStorage.setItem('money', money);
+    }
+
+    function calculateWinAmount(result, betAmount) {
+        const uniqueTextures = new Set(result);
+        if (uniqueTextures.size === 1) {
+            if (result[0] === 'bar') {
+                return betAmount * 2;
+            } else {
+                return betAmount * 3;
+            }
+        } else if (uniqueTextures.size === 2 && uniqueTextures.has('cherry')) {
+            return betAmount * 1.5;
+        }
+        return 0;
     }
 
     window.spin = spin; // Expose spin function to global scope
