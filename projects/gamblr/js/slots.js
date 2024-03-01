@@ -32,25 +32,22 @@ function spin() {
         slotImages[i].src = `textures/${result[i]}.png`;
     }
 
-    const uniqueTextures = new Set(result);
-    let winMultiplier = 1; // Default multiplier for non-winning spins
-    if (uniqueTextures.size === 1) {
-        if (result[0] === 'bar') {
-            winMultiplier = 2; // Double the bet amount if all slots show 'bar'
-        } else {
-            winMultiplier = 3; // Triple the bet amount for any other winning combination
-        }
-    } else if (uniqueTextures.size === 2 && uniqueTextures.has('cherry')) {
-        winMultiplier = 1.5; // Increase money by 1.5 times the bet amount for two 'cherry' slots
-    }
+    const counts = {};
+    result.forEach(texture => {
+        counts[texture] = (counts[texture] || 0) + 1;
+    });
 
-    let totalWinnings = betAmount * winMultiplier;
-    if (uniqueTextures.size > 1) {
-        totalWinnings += betAmount; // Add one more to the bet amount if there's more than one winning texture
-    }
+    let totalWinnings = 0;
+    Object.entries(counts).forEach(([texture, count]) => {
+        if (texture === 'bar') {
+            totalWinnings += count * betAmount * 1.5; // 1.5x multiplier for each 'bar'
+        } else if (texture === 'cherry') {
+            totalWinnings += count * betAmount * 1.25; // 1.25x multiplier for each 'cherry'
+        }
+    });
 
     if (totalWinnings > betAmount) {
-        money += totalWinnings; // Add the total winnings (including the original bet amount) to the money balance
+        money += totalWinnings - betAmount; // Add the net winnings to the money balance
     } else {
         money -= betAmount; // Deduct the bet amount if there is no winning combination
     }
@@ -58,6 +55,7 @@ function spin() {
     updateMoney();
     localStorage.setItem('money', money);
 }
+
 
 
 
