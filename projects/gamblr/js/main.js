@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateSlots(results) {
         slotContainers.forEach((slot, index) => {
-            slot.style.backgroundImage = `url(textures/${results[index]}.png)`;
+            slot.style.backgroundImage = `url(/projects/gamblr/textures/${results[index]}.png)`;
         });
     }
 
