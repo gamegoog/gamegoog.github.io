@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const textures = ['cherry', 'lemon', 'orange', 'plum', 'bell', 'bar', 'bar', 'bar', 'bar', 'bar'];
+    const textures = ['cherry', 'lemon', 'orange', 'plum', 'bell', 'bar', 'bar', 'bar', 'bar', 'bar']; // Adjust probabilities
     const moneyDisplay = document.getElementById('money');
     const betInput = document.getElementById('bet');
     const slotImages = [
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('slot2'),
         document.getElementById('slot3')
     ];
-    let money = parseInt(localStorage.getItem('money')) || 100;
+    let money = parseInt(localStorage.getItem('money')) || 100; // Load existing money or set default to 100
 
     updateMoney();
 
