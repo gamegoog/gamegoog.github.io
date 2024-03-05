@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freddy Faz-Ass</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Freddy Faz-Ass</h1>
+    <p>Press <kbd>E</kbd> to wipe your Faz-Ass!</p>
+    <p>Current Cash: <span id="cash">0</span></p>
+    <p>Enter your bet amount: <input type="number" id="betAmount" min="1" step="1"></p>
+    <button id="wipeButton">Wipe!</button>
+    <p id="result"></p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Retrieve cash from localStorage or initialize to 0
+            let cash = parseInt(localStorage.getItem("cash")) || 0;
+            document.getElementById("cash").textContent = cash;
+
+            document.getElementById("wipeButton").addEventListener("click", function() {
+                let betAmount = parseInt(document.getElementById("betAmount").value);
+                if (isNaN(betAmount) || betAmount <= 0) {
+                    alert("Please enter a valid bet amount.");
+                    return;
+                }
+
+                if (betAmount > cash) {
+                    alert("You don't have enough cash to place this bet.");
+                    return;
+                }
+
+                // Simulate wiping with a 10% chance of getting poop on fingers
+                if (Math.random() <= 0.1) {
+                    cash -= betAmount;
+                    localStorage.setItem("cash", cash);
+                    document.getElementById("cash").textContent = cash;
+                    document.getElementById("result").textContent = "Ew! You got poop on your fingers!";
+                } else {
+                    cash += betAmount;
+                    localStorage.setItem("cash", cash);
+                    document.getElementById("cash").textContent = cash;
+                    document.getElementById("result").textContent = "Phew! The wipe was great!";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
