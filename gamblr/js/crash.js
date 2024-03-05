@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', initialize);
 
 if (SITE_DISABLED == 1) {
   alert("As of right now crash is not working. Will fix by tommorow. Sorry!\nFor now, heres a funny game.");
-  window.location.href = "/gamblr/games/fazwipe";
+  window.location.href = "/gamblr/games/fazwipe/";
 }
 
 function initialize() {
