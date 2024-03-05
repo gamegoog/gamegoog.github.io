@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // JavaScript code to set the title to a random word
+        function setRandomTitle() {
+            var words = ["Apple", "Banana", "Orange", "Grape", "Pineapple", "Watermelon", "Strawberry"];
+            var randomIndex = Math.floor(Math.random() * words.length);
+            document.title = words[randomIndex];
+        }
+
+        // Function to redirect to another page of the same URL in a new tab
+        function redirectToSamePageInNewTab() {
+            window.open(window.location.href, '_blank');
+        }
+
+        // Call the functions when the page loads
+        window.onload = function() {
+            setRandomTitle();
+            redirectToSamePageInNewTab();
+        }
+    </script>
+</head>
+<body>
+    <p>Please wait while you are being redirected...</p>
+</body>
+</html>
