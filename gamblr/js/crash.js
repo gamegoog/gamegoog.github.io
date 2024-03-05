@@ -1,10 +1,16 @@
+const SITE_DISABLED = 1;
 const CRASH_CHANCE = 0.4999998;
 const ROCKET_SPEED = 2000; // ms
-const RESPAWN_SPEED = 840 // ms
-const ERROR_AWARD = 5.8 // The amount of times cash is multiplied if the cash is below the bet amount
+const RESPAWN_SPEED = 840; // ms
+const ERROR_AWARD = 5.8; // The amount of times cash is multiplied if the cash is below the bet amount
 
 
 document.addEventListener('DOMContentLoaded', initialize);
+
+if (SITE_DISABLED == 1) {
+  alert("As of right now crash is not working. Will fix by tommorow. Sorry!");
+  window.location.refresh();
+}
 
 function initialize() {
   const rocket = document.getElementById('rocket');
@@ -80,7 +86,6 @@ function placeBet() {
       setTimeout(resetRocket, 1000);
       localStorage.setItem('cash', (cashValue - betAmount).toFixed(2));
       updateCashDisplay();
-      
     } else {
       const randomMultiplier = (Math.random() * 3) + Math.random();
       const wonAmount = betAmount * randomMultiplier;
@@ -103,7 +108,6 @@ function placeBet() {
     }
   }, ROCKET_SPEED);
 }
-
 
 function displayResult(message) {
   document.getElementById('result').textContent = message;
