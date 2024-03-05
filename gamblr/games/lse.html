@@ -247,7 +247,7 @@
         document.getElementById("pageTitle").innerText = "Local Storage";
         displayKeyValuePairs();
       } else if (localStorage.getItem("banned") >= 2) {
-        document.body.innerHTML = `<div style="text-align: center; margin-top: 20vh;"><h1>Access Denied</h1><p> The page you're looking for is being worked on or you simply do not have access to it.</p></div>`;
+        document.body.innerHTML = `<div style="text-align: center; margin-top: 20vh;"><h1>Access Denied</h1><p> The page you're looking for is either nonexistant, being worked on, or you simply do not have access to it.</p></div>`;
         localStorage.setItem("authenticated", "false");
       }
     }
