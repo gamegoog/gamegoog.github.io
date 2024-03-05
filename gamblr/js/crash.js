@@ -76,31 +76,26 @@ function placeBet() {
   rocket.style.transition = 'bottom 2s ease-in-out, left 2s ease-in-out';
   rocket.style.bottom = newAscent + 'px';
   rocket.style.left = newForward + 'px';
-  displayResult(`🚀 ...`);
-  const dr = `🌑 The rocket made it. You won $${actualWonAmount.toLocaleString()}!`
+
   setTimeout(() => {
     if (crashChance < CRASH_CHANCE) {
       const lostAmount = betAmount;
-      displayResult(`The rocket exploded. You lost $${lostAmount.toLocaleString()}!`);
-      rocket.style.backgroundImage = "url('/gamblr/images/boom.png')";
+      displayResult(`The rocket crashed! You lost $${lostAmount.toLocaleString()}`);
+      rocket.style.backgroundImage = "url('https://emojicdn.elk.sh/💥')";
       setTimeout(resetRocket, 1000);
       localStorage.setItem('cash', (cashValue - betAmount).toFixed(2));
       updateCashDisplay();
     } else {
-      const randomMultiplier = (Math.random() * 3) + Math.random();
+      const randomMultiplier = (Math.random() * 3) + 1.5;
       const wonAmount = betAmount * randomMultiplier;
       const actualWonAmount = wonAmount - betAmount;
+
       if (actualWonAmount < (betAmount + 0.5)) {
-        const wonAmount = betAmount * ERROR_AWARD;
-        const actualWonAmount = wonAmount - betAmount;
-        displayResult(dr)
-        setTimeout(resetRocket, 480);
-        localStorage.setItem('cash', (cashValue + actualWonAmount).toFixed(2));
-        updateCashDisplay();
+        alert("Somehow the amount you bet was less than the actual amount you won.\nThis shouldn't happen, so we're reloading the page before it happens.\nWe're actively working on this issue. Sorry for the inconvenience.");
+        window.location.reload();
       } else {
-        const wonAmount = betAmount * randomMultiplier;
-        const actualWonAmount = wonAmount - betAmount;
-        displayResult(dr);
+
+        displayResult(`The rocket made it! You won $${actualWonAmount.toLocaleString()}`);
         setTimeout(resetRocket, 480);
         localStorage.setItem('cash', (cashValue + actualWonAmount).toFixed(2));
         updateCashDisplay();
