@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', initialize);
 
 if (SITE_DISABLED == 1) {
   alert("As of right now crash is not working. Will fix by tommorow. Sorry!");
-  window.location.reload();
+  window.location.href = "/gamblr";
 }
 
 function initialize() {
