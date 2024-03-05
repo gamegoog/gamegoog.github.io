@@ -8,8 +8,8 @@ const ERROR_AWARD = 5.8; // The amount of times cash is multiplied if the cash i
 document.addEventListener('DOMContentLoaded', initialize);
 
 if (SITE_DISABLED == 1) {
-  alert("As of right now crash is not working. Will fix by tommorow. Sorry!");
-  window.location.href = "/gamblr/";
+  alert("As of right now crash is not working. Will fix by tommorow. Sorry!\nFor now, heres a funny game.");
+  window.location.href = "/gamblr/games/fazwipe";
 }
 
 function initialize() {
