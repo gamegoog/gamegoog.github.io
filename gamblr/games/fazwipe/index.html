@@ -1,36 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAMBLR - FazWipe</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column; /* Added */
+    }
 
-        #game-container {
-            text-align: center;
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 90%;
-            margin: auto;
-        }
+    #game-container {
+        text-align: center;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 90%;
+        margin: auto;
+        display: flex; /* Added */
+        flex-direction: column; /* Added */
+        align-items: center; /* Added */
+    }
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
 
         .bet-input {
             padding: 10px;
@@ -72,6 +74,25 @@
             font-weight: bold;
             margin-top: 20px;
         }
+	    
+    	footer {
+      	    text-align: center;
+    	    margin-top: auto;
+   	    font-size: 14px;
+  	    color: #666;
+  	    padding: 20px 0;
+            width: 100%;
+  	}
+
+ 	footer a {
+ 	    color: #337ab7; 
+	    text-decoration: none;
+	}
+
+	footer a:hover {
+	    text-decoration: underline; 
+	}
+	    
     </style>
 </head>
 <body>
@@ -85,13 +106,19 @@
         </div>
         <p id="result"></p>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        Done wiping your ass? <a href="/gamblr/">Go home!</a>
+    </footer>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Retrieve cash from localStorage or initialize to 0
             let cash = parseInt(localStorage.getItem("cash")) || 0;
-            	document.getElementById("cash").textContent = cash;
-		document.getElementById("result").textContent = "Wipe your Faz-Ass for cash!";
-          	document.getElementById("wipeButton").addEventListener("click", function() {
+            document.getElementById("cash").textContent = cash;
+            document.getElementById("result").textContent = "Wipe your Faz-Ass for cash!";
+            document.getElementById("wipeButton").addEventListener("click", function() {
                 let betAmount = parseInt(document.getElementById("betAmount").value);
                 if (isNaN(betAmount) || betAmount <= 0) {
                     document.getElementById("result").textContent = "Enter a valid bet amount!";
@@ -111,16 +138,16 @@
                 setTimeout(function() {
                     if (Math.random() <= 0.5) {
                         if (Math.random() <= 0.3) {
-			                      crustloss = ( betAmount * 1.5 );
-                            loss = (cash - crustloss);
-			                      rich = (cash - loss);
-			                      broke = (cash - betAmount);
+                            let crustloss = (betAmount * 1.5);
+                            let loss = (cash - crustloss);
+                            let rich = (cash - loss);
+                            let broke = (cash - betAmount);
                             if (cash >= loss) {
-                            localStorage.setItem("cash", rich);
-			                      cash = rich
+                                localStorage.setItem("cash", rich);
+                                cash = rich;
                             } else {
-                            localStorage.setItem("cash", broke);
-			                      cash = broke
+                                localStorage.setItem("cash", broke);
+                                cash = broke;
                             }
                             document.getElementById("cash").textContent = cash;
                             document.getElementById("result").textContent = "It crusted!";
@@ -142,5 +169,5 @@
             });
         });
     </script>
-</body>
-</html>
+
+</body></html>
