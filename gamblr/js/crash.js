@@ -76,11 +76,12 @@ function placeBet() {
   rocket.style.transition = 'bottom 2s ease-in-out, left 2s ease-in-out';
   rocket.style.bottom = newAscent + 'px';
   rocket.style.left = newForward + 'px';
-
+  displayResult("🚀 ...");
   setTimeout(() => {
     if (crashChance < CRASH_CHANCE) {
       const lostAmount = betAmount;
-      displayResult(`The rocket exploded. You lost $${lostAmount.toLocaleString()}!`);
+      const dr = "🌑 The rocket made it! You won" + actualWonAmount + "!";
+      displayResult(`💥 The rocket exploded. You lost $${lostAmount.toLocaleString()}!`);
       rocket.style.backgroundImage = "url('/gamblr/images/boom.png')";
       setTimeout(resetRocket, 1000);
       localStorage.setItem('cash', (cashValue - betAmount).toFixed(2));
