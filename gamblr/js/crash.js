@@ -19,6 +19,10 @@ function initialize() {
   document.getElementById('bet-button').addEventListener('click', placeBet);
 }
 
+function randomIntFromInterval(min, max) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 function updateCashDisplay() {
   const cashValue = parseFloat(localStorage.getItem('cash')) || 0;
   var formattedCash = parseFloat(cashValue).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
@@ -80,7 +84,7 @@ function placeBet() {
   displayResult("🚀 ...");
   setTimeout(() => {
     const lostAmount = betAmount;
-    const randomMultiplier = Math.random() * 2 + 1;
+    const randomMultiplier = randomIntFromInterval(1,3)
     const wonAmount = betAmount * randomMultiplier;
     const actualWonAmount = wonAmount - betAmount;
     dr = `🌑 The rocket made it! You won $${actualWonAmount.toLocaleString()}!`;
