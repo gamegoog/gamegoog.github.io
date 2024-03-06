@@ -31,9 +31,9 @@
 
 
     if (workgrade) {
-      var jobTile = document.querySelector('.tile:nth-child(2) .name');
-      var jobEmoji = document.querySelector('.tile:nth-child(2) .emoji');
-      var jobHref = document.querySelector('.tile:nth-child(2) a');
+      var jobTile = document.querySelector('.tile:nth-child(3) .name');
+      var jobEmoji = document.querySelector('.tile:nth-child(3) .emoji');
+      var jobHref = document.querySelector('.tile:nth-child(3) a');
 
       switch (parseInt(workgrade)) {
         case -1:
@@ -108,6 +108,12 @@
   <h1>GAMBLR</h1>
   <div class="cash-display">$</div>
   <div class="tile-container">
+    <div class="tile">
+      <a href="/gamblr/fanart.html">
+        <div class="emoji">🖼️</div>
+        <div class="name">Fanart</div>
+      </a>
+    </div>
     <div class="tile">
       <a href="upg.html">
         <div class="emoji">🏬</div>
