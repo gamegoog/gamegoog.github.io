@@ -226,14 +226,15 @@
         document.getElementById("contentContainer").style.display = "block";
         document.getElementById("pageTitle").innerText = "Local Storage";
         displayKeyValuePairs();
-      } else if (banned == 2) {
-        localStorage.setItem("banned", 2);
-        alert("I don't wanna play with you anymore.\n\n\n(you're banned buddy)");
-        window.location.reload();
       } else {
         banned++;
         localStorage.setItem("banned", banned);
-        alert("Incorrect password. You have " + (2 - banned) + " more attempt.");
+        if (banned == 2) { // if they are banned
+          alert("I don't wanna play with you anymore.\n\n\n(you're banned buddy)"); // ban them
+          window.location.reload(); // reload the page
+        } else {
+          alert("Incorrect password. You have " + (2 - banned) + " more attempt."); // or if they arent do this
+        }
       }
     }
 
