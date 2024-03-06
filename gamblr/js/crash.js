@@ -80,7 +80,7 @@ function placeBet() {
   displayResult("🚀 ...");
   setTimeout(() => {
     const lostAmount = betAmount;
-    const randomMultiplier = betAmount + (Math.random() * (randomMultiplier - betAmount));
+    const randomMultiplier = Math.random() * 2 + 1;
     const wonAmount = betAmount * randomMultiplier;
     const actualWonAmount = wonAmount - betAmount;
     dr = "🌑 The rocket made it! You won" + actualWonAmount + "!";
@@ -94,7 +94,7 @@ function placeBet() {
       
     } else {
       if (actualWonAmount < (betAmount + 0.5)) {
-        const wonAmount = betAmount * randomMultiplier;
+        const wonAmount = betAmount * ERROR_AWARD;
         const actualWonAmount = wonAmount - betAmount;
         displayResult(dr)
         setTimeout(resetRocket, 480);
