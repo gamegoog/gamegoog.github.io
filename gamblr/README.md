@@ -15,8 +15,10 @@ Experience the adrenaline rush with our Crash game! Ride the highs and lows as y
 ## How to Get Started
 
 1. Visit our website: [GAMBLR](https://https://unfiltering.github.io/gamblr/)
-2. Work hard in the word document processing for moolah
-3. Choose your game: Slots or Crash.
-4. Place your bets and let the excitement begin!
+2. Get a job
+3. Work hard in the word document processing for moolah
+4. Choose your game: Slots or Crash.
+5. Place your bets and let the excitement begin!
+6. (optional) Keep upgrading your job, (not optional) gamble more.
 
 Get ready to turn your boring word document sessions into thrilling gambling sessions with GAMBLR!
