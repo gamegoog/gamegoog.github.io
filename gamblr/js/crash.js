@@ -47,6 +47,7 @@ function resetRocket() {
 function placeBet() {
   const betAmount = parseFloat(document.getElementById('bet-amount').value);
   const cashValue = parseFloat(localStorage.getItem('cash')) || 0;
+  dr = "🌑 The rocket made it! You won" + actualWonAmount + "!";
   document.getElementById('bet-button').disabled = true;
   if (isNaN(betAmount) || betAmount <= 0 || betAmount > cashValue) {
     displayResult('Invalid bet or insufficient funds!');
@@ -80,7 +81,6 @@ function placeBet() {
   setTimeout(() => {
     if (crashChance < CRASH_CHANCE) {
       const lostAmount = betAmount;
-      const dr = "🌑 The rocket made it! You won" + actualWonAmount + "!";
       displayResult(`💥 The rocket exploded. You lost $${lostAmount.toLocaleString()}!`);
       rocket.style.backgroundImage = "url('/gamblr/images/boom.png')";
       setTimeout(resetRocket, 1000);
