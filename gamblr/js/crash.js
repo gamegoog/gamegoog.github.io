@@ -93,12 +93,10 @@ function placeBet() {
       updateCashDisplay();
       
     } else {
-      if (actualWonAmount < (betAmount + 0.5)) {
-        const wonAmount = betAmount * ERROR_AWARD;
-        const actualWonAmount = wonAmount - betAmount;
-        displayResult(dr)
+      if (actualWonAmount < (betAmount + 1)) {
+        displayResult(dr);
         setTimeout(resetRocket, 480);
-        localStorage.setItem('cash', (cashValue + actualWonAmount).toFixed(2));
+        localStorage.setItem('cash', (cashValue + (actualWonAmount * 5)).toFixed(2));
         updateCashDisplay();
       } else {
         displayResult(dr);
