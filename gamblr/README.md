@@ -1,4 +1,4 @@
-![GAMBLR Icon](/icon.png)
+![GAMBLR Icon](/gamblr/icon.png)
 
 # Welcome to GAMBLR!
 
