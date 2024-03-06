@@ -83,7 +83,7 @@ function placeBet() {
     const randomMultiplier = Math.random() * 2 + 1;
     const wonAmount = betAmount * randomMultiplier;
     const actualWonAmount = wonAmount - betAmount;
-    dr = "🌑 The rocket made it! You won" + actualWonAmount + "!";
+    dr = `🌑 The rocket made it! You won $${actualWonAmount.toLocaleString()}!`;
     
     if (crashChance < CRASH_CHANCE) {
       displayResult(`💥 The rocket exploded. You lost $${lostAmount.toLocaleString()}!`);
