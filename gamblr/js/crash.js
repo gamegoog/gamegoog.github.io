@@ -47,7 +47,7 @@ function resetRocket() {
 function placeBet() {
   const betAmount = parseFloat(document.getElementById('bet-amount').value);
   const cashValue = parseFloat(localStorage.getItem('cash')) || 0;
-  dr = "🌑 The rocket made it! You won" + actualWonAmount + "!";
+  
   document.getElementById('bet-button').disabled = true;
   if (isNaN(betAmount) || betAmount <= 0 || betAmount > cashValue) {
     displayResult('Invalid bet or insufficient funds!');
@@ -79,8 +79,13 @@ function placeBet() {
   rocket.style.left = newForward + 'px';
   displayResult("🚀 ...");
   setTimeout(() => {
+    const lostAmount = betAmount;
+    const randomMultiplier = (Math.random() * 3) + Math.random();
+    const wonAmount = betAmount * randomMultiplier;
+    const actualWonAmount = wonAmount - betAmount;
+    dr = "🌑 The rocket made it! You won" + actualWonAmount + "!";
+    
     if (crashChance < CRASH_CHANCE) {
-      const lostAmount = betAmount;
       displayResult(`💥 The rocket exploded. You lost $${lostAmount.toLocaleString()}!`);
       rocket.style.backgroundImage = "url('/gamblr/images/boom.png')";
       setTimeout(resetRocket, 1000);
@@ -88,19 +93,13 @@ function placeBet() {
       updateCashDisplay();
       
     } else {
-      const randomMultiplier = (Math.random() * 3) + Math.random();
-      const wonAmount = betAmount * randomMultiplier;
-      const actualWonAmount = wonAmount - betAmount;
       if (actualWonAmount < (betAmount + 0.5)) {
         const wonAmount = betAmount * ERROR_AWARD;
-        const actualWonAmount = wonAmount - betAmount;
         displayResult(dr)
         setTimeout(resetRocket, 480);
         localStorage.setItem('cash', (cashValue + actualWonAmount).toFixed(2));
         updateCashDisplay();
       } else {
-        const wonAmount = betAmount * randomMultiplier;
-        const actualWonAmount = wonAmount - betAmount;
         displayResult(dr);
         setTimeout(resetRocket, 480);
         localStorage.setItem('cash', (cashValue + actualWonAmount).toFixed(2));
