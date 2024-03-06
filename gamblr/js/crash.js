@@ -98,9 +98,11 @@ function placeBet() {
       
     } else {
       if (actualWonAmount < (betAmount + 1)) {
+        const error = betAmount * 3.8
+        const actualError - error - betAmount
         displayResult(dr);
         setTimeout(resetRocket, 480);
-        localStorage.setItem('cash', (cashValue + (actualWonAmount * 5)).toFixed(2));
+        localStorage.setItem('cash', (cashValue + actualError).toFixed(2));
         updateCashDisplay();
       } else {
         displayResult(dr);
