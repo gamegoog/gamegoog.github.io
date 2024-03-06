@@ -111,63 +111,67 @@
     <footer>
         Done wiping your ass? <a href="/gamblr/">Go home!</a>
     </footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to format cash with commas
+        function formatCash(amount) {
+            return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Retrieve cash from localStorage or initialize to 0
-            let cash = parseInt(localStorage.getItem("cash")) || 0;
-            document.getElementById("cash").textContent = cash;
-            document.getElementById("result").textContent = "Wipe your Faz-Ass for cash!";
-            document.getElementById("wipeButton").addEventListener("click", function() {
-                let betAmount = parseInt(document.getElementById("betAmount").value);
-                if (isNaN(betAmount) || betAmount <= 0) {
-                    document.getElementById("result").textContent = "Enter a valid bet amount!";
-                    return;
-                }
+        // Retrieve cash from localStorage or initialize to 0
+        let cash = parseInt(localStorage.getItem("cash")) || 0;
+        document.getElementById("cash").textContent = formatCash(cash);
+        document.getElementById("result").textContent = "Wipe your Faz-Ass for cash!";
+        document.getElementById("wipeButton").addEventListener("click", function() {
+            let betAmount = parseInt(document.getElementById("betAmount").value);
+            if (isNaN(betAmount) || betAmount <= 0) {
+                document.getElementById("result").textContent = "Enter a valid bet amount!";
+                return;
+            }
 
-                if (betAmount > cash) {
-                    document.getElementById("result").textContent = "Insufficient funds.";
-                    return;
-                }
+            if (betAmount > cash) {
+                document.getElementById("result").textContent = "Insufficient funds.";
+                return;
+            }
 
-                // Disable the button and show "Wiping" message
-                document.getElementById("wipeButton").disabled = true;
-                document.getElementById("result").textContent = "Wiping...";
+            // Disable the button and show "Wiping" message
+            document.getElementById("wipeButton").disabled = true;
+            document.getElementById("result").textContent = "Wiping...";
 
-                // Simulate wiping with a 10% chance of getting poop on fingers
-                setTimeout(function() {
-                    if (Math.random() <= 0.5) {
-                        if (Math.random() <= 0.3) {
-                            let crustloss = (betAmount * 1.5);
-                            let loss = (cash - crustloss);
-                            let rich = (cash - loss);
-                            let broke = (cash - betAmount);
-                            if (cash >= loss) {
-                                localStorage.setItem("cash", rich);
-                                cash = rich;
-                            } else {
-                                localStorage.setItem("cash", broke);
-                                cash = broke;
-                            }
-                            document.getElementById("cash").textContent = cash;
-                            document.getElementById("result").textContent = "It crusted!";
+            // Simulate wiping with a 10% chance of getting poop on fingers
+            setTimeout(function() {
+                if (Math.random() <= 0.5) {
+                    if (Math.random() <= 0.3) {
+                        let crustloss = (betAmount * 1.5);
+                        let loss = (cash - crustloss);
+                        let rich = (cash - loss);
+                        let broke = (cash - betAmount);
+                        if (cash >= loss) {
+                            localStorage.setItem("cash", rich);
+                            cash = rich;
                         } else {
-                            cash -= betAmount;
-                            localStorage.setItem("cash", cash);
-                            document.getElementById("cash").textContent = cash;
-                            document.getElementById("result").textContent = "You got poop on your fingers."; // "Haha, poop fingers! 🫵😂"
+                            localStorage.setItem("cash", broke);
+                            cash = broke;
                         }
+                        document.getElementById("cash").textContent = formatCash(cash);
+                        document.getElementById("result").textContent = "It crusted!";
                     } else {
-                        cash += betAmount;
+                        cash -= betAmount;
                         localStorage.setItem("cash", cash);
-                        document.getElementById("cash").textContent = cash;
-                        document.getElementById("result").textContent = "Your Faz-Ass is clean.";
+                        document.getElementById("cash").textContent = formatCash(cash);
+                        document.getElementById("result").textContent = "You got poop on your fingers."; // "Haha, poop fingers! 🫵😂"
                     }
-                    // Re-enable the button after the wipe is complete
-                    document.getElementById("wipeButton").disabled = false;
-                }, Math.random() <= 0.1 ? 3000 : 2000); // 10% chance of a 3-second delay, else 2 seconds
-            });
+                } else {
+                    cash += betAmount;
+                    localStorage.setItem("cash", cash);
+                    document.getElementById("cash").textContent = formatCash(cash);
+                    document.getElementById("result").textContent = "Your Faz-Ass is clean.";
+                }
+                // Re-enable the button after the wipe is complete
+                document.getElementById("wipeButton").disabled = false;
+            }, Math.random() <= 0.1 ? 3000 : 2000); // 10% chance of a 3-second delay, else 2 seconds
         });
-    </script>
+    });
+</script>
 
 </body></html>
