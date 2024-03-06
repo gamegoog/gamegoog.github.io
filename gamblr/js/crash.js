@@ -85,8 +85,6 @@ function placeBet() {
   setTimeout(() => {
     const lostAmount = betAmount;
     const randomMultiplier = randomIntFromInterval(1,3)
-    const wonAmount = betAmount * randomMultiplier;
-    const actualWonAmount = wonAmount - betAmount;
     dr = `🌑 The rocket made it! You won $${actualWonAmount.toLocaleString()}!`;
     
     if (crashChance < CRASH_CHANCE) {
@@ -98,13 +96,15 @@ function placeBet() {
       
     } else {
       if (actualWonAmount < (betAmount + 1)) {
-        const error = betAmount * 3.8;
-        const actualError = error - betAmount;
+        const wonAmount = betAmount * 5.2;
+        const actualWonAmount = wonAmount - betAmount;
         displayResult(dr);
         setTimeout(resetRocket, 480);
-        localStorage.setItem('cash', (cashValue + actualError).toFixed(2));
+        localStorage.setItem('cash', (cashValue + ).toFixed(2));
         updateCashDisplay();
       } else {
+        const wonAmount = betAmount * randomMultiplier;
+        const actualWonAmount = wonAmount - betAmount;
         displayResult(dr);
         setTimeout(resetRocket, 480);
         localStorage.setItem('cash', (cashValue + actualWonAmount).toFixed(2));
