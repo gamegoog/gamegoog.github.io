@@ -80,22 +80,27 @@ function placeBet() {
   setTimeout(() => {
     if (crashChance < CRASH_CHANCE) {
       const lostAmount = betAmount;
-      displayResult(`The rocket crashed! You lost $${lostAmount.toLocaleString()}`);
+      displayResult(`The rocket exploded. You lost $${lostAmount.toLocaleString()}!`);
       rocket.style.backgroundImage = "url('/gamblr/images/boom.png')";
       setTimeout(resetRocket, 1000);
       localStorage.setItem('cash', (cashValue - betAmount).toFixed(2));
       updateCashDisplay();
+      
     } else {
-      const randomMultiplier = (Math.random() * 3) + 1.5;
+      const randomMultiplier = (Math.random() * 3) + Math.random();
       const wonAmount = betAmount * randomMultiplier;
       const actualWonAmount = wonAmount - betAmount;
-
       if (actualWonAmount < (betAmount + 0.5)) {
-        alert("Somehow the amount you bet was less than the actual amount you won.\nThis shouldn't happen, so we're reloading the page before it happens.\nWe're actively working on this issue. Sorry for the inconvenience.");
-        window.location.reload();
+        const wonAmount = betAmount * ERROR_AWARD;
+        const actualWonAmount = wonAmount - betAmount;
+        displayResult(dr)
+        setTimeout(resetRocket, 480);
+        localStorage.setItem('cash', (cashValue + actualWonAmount).toFixed(2));
+        updateCashDisplay();
       } else {
-
-        displayResult(`The rocket made it! You won $${actualWonAmount.toLocaleString()}`);
+        const wonAmount = betAmount * randomMultiplier;
+        const actualWonAmount = wonAmount - betAmount;
+        displayResult(dr);
         setTimeout(resetRocket, 480);
         localStorage.setItem('cash', (cashValue + actualWonAmount).toFixed(2));
         updateCashDisplay();
