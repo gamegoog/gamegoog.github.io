@@ -81,7 +81,7 @@ function placeBet() {
     if (crashChance < CRASH_CHANCE) {
       const lostAmount = betAmount;
       displayResult(`The rocket crashed! You lost $${lostAmount.toLocaleString()}`);
-      rocket.style.backgroundImage = "url('https://emojicdn.elk.sh/💥')";
+      rocket.style.backgroundImage = "url('/gamblr/images/boom.png')";
       setTimeout(resetRocket, 1000);
       localStorage.setItem('cash', (cashValue - betAmount).toFixed(2));
       updateCashDisplay();
