@@ -100,7 +100,7 @@ function placeBet() {
         const actualWonAmount = wonAmount - betAmount;
         displayResult(dr);
         setTimeout(resetRocket, 480);
-        localStorage.setItem('cash', (cashValue + ).toFixed(2));
+        localStorage.setItem('cash', (cashValue + actualWonAmount).toFixed(2));
         updateCashDisplay();
       } else {
         const wonAmount = betAmount * randomMultiplier;
