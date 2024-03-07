@@ -4,11 +4,12 @@ const ROCKET_SPEED = 2000; // ms
 const RESPAWN_SPEED = 840; // ms
 const ERROR_AWARD = 5.8; // The amount of times cash is multiplied if the cash is below the bet amount
 
-
-document.addEventListener('DOMContentLoaded', initialize);
+document.addEventListener('DOMContentLoaded', () => {
+    initialize(); // Call initialize function when the DOM content is loaded
+});
 
 if (SITE_DISABLED == 1) {
-  alert("As of right now crash is not working. Will fix by tommorow. Sorry!\nFor now, heres a funny game.");
+  alert("As of right now crash is not working. Will fix by tommorow. Sorry!\nFor now, here's a funny game.");
   window.location.href = "/gamblr/games/fazwipe/";
 }
 
@@ -99,13 +100,13 @@ function placeBet() {
       cashValue -= betAmount; // Deduct bet amount from cash
     } else {
       const randomMultiplier = randomIntFromInterval(1, 3);
-      const wonAmount = betAmount * randomMultiplier;
-      actualWonAmount = wonAmount - betAmount;
+      let wonAmount = betAmount * randomMultiplier;
       
-      if (actualWonAmount < (betAmount + 0.5)) {
-        actualWonAmount = betAmount * ERROR_AWARD;
+      if (wonAmount < (betAmount + 0.5)) {
+        wonAmount *= ERROR_AWARD;
       }
 
+      actualWonAmount = wonAmount - betAmount;
       displayResult(`🌑 The rocket made it! You won $${actualWonAmount.toLocaleString()}!`);
       setTimeout(resetRocket, 480);
       cashValue += actualWonAmount; // Add winnings to cash
