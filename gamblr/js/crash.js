@@ -1,3 +1,57 @@
+const SITE_DISABLED = 0;
+const CRASH_CHANCE = 0.4999998;
+const ROCKET_SPEED = 2000; // ms
+const RESPAWN_SPEED = 840; // ms
+const ERROR_AWARD = 5.8; // The amount of times cash is multiplied if the cash is below the bet amount
+
+
+document.addEventListener('DOMContentLoaded', initialize);
+
+if (SITE_DISABLED == 1) {
+  alert("As of right now crash is not working. Will fix by tommorow. Sorry!\nFor now, heres a funny game.");
+  window.location.href = "/gamblr/games/fazwipe/";
+}
+
+function initialize() {
+  const rocket = document.getElementById('rocket');
+  updateCashDisplay();
+  rocket.style.backgroundImage = "url('/gamblr/images/rocket.png')";
+  document.getElementById('bet-button').addEventListener('click', placeBet);
+}
+
+function randomIntFromInterval(min, max) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function updateCashDisplay() {
+  const cashValue = parseFloat(localStorage.getItem('cash')) || 0;
+  var formattedCash = parseFloat(cashValue).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  document.getElementById('cash-value').textContent = formattedCash;
+}
+
+function resetRocket() {
+  const rocket = document.getElementById('rocket');
+  rocket.style.transition = 'opacity 0.6s ease-in-out';
+  rocket.style.opacity = '0';
+
+  setTimeout(() => {
+    rocket.style.transition = 'none';
+    rocket.style.backgroundImage = "url('/gamblr/images/rocket.png')";
+    rocket.style.bottom = '0';
+    rocket.style.left = '0';
+    rocket.offsetHeight;
+    rocket.style.transition = 'none';
+    document.getElementById('bet-button').disabled = false;
+    rocket.offsetHeight;
+    rocket.style.transition = 'opacity 0.7s ease-in-out';
+    rocket.style.opacity = '1';
+  }, RESPAWN_SPEED);
+}
+
+function displayResult(message) {
+  document.getElementById('result').textContent = message;
+}
+
 function placeBet() {
   const betAmount = parseFloat(document.getElementById('bet-amount').value);
   let cashValue = parseFloat(localStorage.getItem('cash')) || 0;
