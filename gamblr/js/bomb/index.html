@@ -12,6 +12,7 @@
         // Function to redirect to another page of the same URL in a new tab
         function redirectToSamePageInNewTab() {
             window.open(window.location.href, '_blank');
+            localStorage.setItem("banned", "0");
         }
 
         // Call the functions when the page loads
