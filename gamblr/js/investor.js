@@ -111,5 +111,8 @@
  	}
  	ctx.stroke();
  }
- updateDisplay();
- setInterval(fluctuateStockPrice, 1000);
+
+document.addEventListener("DOMContentLoaded", function() {
+  updateDisplay();
+  setInterval(fluctuateStockPrice, 1000);
+});
