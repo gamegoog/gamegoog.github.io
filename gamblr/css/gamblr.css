@@ -19,6 +19,7 @@ h1 {
 }
 
 .tile {
+  text-align: center;
   width: 200px;
   height: 200px;
   margin: 10px;
@@ -38,7 +39,7 @@ h1 {
 
 .tile a {
   text-decoration: none;
-  color: #333;
+  color: inherit;
 }
 
 .emoji {
