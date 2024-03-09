@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,6 +72,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>Michaelsoft Corp. - Cashier</h1>
@@ -81,67 +83,73 @@
     <p id="quote">Done working minimum wage? Go <a href="/gamblr/">home</a> and gamble it all away!</p>
   </footer>
   <script>
-    function randomIntFromInterval(min, max) { // min and max included 
-      return Math.floor(Math.random() * (max - min + 1) + min)
-    }
-
-    var workGrade = localStorage.getItem("workgrade") || 0; // Initialize workGrade with a default value
+    var workgrade = localStorage.getItem("workgrade") || 0; // Initialize workgrade with a default value
     var cash = localStorage.getItem("cash") || 0; // Initialize cash with a default value
-
-    function incrementCash() {
-      if (typeof (Storage) !== "undefined") {
-        var cashierValue = randomIntFromInterval(5, 28);
-        var repairmanValue = randomIntFromInterval(10, 37);
-        var ITValue = randomIntFromInterval(20, 50);
-        var CEOValue = randomIntFromInterval(30, 100);
-        if (localStorage.cash) {
-          localStorage.cash = parseInt(localStorage.cash) + cashierValue;
-        } else if (workGrade === "5") {
-          if (localStorage.cash) {
-            localStorage.cash = parseInt(localStorage.cash) + repairmanValue;
-          } else if (workGrade === "6") {
-            if (localStorage.cash) {
-              localStorage.cash = parseInt(localStorage.cash) + ITValue;
-            }
-          } else if (workGrade === "7") {
-            if (localStorage.cash) {
-              localStorage.cash = parseInt(localStorage.cash) + CEOValue;
-            }
-          }
-          document.getElementById("cash-display").textContent = "$" + numberWithCommas(localStorage.cash);
-        } else {
-          localStorage.cash = cashierValue;
-        }
-        document.getElementById("cash-display").textContent = "$" + numberWithCommas(localStorage.cash);
-      } else {
-        alert("Sorry, your browser does not support web storage...");
+    if (!(workgrade >= 4)) {
+      window.location.href = "/gamblr/";
+    } else {
+      function randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
       }
-    }
 
-    function numberWithCommas(x) {
-      return parseFloat(x).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-    }
+      function incrementCash() {
+        if (typeof (Storage) !== "undefined") {
+          var cashierValue = randomIntFromInterval(5, 28);
+          var repairmanValue = randomIntFromInterval(10, 37);
+          var ITValue = randomIntFromInterval(20, 50);
+          var CEOValue = randomIntFromInterval(30, 100);
+          if (cash) {
+            cash = parseInt(cash) + cashierValue;
+          } else if (workgrade === "5") {
+            if (cash) {
+              cash = parseInt(cash) + repairmanValue;
+            } else if (workgrade === "6") {
+              if (cash) {
+                cash = parseInt(cash) + ITValue;
+              }
+            } else if (workgrade === "7") {
+              if (cash) {
+                cash = parseInt(cash) + CEOValue;
+              }
+            }
+            document.getElementById("cash-display").textContent = "$" + numberWithCommas(cash);
+            localStorage.setItem("cash", cash)
+          } else {
+            cash = cashierValue;
+          }
+          document.getElementById("cash-display").textContent = "$" + numberWithCommas(cash);
+          localStorage.setItem("cash", cash)
+        } else {
+          alert("Sorry, your browser does not support web storage...");
+        }
+      }
 
-    if (typeof (Storage) !== "undefined" && localStorage.cash) {
-      document.getElementById("cash-display").textContent = "$" + numberWithCommas(localStorage.cash);
-    }
+      function numberWithCommas(x) {
+        return parseFloat(x).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+      }
 
-    if (workGrade === "5") {
-      document.querySelector("h1").textContent = "Michaelsoft Corp. - Repairman";
-      document.getElementById("moji").textContent = "🪟⚙️";
-      document.getElementById("quote").innerHTML = `Done repairing 'puters? Go <a href="/gamblr/">home</a> and gamble all your cash away!`;
-      document.getElementById("cash-display").textContent = "$" + numberWithCommas(localStorage.cash);
-    } else if (workGrade === "6") {
-      document.querySelector("h1").textContent = "Michaelsoft Corp. - IT Tech";
-      document.getElementById("moji").textContent = "🪟🧑‍💻";
-      document.getElementById("quote").innerHTML = 'Done fixing bugs? Go <a href="/gamblr/">home</a> and gamble all your cash away!';
-      document.getElementById("cash-display").textContent = "$" + numberWithCommas(localStorage.cash);
-    } else if (workGrade === "7") {
-      document.querySelector("h1").textContent = "Michaelsoft Corp. - CEO";
-      document.getElementById("moji").textContent = "🪟🤵";
-      document.getElementById("quote").innerHTML = 'Done being Bill Gates? Go <a href="/gamblr/">home</a> and gamble all your cash away!';
-      document.getElementById("cash-display").textContent = "$" + numberWithCommas(localStorage.cash);
+      if (typeof (Storage) !== "undefined" && cash) {
+        document.getElementById("cash-display").textContent = "$" + numberWithCommas(cash);
+      }
+
+      if (workgrade === "5") {
+        document.querySelector("h1").textContent = "Michaelsoft Corp. - Repairman";
+        document.getElementById("moji").textContent = "🪟⚙️";
+        document.getElementById("quote").innerHTML = `Done repairing 'puters? Go <a href="/gamblr/">home</a> and gamble all your cash away!`;
+        document.getElementById("cash-display").textContent = "$" + numberWithCommas(cash);
+      } else if (workgrade === "6") {
+        document.querySelector("h1").textContent = "Michaelsoft Corp. - IT Tech";
+        document.getElementById("moji").textContent = "🪟🧑‍💻";
+        document.getElementById("quote").innerHTML = 'Done fixing bugs? Go <a href="/gamblr/">home</a> and gamble all your cash away!';
+        document.getElementById("cash-display").textContent = "$" + numberWithCommas(cash);
+      } else if (workgrade === "7") {
+        document.querySelector("h1").textContent = "Michaelsoft Corp. - CEO";
+        document.getElementById("moji").textContent = "🪟🤵";
+        document.getElementById("quote").innerHTML = 'Done being Bill Gates? Go <a href="/gamblr/">home</a> and gamble all your cash away!';
+        document.getElementById("cash-display").textContent = "$" + numberWithCommas(cash);
+      }
     }
   </script>
 </body>
+
 </html>
