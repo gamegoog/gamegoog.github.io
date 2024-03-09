@@ -20,7 +20,9 @@
     var workgrade = localStorage.getItem('workgrade');
     var cash = localStorage.getItem('cash');
 
-
+    if (workgrade >= 3) {
+      document.getElementById('investor-tile').style.display = 'block';
+    }
 
     if (cash) {
       var formattedCash = parseFloat(cash).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
@@ -151,7 +153,7 @@
         <div class="name">Unknown</div>
       </a>
     </div>
-    <div class="tile">
+    <div class="tile" id="investor-tile" style="display: none;">
       <a href="games/investor/">
         <div class="emoji">📈</div>
         <div class="name">Invest</div>
