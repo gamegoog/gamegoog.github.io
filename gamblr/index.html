@@ -36,6 +36,16 @@
       var jobHref = document.querySelector('.tile:nth-child(3) a');
 
       switch (parseInt(workgrade)) {
+        case -3:
+          jobTile.textContent = "Faz-Wiper";
+          jobEmoji.textContent = "🎩🐻🧻";
+          jobHref.setAttribute('href', 'games/fazwipe/');
+          break;
+        case -2:
+          jobTile.textContent = "The Creator Divine";
+          jobEmoji.textContent = "😇🪽";
+          jobHref.setAttribute('href', 'games/lse.html');
+          break;
         case -1:
           jobTile.textContent = "(Get a job!) Hobo";
           jobEmoji.textContent = "🤒";
@@ -64,33 +74,23 @@
           break;
         case 4:
           jobTile.textContent = "Michaelsoft Corp.";
-          jobEmoji.textContent = "🪟";
+          jobEmoji.textContent = "💻";
           jobHref.setAttribute('href', 'jobs/michaelsoft.html');
           break;
         case 5:
           jobTile.textContent = "Michaelsoft Repairman";
-          jobEmoji.textContent = "🪟⚙️";
+          jobEmoji.textContent = "💻🛠️";
           jobHref.setAttribute('href', 'jobs/michaelsoft.html');
           break;
         case 6:
           jobTile.textContent = "Michaelsoft IT";
-          jobEmoji.textContent = "🪟🧑‍💻";
+          jobEmoji.textContent = "💻🪲";
           jobHref.setAttribute('href', 'jobs/michaelsoft.html');
           break;
         case 7:
           jobTile.textContent = "Michaelsoft CEO";
-          jobEmoji.textContent = "🪟🤵";
+          jobEmoji.textContent = "💻🤵";
           jobHref.setAttribute('href', 'jobs/michaelsoft.html');
-          break;
-        case 10:
-          jobTile.textContent = "The Creator Divine";
-          jobEmoji.textContent = "😇🪽";
-          jobHref.setAttribute('href', 'games/lse.html');
-          break;
-        case 11:
-          jobTile.textContent = "Faz-Wiper";
-          jobEmoji.textContent = "🎩🐻🧻";
-          jobHref.setAttribute('href', 'games/fazwipe/');
           break;
       }
     } else {
