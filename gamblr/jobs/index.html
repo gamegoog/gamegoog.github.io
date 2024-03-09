@@ -3,6 +3,12 @@
     if (localStorage.getItem('workgrade')) {
       var workGrade = parseInt(localStorage.getItem('workgrade'));
       switch (workGrade) {
+        case -3:
+          window.location.href = '/gamblr/games/fazwipe/';
+          break;
+        case -2:
+          window.location.href = '/gamblr/games/lse.html';
+          break;
         case -1:
           window.location.href = '/gamblr/upg.html';
           break;
@@ -18,8 +24,17 @@
         case 3:
           window.location.href = 'amazong.html';
           break;
-        case 10:
-          window.location.href = '/gamblr/games/lse.html';
+        case 4:
+          window.location.href = 'michaelsoft.html';
+          break;
+        case 5:
+          window.location.href = 'michaelsoft.html';
+          break;
+        case 6:
+          window.location.href = 'michaelsoft.html';
+          break;
+        case 7:
+          window.location.href = 'michaelsoft.html';
           break;
         default:
           window.location.href = '/gamblr/';
