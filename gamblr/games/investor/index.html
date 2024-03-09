@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stocks Simulator</title>
+  <link rel="stylesheet" href="/gamblr/css/investor.js">
+  <script type="text/javascript" src="/gamblr/js/investor.js"></script>
+</head>
+<body>
+  <div id="game-container">
+    <h1>GAMBLR - Stocks</h1>
+    <p>Cash: $<span id="cashDisplay">0.00</span></p>
+    <p>Stock Price: $<span id="stockPrice">0.00</span></p>
+    <p>Shares Owned: <span id="sharesOwned">0</span></p>
+    <div id="input-container">
+      <input type="number" id="amountInput" placeholder="Shares ">
+      <button onclick="buy()">Buy</button>
+      <button onclick="sell()">Sell</button>
+    </div>
+    <canvas id="stockChart" width="800" height="300"></canvas>
+  </div>
+  <footer>
+    Not enough cash? Go to <a href="/gamblr/jobs/">work</a>! | <a href="/gamblr/">Home</a>
+  </footer>
+</body>
+</html>
