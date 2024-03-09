@@ -77,7 +77,7 @@
   <div class="container">
     <h1>Michaelsoft Corp. - Cashier</h1>
     <div class="cash" id="cash-display"></div>
-    <div class="clicker" id="moji" onclick="incrementCash()">🪟</div>
+    <div class="clicker" id="moji" onclick="incrementCash()">💻</div>
   </div>
   <footer>
     <p id="quote">Done working minimum wage? Go <a href="/gamblr/">home</a> and gamble it all away!</p>
@@ -134,17 +134,17 @@
 
       if (workgrade === "5") {
         document.querySelector("h1").textContent = "Michaelsoft Corp. - Repairman";
-        document.getElementById("moji").textContent = "🪟⚙️";
+        document.getElementById("moji").textContent = "💻🛠️";
         document.getElementById("quote").innerHTML = `Done repairing 'puters? Go <a href="/gamblr/">home</a> and gamble all your cash away!`;
         document.getElementById("cash-display").textContent = "$" + numberWithCommas(cash);
       } else if (workgrade === "6") {
         document.querySelector("h1").textContent = "Michaelsoft Corp. - IT Tech";
-        document.getElementById("moji").textContent = "🪟🧑‍💻";
+        document.getElementById("moji").textContent = "💻🪲";
         document.getElementById("quote").innerHTML = 'Done fixing bugs? Go <a href="/gamblr/">home</a> and gamble all your cash away!';
         document.getElementById("cash-display").textContent = "$" + numberWithCommas(cash);
       } else if (workgrade === "7") {
         document.querySelector("h1").textContent = "Michaelsoft Corp. - CEO";
-        document.getElementById("moji").textContent = "🪟🤵";
+        document.getElementById("moji").textContent = "💻🤵";
         document.getElementById("quote").innerHTML = 'Done being Gill Bates? Go <a href="/gamblr/">home</a> and gamble all your cash away!';
         document.getElementById("cash-display").textContent = "$" + numberWithCommas(cash);
       }
