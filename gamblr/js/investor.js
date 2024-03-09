@@ -6,11 +6,17 @@
  let historyData = [];
  const maxPoints = 30;
 
- function updateDisplay() {
- 	document.getElementById("cashDisplay").textContent = cash.toFixed(2);
- 	document.getElementById("stockPrice").textContent = stockPrice.toFixed(2);
- 	document.getElementById("sharesOwned").textContent = sharesOwned;
- }
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function updateDisplay() {
+    document.getElementById("cashDisplay").textContent = numberWithCommas(cash.toFixed(2));
+    document.getElementById("stockPrice").textContent = numberWithCommas(stockPrice.toFixed(2));
+    document.getElementById("sharesOwned").textContent = numberWithCommas(sharesOwned);
+}
+
+
 
  function buy() {
  	const amount = parseInt(document.getElementById("amountInput").value);
