@@ -12,23 +12,105 @@
   <meta content="https://gloabe.github.io/gamblr/" property="og:url" />
   <meta content="https://gloabe.github.io/gamblr/icon.png" property="og:image" />
   <meta content="#E4A700" data-react-helmet="true" name="theme-color" />
-
-  <style>
-    .tile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .tile a {
-      text-decoration: none;
-      color: inherit;
-    }
-  </style>
 </head>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var cashDisplay = document.querySelector('.cash-display');
+    var workgrade = localStorage.getItem('workgrade');
+    var cash = localStorage.getItem('cash');
+    if (cash) {
+      var formattedCash = parseFloat(cash).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+      cashDisplay.textContent = '$' + formattedCash; // Add dollar sign
+    } else if (cash <= 0) {
+      localStorage.setItem(cash, 0)
+    }
+    if (workgrade) {
+      var jobTile = document.querySelector('.tile:nth-child(3) .name');
+      var jobEmoji = document.querySelector('.tile:nth-child(3) .emoji');
+      var jobHref = document.querySelector('.tile:nth-child(3) a');
 
+      switch (parseInt(workgrade)) {
+        case -3:
+          jobTile.textContent = "Faz-Wiper";
+          jobEmoji.textContent = "🎩🐻🧻";
+          jobHref.setAttribute('href', 'games/fazwipe/');
+          break;
+        case -2:
+          jobTile.textContent = "The Creator Divine";
+          jobEmoji.textContent = "😇🪽";
+          jobHref.setAttribute('href', 'games/lse.html');
+          break;
+        case -1:
+          jobTile.textContent = "(Get a job!) Hobo";
+          jobEmoji.textContent = "🤒";
+          jobHref.setAttribute('href', '/gamblr/upg.html');
+          cashDisplay.textContent = 'You have no job as of now! Go to workgrade to get one.'
+          break;
+        case 0:
+          jobTile.textContent = "Work Inc.";
+          jobEmoji.textContent = "📄";
+          jobHref.setAttribute('href', 'jobs/work.html');
+          break;
+        case 1:
+          jobTile.textContent = "Tech Support Co.";
+          jobEmoji.textContent = "💻";
+          jobHref.setAttribute('href', 'jobs/tsco.html');
+          break;
+        case 2:
+          jobTile.textContent = "Mechanic";
+          jobEmoji.textContent = "🧰";
+          jobHref.setAttribute('href', 'jobs/mechanic.html');
+          break;
+        case 3:
+          jobTile.textContent = "Amazong Inc.";
+          jobEmoji.textContent = "📦";
+          jobHref.setAttribute('href', 'jobs/amazong.html');
+          break;
+        case 4:
+          jobTile.textContent = "Michaelsoft Corp.";
+          jobEmoji.textContent = "💻";
+          jobHref.setAttribute('href', 'jobs/michaelsoft.html');
+          break;
+        case 5:
+          jobTile.textContent = "Michaelsoft Repairman";
+          jobEmoji.textContent = "💻🛠️";
+          jobHref.setAttribute('href', 'jobs/michaelsoft.html');
+          break;
+        case 6:
+          jobTile.textContent = "Michaelsoft IT";
+          jobEmoji.textContent = "💻🪲";
+          jobHref.setAttribute('href', 'jobs/michaelsoft.html');
+          break;
+        case 7:
+          jobTile.textContent = "Michaelsoft CEO";
+          jobEmoji.textContent = "💻🤵";
+          jobHref.setAttribute('href', 'jobs/michaelsoft.html');
+          break;
+      }
+      if (parseInt(workgrade) >= 3) {
+        var investTile = document.createElement('div');
+        investTile.classList.add('tile');
+        var investLink = document.createElement('a');
+        investLink.setAttribute('href', 'games/investor/');
+        var investEmoji = document.createElement('div');
+        investEmoji.classList.add('emoji');
+        investEmoji.textContent = '📈';
+        var investName = document.createElement('div');
+        investName.classList.add('name');
+        investName.textContent = 'Invest';
+        investLink.appendChild(investEmoji);
+        investLink.appendChild(investName);
+        investTile.appendChild(investLink);
+        // Insert the Invest tile after the Unknown tile
+        var unknownTile = document.querySelector('.tile:nth-child(3)');
+        unknownTile.parentNode.insertBefore(investTile, unknownTile.nextSibling);
+      }
+    } else {
+      localStorage.setItem('workgrade', -1);
+      window.location.reload();
+    }
+  });
+</script>
 <body>
   <h1>GAMBLR</h1>
   <div class="cash-display">$</div>
@@ -51,13 +133,6 @@
         <div class="name">Unknown</div>
       </a>
     </div>
-    <!-- Investor tile will be hidden by default -->
-    <div class="tile" id="investor-tile" style="display: none;">
-      <a href="games/investor/">
-        <div class="emoji">📈</div>
-        <div class="name">Invest</div>
-      </a>
-    </div>
     <div class="tile">
       <a href="games/slots/">
         <div class="emoji">🎰</div>
@@ -71,18 +146,5 @@
       </a>
     </div>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var workgrade = localStorage.getItem('workgrade');
-
-      // Check if the workgrade is level 3 or above
-      if (workgrade >= 3) {
-        // Show the Investor tile
-        document.getElementById('investor-tile').style.display = 'block';
-      }
-    });
-  </script>
 </body>
-
 </html>
