@@ -145,11 +145,11 @@
       // Function to downgrade
       function downgrade() {
         // Check if upgrade amount is greater than 500
-        if (upgradeAmount > 0) {
+        if (workGrade >= 1) {
           // Deduct downgrade fee
           cash += 500;
           cash -= 50;
-
+        }
           // Decrease upgrade amount by 500
           upgradeAmount -= 500;
 
