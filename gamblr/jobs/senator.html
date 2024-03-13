@@ -71,21 +71,24 @@
         let cash = localStorage.getItem('cash') ? parseInt(localStorage.getItem('cash')) : 0;
         let previousIssue;
 
-        // Fetch random issue from a JSON file
-        fetch('/gamblr/js/poll.json')
-            .then(response => response.json())
-            .then(data => {
-                if (data && Array.isArray(data) && data.length > 0) {
-                    displayIssue(data[0]);
-                    startTimer();
-                } else {
-                    throw new Error('Invalid JSON data');
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching issue:', error);
-                statusMessageElement.textContent = 'Error fetching issue. Please try again later.';
-            });
+        fetchIssue();
+
+        function fetchIssue() {
+            fetch('/gamblr/js/poll.json')
+                .then(response => response.json())
+                .then(data => {
+                    if (data && Array.isArray(data) && data.length > 0) {
+                        displayIssue(data[0]);
+                        startTimer();
+                    } else {
+                        throw new Error('Invalid JSON data');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching issue:', error);
+                    statusMessageElement.textContent = 'Error fetching issue. Please try again later.';
+                });
+        }
 
         function displayIssue(issue) {
             const question = document.createElement('div');
@@ -113,7 +116,7 @@
                     timerElement.textContent = 'Time\'s up!';
                     setTimeout(() => {
                         decideIssue();
-                        findNewIssue();
+                        fetchIssue();
                     }, 3000);
                 }
             }, 1000);
@@ -123,35 +126,6 @@
             // Check if the bill is passed
             const isPassed = Math.random() < 0.49; // 49% chance for demonstration
             return isPassed;
-        }
-
-        function findNewIssue() {
-            // Reset timer and status
-            clearInterval(intervalId);
-            timerElement.textContent = '';
-            statusMessageElement.textContent = '';
-
-            // Fetch a new issue and display it
-            fetch('/gamblr/js/poll.json')
-                .then(response => response.json())
-                .then(data => {
-                    if (data && Array.isArray(data) && data.length > 0) {
-                        if (data !== previousIssue) {
-                            issueContainer.innerHTML = '';
-                            displayIssue(data[0]);
-                            previousIssue = data;
-                            startTimer();
-                        } else {
-                            findNewIssue(); // If the same issue is fetched, try again
-                        }
-                    } else {
-                        throw new Error('Invalid JSON data');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching issue:', error);
-                    statusMessageElement.textContent = 'Error fetching issue. Please try again later.';
-                });
         }
 
         function vote(issue, option, passChance, status) {
