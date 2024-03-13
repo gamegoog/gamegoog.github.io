@@ -76,10 +76,17 @@
         fetch('/gamblr/js/poll.json')
             .then(response => response.json())
             .then(data => {
-                displayIssue(data);
-                startTimer();
+                if (data && Array.isArray(data) && data.length > 0) {
+                    displayIssue(data[0]);
+                    startTimer();
+                } else {
+                    throw new Error('Invalid JSON data');
+                }
             })
-            .catch(error => console.error('Error fetching issue:', error));
+            .catch(error => {
+                console.error('Error fetching issue:', error);
+                statusMessageElement.textContent = 'Error fetching issue. Please try again later.';
+            });
 
         function displayIssue(issue) {
             const question = document.createElement('div');
@@ -129,16 +136,23 @@
             fetch('/gamblr/js/poll.json')
                 .then(response => response.json())
                 .then(data => {
-                    if (data !== previousIssue) {
-                        issueContainer.innerHTML = '';
-                        displayIssue(data);
-                        previousIssue = data;
-                        startTimer();
+                    if (data && Array.isArray(data) && data.length > 0) {
+                        if (data !== previousIssue) {
+                            issueContainer.innerHTML = '';
+                            displayIssue(data[0]);
+                            previousIssue = data;
+                            startTimer();
+                        } else {
+                            findNewIssue(); // If the same issue is fetched, try again
+                        }
                     } else {
-                        findNewIssue(); // If the same issue is fetched, try again
+                        throw new Error('Invalid JSON data');
                     }
                 })
-                .catch(error => console.error('Error fetching issue:', error));
+                .catch(error => {
+                    console.error('Error fetching issue:', error);
+                    statusMessageElement.textContent = 'Error fetching issue. Please try again later.';
+                });
         }
 
         function vote(issue, option, passChance, status) {
