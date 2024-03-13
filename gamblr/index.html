@@ -60,9 +60,6 @@ document.addEventListener('DOMContentLoaded', async function () {
       investTile.appendChild(investLink);
       var unknownTile = document.querySelector('.tile:nth-child(3)');
       unknownTile.parentNode.insertBefore(investTile, unknownTile.nextSibling);
-    } else if (parseInt(workgrade) == null)  {
-      localStorage.setItem('workgrade', -1);
-      window.location.reload();
     }
   } 
 });
