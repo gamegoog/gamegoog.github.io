@@ -13,59 +13,62 @@
   <meta content="#E4A700" data-react-helmet="true" name="theme-color" />
 </head>
 <script>
-    document.addEventListener('DOMContentLoaded', async function () {
-      var cashDisplay = document.querySelector('.cash-display');
-      var response = await fetch('jobs/workgrades.json'); // Assuming your JSON file is named workgrades.json
-      var workgrades = await response.json();
-      var workgrade = localStorage.getItem('workgrade');
-      var cash = localStorage.getItem('cash');
+document.addEventListener('DOMContentLoaded', async function () {
+  var cashDisplay = document.querySelector('.cash-display');
+  var response = await fetch('jobs/workgrades.json'); // Assuming your JSON file is named workgrades.json
+  var workgrades = await response.json();
+  var workgrade = localStorage.getItem('workgrade');
+  var cash = localStorage.getItem('cash');
 
-      if (cash) {
-        var formattedCash = parseFloat(cash).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        cashDisplay.textContent = '$' + formattedCash; // Add dollar sign
-      } else {
-        localStorage.setItem('cash', 0); // Set default cash value if not available
-      }
+  if (cash) {
+    var formattedCash = parseFloat(cash).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    cashDisplay.textContent = '$' + formattedCash; // Add dollar sign
+  } else {
+    localStorage.setItem('cash', 0); // Set default cash value if not available
+  }
 
-      if (workgrade) {
-        var jobTile = document.querySelector('.tile:nth-child(3) .name');
-        var jobEmoji = document.querySelector('.tile:nth-child(3) .emoji');
-        var jobHref = document.querySelector('.tile:nth-child(3) a');
+  if (!workgrade) {
+    localStorage.setItem('workgrade', -1); // Set workgrade to -1 if it doesn't exist
+    workgrade = -1; // Update the variable for further use
+  }
 
-        // Get the corresponding job information from workgrades JSON
-        var jobInfo = workgrades.find(job => job.grade === parseInt(workgrade));
+  var jobTile = document.querySelector('.tile:nth-child(3) .name');
+  var jobEmoji = document.querySelector('.tile:nth-child(3) .emoji');
+  var jobHref = document.querySelector('.tile:nth-child(3) a');
 
-        if (jobInfo) {
-          jobTile.textContent = jobInfo.title;
-          jobEmoji.textContent = jobInfo.emoji;
-          jobHref.setAttribute('href', jobInfo.href);
+  // Get the corresponding job information from workgrades JSON
+  var jobInfo = workgrades.find(job => job.grade === parseInt(workgrade));
 
-          // If the workgrade is equal to or greater than 4, show the Invest option
-          if (parseInt(workgrade) >= 4) {
-            var investTile = document.createElement('div');
-            investTile.classList.add('tile');
-            var investLink = document.createElement('a');
-            investLink.setAttribute('href', 'games/investor/');
-            var investEmoji = document.createElement('div');
-            investEmoji.classList.add('emoji');
-            investEmoji.textContent = '📈';
-            var investName = document.createElement('div');
-            investName.classList.add('name');
-            investName.textContent = 'Invest';
-            investLink.appendChild(investEmoji);
-            investLink.appendChild(investName);
-            investTile.appendChild(investLink);
+  if (jobInfo) {
+    jobTile.textContent = jobInfo.title;
+    jobEmoji.textContent = jobInfo.emoji;
+    jobHref.setAttribute('href', jobInfo.href);
 
-            // Insert the Invest tile after the Unknown tile
-            var unknownTile = document.querySelector('.tile:nth-child(3)');
-            unknownTile.parentNode.insertBefore(investTile, unknownTile.nextSibling);
-          } else {
-          localStorage.setItem('workgrade', -1);
-          window.location.reload();
-          }
-        } 
-      }
-    });
+    // If the workgrade is equal to or greater than 4, show the Invest option
+    if (parseInt(workgrade) >= 4) {
+      var investTile = document.createElement('div');
+      investTile.classList.add('tile');
+      var investLink = document.createElement('a');
+      investLink.setAttribute('href', 'games/investor/');
+      var investEmoji = document.createElement('div');
+      investEmoji.classList.add('emoji');
+      investEmoji.textContent = '📈';
+      var investName = document.createElement('div');
+      investName.classList.add('name');
+      investName.textContent = 'Invest';
+      investLink.appendChild(investEmoji);
+      investLink.appendChild(investName);
+      investTile.appendChild(investLink);
+
+      // Insert the Invest tile after the Unknown tile
+      var unknownTile = document.querySelector('.tile:nth-child(3)');
+      unknownTile.parentNode.insertBefore(investTile, unknownTile.nextSibling);
+    } else {
+      localStorage.setItem('workgrade', -1);
+      window.location.reload();
+    }
+  } 
+});
   var sequence = '';
   var targetSequence = 'lse';
   var redirectUrl = 'games/lse.html';
