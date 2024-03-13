@@ -53,6 +53,7 @@
 
         let timer = 10;
         let intervalId;
+        let cash = localStorage.getItem('cash') ? parseInt(localStorage.getItem('cash')) : 0;
 
         // Fetch random issue from a JSON file
         fetch('/gamblr/js/poll.json')
@@ -72,7 +73,7 @@
                 const button = document.createElement('button');
                 button.textContent = option;
                 button.classList.add('option-button');
-                button.addEventListener('click', () => vote(option));
+                button.addEventListener('click', () => vote(issue.question, option, issue.passChance));
                 issueContainer.appendChild(button);
             });
         }
@@ -89,10 +90,21 @@
             }, 1000);
         }
 
-        function vote(option) {
+        function vote(issue, option, passChance) {
             clearInterval(intervalId);
             timerElement.textContent = 'Vote cast: ' + option;
             issueContainer.innerHTML = ''; // Clear the issue container
+
+            // Check if the bill is passed
+            const isPassed = Math.random() < passChance;
+            const resultMessage = isPassed ? `The bill for '${issue}' has been passed! You gained $500.` : `The bill for '${issue}' has been denied.`;
+            alert(resultMessage);
+
+            // Update cash if the bill is passed
+            if (isPassed) {
+                cash += 500;
+                localStorage.setItem('cash', cash);
+            }
         }
     </script>
 </body>
