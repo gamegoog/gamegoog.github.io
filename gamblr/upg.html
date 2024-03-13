@@ -97,86 +97,99 @@
   <footer>
     <a href="/gamblr/">Back to <span>Home</span></a>
   </footer>
+
   <script>
     // Check if localStorage is supported
     if (typeof (Storage) !== "undefined") {
-        // Fetch job data from JSON file
-        fetch('jobs/workgrades.json')
-            .then(response => response.json())
-            .then(data => {
-                // Retrieve cash, work grade, and upgrade amount from localStorage, or set them to default values if they don't exist
-                var cash = parseInt(localStorage.getItem("cash")) || 0;
-                var workGrade = parseInt(localStorage.getItem("workgrade")) || 0;
-                var upgradeAmount = parseInt(localStorage.getItem("upgradeAmount")) || 0;
+      // Retrieve cash, work grade, and upgrade amount from localStorage, or set them to default values if they don't exist
+      var cash = parseInt(localStorage.getItem("cash")) || 0;
+      var workGrade = parseInt(localStorage.getItem("workgrade")) || 0;
+      var upgradeAmount = parseInt(localStorage.getItem("upgradeAmount")) || 0;
+      var maximumWorkgrade = 9
 
-                // Update displays
-                document.getElementById("cashDisplay").innerText = cash.toLocaleString();
-                
-                // Find the job data for the current work grade
-                var jobData = data.find(job => job.grade === workGrade);
-                if (jobData) {
-                    document.getElementById("jobTitleDisplay").innerText = jobData.title;
-                    document.getElementById("upgradeAmountDisplay").innerText = jobData.grade >= 0 ? "N/A" : (500 * Math.abs(jobData.grade)).toLocaleString();
-                } else {
-                    document.getElementById("jobTitleDisplay").innerText = "Unknown Job";
-                    document.getElementById("upgradeAmountDisplay").innerText = "N/A";
-                }
-                document.getElementById("workGradeDisplay").innerText = workGrade.toLocaleString();
+      // Update displays
+      document.getElementById("cashDisplay").innerText = cash.toLocaleString();
+      document.getElementById("workGradeDisplay").innerText = workGrade.toLocaleString();
+      document.getElementById("upgradeAmountDisplay").innerText = upgradeAmount.toLocaleString();
 
-                // Function to upgrade
-                function upgrade() {
-                    // Check if player has enough cash to upgrade and work grade is less than the maximum
-                    if (cash >= upgradeAmount && workGrade < maximumWorkgrade) {
-                        // Deduct upgrade cost from cash
-                        cash -= upgradeAmount;
+      // Function to upgrade
+      function upgrade() {
+        // Check if player has enough cash to upgrade and work grade is less than the maximum
+        if (cash >= upgradeAmount && workGrade < maximumWorkgrade) {
+          // Deduct upgrade cost from cash
+          cash -= upgradeAmount;
 
-                        // Increment work grade
-                        workGrade += 1;
+          // Increment work grade
+          workGrade += 1;
 
-                        // Update displays
-                        document.getElementById("cashDisplay").innerText = cash.toLocaleString();
-                        document.getElementById("workGradeDisplay").innerText = workGrade.toLocaleString();
+          // Update displays
+          document.getElementById("cashDisplay").innerText = cash.toLocaleString();
+          document.getElementById("workGradeDisplay").innerText = workGrade.toLocaleString();
+          if (workGrade >= 0) {
+            localStorage.setItem('cash', 0);
+          }
+          // Save cash, work grade, and upgrade amount to localStorage
+          localStorage.setItem("cash", cash);
+          localStorage.setItem("workgrade", workGrade);
 
-                        // Save cash, work grade, and upgrade amount to localStorage
-                        localStorage.setItem("cash", cash);
-                        localStorage.setItem("workgrade", workGrade);
+          // Increase upgrade amount by 500
+          upgradeAmount += 500;
+          document.getElementById("upgradeAmountDisplay").innerText = upgradeAmount.toLocaleString();
+          localStorage.setItem("upgradeAmount", upgradeAmount);
+        } else if (workGrade >= maximumWorkgrade) {
+          alert("You have reached the maximum workgrade!");
+        } else if (cash < upgradeAmount) {
+          alert("You don't have enough cash to upgrade!");
+        }
+      }
 
-                        // Find the job data for the new work grade
-                        jobData = data.find(job => job.grade === workGrade);
-                        if (jobData) {
-                            document.getElementById("jobTitleDisplay").innerText = jobData.title;
-                            document.getElementById("upgradeAmountDisplay").innerText = jobData.grade >= 0 ? "N/A" : (500 * Math.abs(jobData.grade)).toLocaleString();
-                        } else {
-                            document.getElementById("jobTitleDisplay").innerText = "Unknown Job";
-                            document.getElementById("upgradeAmountDisplay").innerText = "N/A";
-                        }
+      // Function to downgrade
+      function downgrade() {
+        // Check if upgrade amount is greater than 500
+        if (workGrade > 0) {
+          // Deduct downgrade fee
+          cash += 500;
+          cash -= 50;
+          upgradeAmount += 500;
+          workGrade -= 1;
 
-                        // Increase upgrade amount by 500
-                        upgradeAmount += 500;
-                        document.getElementById("upgradeAmountDisplay").innerText = upgradeAmount.toLocaleString();
-                        localStorage.setItem("upgradeAmount", upgradeAmount);
-                    } else if (workGrade >= maximumWorkgrade) {
-                        alert("You have reached the maximum workgrade!");
-                    } else if (cash < upgradeAmount) {
-                        alert("You don't have enough cash to upgrade!");
-                    }
-                }
+          document.getElementById("cashDisplay").innerText = cash.toLocaleString();
+          document.getElementById("workGradeDisplay").innerText = workGrade.toLocaleString();
+          document.getElementById("upgradeAmountDisplay").innerText = upgradeAmount.toLocaleString();
 
-                // Function to downgrade
-                function downgrade() {
-                    // Your existing downgrade logic
-                }
+          localStorage.setItem("cash", cash);
+          localStorage.setItem("workgrade", workGrade);
+          localStorage.setItem("upgradeAmount", upgradeAmount);
+        } else if (workGrade == 0) {
+          upgradeAmount = 0;
+          workGrade = -1;
+          document.getElementById("cashDisplay").innerText = cash.toLocaleString();
+          document.getElementById("workGradeDisplay").innerText = workGrade.toLocaleString();
+          document.getElementById("upgradeAmountDisplay").innerText = upgradeAmount.toLocaleString();
 
-                // Function to reset work grade
-                function resetWorkGrade() {
-                    // Your existing reset work grade logic
-                }
-            })
-            .catch(error => console.error('Error fetching job data:', error));
+          localStorage.setItem("cash", cash);
+          localStorage.setItem("workgrade", workGrade);
+          localStorage.setItem("upgradeAmount", upgradeAmount);
+        } else {
+          return;
+        }
+      }
+
+      // Function to reset work grade
+      function resetWorkGrade() {
+        workGrade = -1;
+        upgradeAmount = 0;
+        localStorage.setItem("cash", cash);
+        localStorage.setItem("upgradeAmount", upgradeAmount);
+        localStorage.setItem("workgrade", workGrade);
+        document.getElementById("cashDisplay").innerText = cash.toLocaleString();
+        document.getElementById("upgradeAmountDisplay").innerText = upgradeAmount.toLocaleString();
+        document.getElementById("workGradeDisplay").innerText = workGrade.toLocaleString();
+      }
     } else {
-        document.write("Sorry, your browser does not support web storage...");
+      document.write("Sorry, your browser does not support web storage...");
     }
-</script>
+  </script>
 </body>
 
 </html>
