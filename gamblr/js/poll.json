@@ -1,4 +1,10 @@
-{
-    "question": "Legalize gay marriage?",
-    "options": ["Yes", "No"]
-}
+[
+    {
+        "question": "Legalize gay marriage",
+        "options": ["Yes", "No"]
+    },
+    {
+        "question": "Legalize pineapple on pizza",
+        "options": ["Yes", "No"]
+    }
+]
