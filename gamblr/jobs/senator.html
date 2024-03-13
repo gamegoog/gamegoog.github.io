@@ -38,6 +38,12 @@
             margin-top: 20px;
             color: #FF5733;
         }
+
+        #status-message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -45,11 +51,13 @@
         <h1>Senator Job - Vote Now!</h1>
         <div id="issue-container"></div>
         <div id="timer">10</div>
+        <div id="status-message"></div>
     </div>
 
     <script>
         const issueContainer = document.getElementById('issue-container');
         const timerElement = document.getElementById('timer');
+        const statusMessageElement = document.getElementById('status-message');
 
         let timer = 10;
         let intervalId;
@@ -134,7 +142,7 @@
             const isPassed = decideIssue();
 
             const resultMessage = isPassed ? `The bill for '${issue}' has been passed! You gained $500.` : `The bill for '${issue}' has been denied.`;
-            alert(resultMessage);
+            statusMessageElement.textContent = resultMessage;
 
             // Update cash if the bill is passed
             if (isPassed) {
@@ -144,6 +152,7 @@
 
             setTimeout(() => {
                 resetTimer();
+                statusMessageElement.textContent = '';
                 findNewIssue();
             }, 3000);
         }
