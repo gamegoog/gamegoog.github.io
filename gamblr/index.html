@@ -59,12 +59,12 @@
             // Insert the Invest tile after the Unknown tile
             var unknownTile = document.querySelector('.tile:nth-child(3)');
             unknownTile.parentNode.insertBefore(investTile, unknownTile.nextSibling);
-          }
-        } else {
+          } else {
           // Set default workgrade if not found in JSON
           localStorage.setItem('workgrade', -1);
           window.location.reload();
-        }
+          }
+        } 
       }
     });
   var sequence = '';
