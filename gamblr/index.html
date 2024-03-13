@@ -45,42 +45,42 @@ document.addEventListener('DOMContentLoaded', async function () {
     jobEmoji.textContent = jobInfo.emoji;
     jobHref.setAttribute('href', jobInfo.href);
     
-    if (parseInt(workgrade) >= 7) {
-      var shopTile = document.createElement('div');
-      shopTile.classList.add('tile');
-      var shopLink = document.createElement('a');
-      shopLink.setAttribute('href', 'shop.html');
-      var shopEmoji = document.createElement('div');
-      shopEmoji.classList.add('emoji');
-      shopEmoji.textContent = '🏪';
-      var shopName = document.createElement('div');
-      shopName.classList.add('name');
-      shopName.textContent = 'Shop';
-      shopLink.appendChild(shopEmoji);
-      shopLink.appendChild(shopName);
-      shopTile.appendChild(shopLink);
-      var workgradeTile = document.querySelector('.tile:nth-child(2)');
-      workgradeTile.parentNode.insertBefore(shopTile, workgradeTile.nextSibling);
-    }
-    
-    if (parseInt(printer) > 0) {
-      var printerTile = document.createElement('div');
-      printerTile.classList.add('tile');
-      var printerLink = document.createElement('a');
-      printerLink.setAttribute('href', 'shop.html');
-      var printerEmoji = document.createElement('div');
-      printerEmoji.classList.add('emoji');
-      printerEmoji.textContent = '💰🖨️';
-      var printerName = document.createElement('div');
-      printerName.classList.add('name');
-      printerName.textContent = 'Money Printer';
-      printerLink.appendChild(printerEmoji);
-      printerLink.appendChild(printerName);
-      printerTile.appendChild(printerLink);
-      var shoppingTile = document.querySelector('.tile:nth-child(3)');
-      shoppingTile.parentNode.insertBefore(printerTile, shoppingTile);
-    }
-    
+if (parseInt(workgrade) >= 7) {
+  var shopTile = document.createElement('div');
+  shopTile.classList.add('tile');
+  var shopLink = document.createElement('a');
+  shopLink.setAttribute('href', 'shop.html');
+  var shopEmoji = document.createElement('div');
+  shopEmoji.classList.add('emoji');
+  shopEmoji.textContent = '🏪';
+  var shopName = document.createElement('div');
+  shopName.classList.add('name');
+  shopName.textContent = 'Shop';
+  shopLink.appendChild(shopEmoji);
+  shopLink.appendChild(shopName);
+  shopTile.appendChild(shopLink);
+  var workgradeTile = document.querySelector('.tile:nth-child(2)');
+  workgradeTile.parentNode.insertBefore(shopTile, workgradeTile.nextSibling);
+}
+
+if (parseInt(printer) > 0) {
+  var printerTile = document.createElement('div');
+  printerTile.classList.add('tile');
+  var printerLink = document.createElement('a');
+  printerLink.setAttribute('href', 'shop.html');
+  var printerEmoji = document.createElement('div');
+  printerEmoji.classList.add('emoji');
+  printerEmoji.textContent = '💰🖨️';
+  var printerName = document.createElement('div');
+  printerName.classList.add('name');
+  printerName.textContent = 'Money Printer';
+  printerLink.appendChild(printerEmoji);
+  printerLink.appendChild(printerName);
+  printerTile.appendChild(printerLink);
+  var workgradeTile = document.querySelector('.tile:nth-child(3)'); // Change to 3rd tile
+  workgradeTile.parentNode.insertBefore(printerTile, workgradeTile.nextSibling);
+}
+
 if (parseInt(workgrade) >= 4) {
   var investTile = document.createElement('div');
   investTile.classList.add('tile');
@@ -95,12 +95,11 @@ if (parseInt(workgrade) >= 4) {
   investLink.appendChild(investEmoji);
   investLink.appendChild(investName);
   investTile.appendChild(investLink);
-  
-  // Select the tile with class 'name' equal to 'Workgrade'
-  var printrTile = document.querySelector('.tile:nth-child(4)');
-  printrTile.parentNode.insertBefore(investTile, printrTile.nextSibling);
-}
 
+  // Insert after the money printer tile
+  var printerTile = document.querySelector('.tile:nth-child(4)'); // Change to 4th tile
+  printerTile.parentNode.insertBefore(investTile, printerTile.nextSibling);
+}
   } 
 });
 
