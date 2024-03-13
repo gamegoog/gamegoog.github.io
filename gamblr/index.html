@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       shopLink.appendChild(shopName);
       shopTile.appendChild(shopLink);
       var workgradeTile = document.querySelector('.tile:nth-child(2)');
-      workgradeTile.parentNode.insertBefore(shopTile, unknownTile.nextSibling);
+      workgradeTile.parentNode.insertBefore(shopTile, workgradeTile.nextSibling);
     }
     
     if (parseInt(printer) > 0) {
