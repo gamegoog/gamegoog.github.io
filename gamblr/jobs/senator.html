@@ -113,16 +113,10 @@
                     timerElement.textContent = 'Time\'s up!';
                     setTimeout(() => {
                         decideIssue();
-                        resetTimer();
                         findNewIssue();
                     }, 3000);
                 }
             }, 1000);
-        }
-
-        function resetTimer() {
-            timer = 10;
-            timerElement.textContent = timer;
         }
 
         function decideIssue() {
@@ -156,7 +150,6 @@
         }
 
         function vote(issue, option, passChance, status) {
-            clearInterval(intervalId);
             timerElement.textContent = 'Vote cast: ' + option;
             issueContainer.innerHTML = ''; // Clear the issue container
 
@@ -182,12 +175,6 @@
 
             statusMessageElement.innerHTML = resultMessage;
             localStorage.setItem('cash', cash);
-
-            setTimeout(() => {
-                resetTimer();
-                statusMessageElement.innerHTML = '';
-                findNewIssue();
-            }, 3000);
         }
     </script>
 </body>
