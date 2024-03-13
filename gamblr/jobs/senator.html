@@ -67,7 +67,6 @@
         const timerElement = document.getElementById('timer');
         const statusMessageElement = document.getElementById('status-message');
 
-        let timer = 10;
         let intervalId;
         let cash = localStorage.getItem('cash') ? parseInt(localStorage.getItem('cash')) : 0;
         let previousIssue;
@@ -103,6 +102,7 @@
         }
 
         function startTimer() {
+            let timer = 10;
             timerElement.textContent = timer;
             intervalId = setInterval(() => {
                 timer--;
@@ -126,6 +126,11 @@
         }
 
         function findNewIssue() {
+            // Reset timer and status
+            clearInterval(intervalId);
+            timerElement.textContent = '';
+            statusMessageElement.textContent = '';
+
             // Fetch a new issue and display it
             fetch('/gamblr/js/poll.json')
                 .then(response => response.json())
