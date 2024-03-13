@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMBLR - Money Printer</title>
+<meta content="GAMBLR - Money Printers" property="og:title" />
+<meta content="print insane amounts of cash in one day, come back the next day and gamble all of it away." property="og:description" />
+<meta content="https://gloabe.github.io/gamblr/" property="og:url" />
+<meta content="https://gloabe.github.io/gamblr/icon.png" property="og:image" />
+<meta content="#E4A700" data-react-helmet="true" name="theme-color" />
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 3vw;
+    margin-bottom: 1px;
+    color: #333;
+  }
+
+  .description {
+    font-size: 1.5vw;
+    color: #555;
+    margin-bottom: 1vh;
+    text-align: center;
+  }
+
+  .clicker {
+    font-size: 15vw;
+    cursor: default;
+    transition: transform 0.2s ease;
+    user-select: none;
+  }
+
+  .cash {
+    font-size: 2vw;
+    color: #777;
+    margin-bottom: 1vh;
+  }
+
+  .pulse {
+    animation: pulse 0.5s infinite alternate ease-in-out;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  footer {
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  footer a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<h1><span id="moneyPrinterText">Money Printer 🤑</span></h1>
+<div class="description">Makes cash automatically. So you don't have to click. Come back every once in a while and claim your cash!</div>
+<div id="cashDisplay" class="cash">$<span id="cashAmount">0</span></div>
+<div id="moneyPrinter" class="clicker">🖨️</div>
+
+<footer>Done watching your  <a href="https://www.openai.com" target="_blank">OpenAI</a></footer>
+<script>
+  // Function to update the cash display with commas
+  function updateCashDisplay(cash) {
+    const cashFormatted = cash.toLocaleString();
+    document.getElementById('cashAmount').textContent = cashFormatted;
+  }
+
+  // Function to pulse the money printer emoji
+  function pulseMoneyPrinter() {
+    document.getElementById('moneyPrinter').classList.add('pulse');
+    setTimeout(() => {
+      document.getElementById('moneyPrinter').classList.remove('pulse');
+    }, 500);
+  }
+
+  // Check last visit and update cash accordingly
+  function checkLastVisit() {
+    const lastVisit = localStorage.getItem('lastVisit');
+    const currentTime = new Date().getTime();
+    if (lastVisit) {
+      const timeDifference = (currentTime - parseInt(lastVisit)) / 1000; // Difference in seconds
+      const cashEarned = timeDifference * getCashPerSecond(); // Get cash earned per second
+      let cash = parseFloat(localStorage.getItem('cash')) || 0;
+      cash += cashEarned;
+      localStorage.setItem('cash', cash);
+      updateCashDisplay(cash);
+      if (cashEarned > 0) {
+        pulseMoneyPrinter(); // Pulse the money printer emoji
+      }
+    }
+    localStorage.setItem('lastVisit', currentTime);
+  }
+
+  // Check if the printer level is available
+  function checkPrinterLevel() {
+    const printerLevel = localStorage.getItem('printer');
+    let title = "GAMBLR - Money Printer (if you see this tell the site owner)"; // Default title
+    let cashBoost = 0; // Default cash boost
+    if (printerLevel === '1') {
+      title = "GAMBLR - Money Printer Lv. 1";
+      emoji = "💰🖨️";
+    } else if (printerLevel === '2') {
+      title = "GAMBLR - Money Printer Lv. 2";
+      emoji = "💰🖨️💰";
+      cashBoost = 5; // Cash boost for level 2
+    } else if (printerLevel === '3') {
+      title = "GAMBLR - Money Printer Lv. 3";
+      emoji = "💰💰🖨️💰";
+      cashBoost = 8; // Cash boost for level 3
+    } else {
+      window.location.href = '/gamblr/'; // Redirect to /gamblr/ if printer level is not valid
+    }
+    document.title = title; // Update document title
+    document.getElementById('moneyPrinter').textContent = emoji;
+    document.getElementById('moneyPrinterText').textContent = title; // Update money printer text
+    return cashBoost;
+  }
+
+  // Get cash earned per second based on printer level
+  function getCashPerSecond() {
+    const cashBoost = checkPrinterLevel();
+    return 5 + cashBoost; // Base earning rate plus cash boost
+  }
+
+  // Automatically add cash for every second away
+  setInterval(function() {
+    let cash = parseFloat(localStorage.getItem('cash')) || 0;
+    const lastVisit = localStorage.getItem('lastVisit');
+    const currentTime = new Date().getTime();
+    if (lastVisit) {
+      const timeDifference = (currentTime - parseInt(lastVisit)) / 1000; // Difference in seconds
+      const cashEarned = timeDifference * getCashPerSecond(); // Get cash earned per second
+      cash += cashEarned;
+      localStorage.setItem('cash', cash);
+      updateCashDisplay(cash);
+      if (cashEarned > 0) {
+        pulseMoneyPrinter(); // Pulse the money printer emoji
+      }
+    }
+  }, 1000); // 1000 milliseconds = 1 second
+
+  // On page load
+  window.onload = function() {
+    checkPrinterLevel(); // Call checkPrinterLevel to update title and money printer text
+    checkLastVisit();
+  };
+</script>
+</body>
+</html>
