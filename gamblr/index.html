@@ -44,6 +44,24 @@ document.addEventListener('DOMContentLoaded', async function () {
     jobEmoji.textContent = jobInfo.emoji;
     jobHref.setAttribute('href', jobInfo.href);
     
+    if (parseInt(workgrade) >= 7) {
+      var shopTile = document.createElement('div');
+      shopTile.classList.add('tile');
+      var shopLink = document.createElement('a');
+      shopLink.setAttribute('href', 'shop.html');
+      var shopEmoji = document.createElement('div');
+      shopEmoji.classList.add('emoji');
+      shopEmoji.textContent = '🏪';
+      var shopName = document.createElement('div');
+      shopName.classList.add('name');
+      shopName.textContent = 'Shop';
+      shopLink.appendChild(shopEmoji);
+      shopLink.appendChild(shopName);
+      shopTile.appendChild(shopLink);
+      var workgradeTile = document.querySelector('.tile:nth-child(2)');
+      workgradeTile.parentNode.insertBefore(shopTile, workgradeTile);
+    }
+
     if (parseInt(workgrade) >= 4) {
       var investTile = document.createElement('div');
       investTile.classList.add('tile');
@@ -63,22 +81,23 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
   } 
 });
-  var sequence = '';
-  var targetSequence = 'lse';
-  var redirectUrl = 'games/lse.html';
 
-  document.addEventListener('keydown', function (event) {
-    var keyPressed = String.fromCharCode(event.keyCode);
-    keyPressed = keyPressed.toLowerCase();
-    sequence += keyPressed;
-    if (sequence === targetSequence) {
-      window.location.href = redirectUrl;
-      sequence = '';
-    } else if (!targetSequence.startsWith(sequence)) {
-      sequence = '';
-    }
-  });
-  </script>
+var sequence = '';
+var targetSequence = 'lse';
+var redirectUrl = 'games/lse.html';
+
+document.addEventListener('keydown', function (event) {
+  var keyPressed = String.fromCharCode(event.keyCode);
+  keyPressed = keyPressed.toLowerCase();
+  sequence += keyPressed;
+  if (sequence === targetSequence) {
+    window.location.href = redirectUrl;
+    sequence = '';
+  } else if (!targetSequence.startsWith(sequence)) {
+    sequence = '';
+  }
+});
+</script>
 <body>
   <h1>GAMBLR</h1>
   <div class="cash-display">$</div>
