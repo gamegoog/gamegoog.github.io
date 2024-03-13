@@ -13,140 +13,61 @@
   <meta content="#E4A700" data-react-helmet="true" name="theme-color" />
 </head>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var cashDisplay = document.querySelector('.cash-display');
-    var workgrade = localStorage.getItem('workgrade');
-    var cash = localStorage.getItem('cash');
-    if (cash) {
-      var formattedCash = parseFloat(cash).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-      cashDisplay.textContent = '$' + formattedCash; // Add dollar sign
-    } else if (cash <= 0) {
-      localStorage.setItem(cash, 0)
-    }
-    if (workgrade) {
-      var jobTile = document.querySelector('.tile:nth-child(3) .name');
-      var jobEmoji = document.querySelector('.tile:nth-child(3) .emoji');
-      var jobHref = document.querySelector('.tile:nth-child(3) a');
+    document.addEventListener('DOMContentLoaded', async function () {
+      var cashDisplay = document.querySelector('.cash-display');
+      var response = await fetch('jobs/workgrades.json'); // Assuming your JSON file is named workgrades.json
+      var workgrades = await response.json();
+      var workgrade = localStorage.getItem('workgrade');
+      var cash = localStorage.getItem('cash');
 
-      switch (parseInt(workgrade)) {
-        case -3:
-          jobTile.textContent = "Faz-Wiper";
-          jobEmoji.textContent = "🎩🐻🧻";
-          jobHref.setAttribute('href', 'games/fazwipe/');
-          break;
-        case -2:
-          jobTile.textContent = "The Creator Divine";
-          jobEmoji.textContent = "😇🪽";
-          jobHref.setAttribute('href', 'games/lse.html');
-          break;
-        case -1:
-          jobTile.textContent = "(Get a job!) Hobo";
-          jobEmoji.textContent = "🤒";
-          jobHref.setAttribute('href', '/gamblr/upg.html');
-          cashDisplay.textContent = 'You have no job as of now! Go to workgrade to get one.'
-          break;
-        case 0:
-          jobTile.textContent = "Work Inc.";
-          jobEmoji.textContent = "📄";
-          jobHref.setAttribute('href', 'jobs/work.html');
-          break;
-        case 1:
-          jobTile.textContent = "Tech Support Co.";
-          jobEmoji.textContent = "💻";
-          jobHref.setAttribute('href', 'jobs/tsco.html');
-          break;
-        case 2:
-          jobTile.textContent = "Mechanic";
-          jobEmoji.textContent = "🧰";
-          jobHref.setAttribute('href', 'jobs/mechanic.html');
-          break;
-        case 3:
-          jobTile.textContent = "Amazong Inc.";
-          jobEmoji.textContent = "📦";
-          jobHref.setAttribute('href', 'jobs/amazong.html');
-          break;
-        case 4:
-          jobTile.textContent = "Michaelsoft Corp.";
-          jobEmoji.textContent = "💻";
-          jobHref.setAttribute('href', 'jobs/michaelsoft.html');
-          break;
-        case 5:
-          jobTile.textContent = "Michaelsoft Repairman";
-          jobEmoji.textContent = "💻🛠️";
-          jobHref.setAttribute('href', 'jobs/michaelsoft.html');
-          break;
-        case 6:
-          jobTile.textContent = "Michaelsoft IT";
-          jobEmoji.textContent = "💻🪲";
-          jobHref.setAttribute('href', 'jobs/michaelsoft.html');
-          break;
-        case 7:
-          jobTile.textContent = "Michaelsoft CEO";
-          jobEmoji.textContent = "💻🤵";
-          jobHref.setAttribute('href', 'jobs/michaelsoft.html');
-          break;
-        case 8:
-          jobTile.textContent = "Senator";
-          jobEmoji.textContent = "💼🤵";
-          jobHref.setAttribute('href', 'jobs/whitehouse.html');
-          break;
-        case 9:
-          jobTile.textContent = "President";
-          jobEmoji.textContent = "🇺🇸🤵";
-          jobHref.setAttribute('href', 'jobs/whitehouse.html');
-          break;
+      if (cash) {
+        var formattedCash = parseFloat(cash).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        cashDisplay.textContent = '$' + formattedCash; // Add dollar sign
+      } else {
+        localStorage.setItem('cash', 0); // Set default cash value if not available
       }
-      if (parseInt(workgrade) >= 3) {
-        var investTile = document.createElement('div');
-        investTile.classList.add('tile');
-        var investLink = document.createElement('a');
-        investLink.setAttribute('href', 'games/investor/');
-        var investEmoji = document.createElement('div');
-        investEmoji.classList.add('emoji');
-        investEmoji.textContent = '📈';
-        var investName = document.createElement('div');
-        investName.classList.add('name');
-        investName.textContent = 'Invest';
-        investLink.appendChild(investEmoji);
-        investLink.appendChild(investName);
-        investTile.appendChild(investLink);
-        // Insert the Invest tile after the Unknown tile
-        var unknownTile = document.querySelector('.tile:nth-child(3)');
-        unknownTile.parentNode.insertBefore(investTile, unknownTile.nextSibling);
+
+      if (workgrade) {
+        var jobTile = document.querySelector('.tile:nth-child(3) .name');
+        var jobEmoji = document.querySelector('.tile:nth-child(3) .emoji');
+        var jobHref = document.querySelector('.tile:nth-child(3) a');
+
+        // Get the corresponding job information from workgrades JSON
+        var jobInfo = workgrades.find(job => job.grade === parseInt(workgrade));
+
+        if (jobInfo) {
+          jobTile.textContent = jobInfo.title;
+          jobEmoji.textContent = jobInfo.emoji;
+          jobHref.setAttribute('href', jobInfo.href);
+
+          // If the workgrade is equal to or greater than 4, show the Invest option
+          if (parseInt(workgrade) >= 4) {
+            var investTile = document.createElement('div');
+            investTile.classList.add('tile');
+            var investLink = document.createElement('a');
+            investLink.setAttribute('href', 'games/investor/');
+            var investEmoji = document.createElement('div');
+            investEmoji.classList.add('emoji');
+            investEmoji.textContent = '📈';
+            var investName = document.createElement('div');
+            investName.classList.add('name');
+            investName.textContent = 'Invest';
+            investLink.appendChild(investEmoji);
+            investLink.appendChild(investName);
+            investTile.appendChild(investLink);
+
+            // Insert the Invest tile after the Unknown tile
+            var unknownTile = document.querySelector('.tile:nth-child(3)');
+            unknownTile.parentNode.insertBefore(investTile, unknownTile.nextSibling);
+          }
+        } else {
+          // Set default workgrade if not found in JSON
+          localStorage.setItem('workgrade', -1);
+          window.location.reload();
+        }
       }
-    } else {
-      localStorage.setItem('workgrade', -1);
-      window.location.reload();
-    }
-  });
-  var sequence = '';
-  var targetSequence = 'lse';
-  var redirectUrl = 'games/lse.html';
-
-  document.addEventListener('keydown', function (event) {
-    // Convert key code to uppercase letter
-    var keyPressed = String.fromCharCode(event.keyCode);
-
-    // Convert the input to lowercase before appending to the sequence
-    keyPressed = keyPressed.toLowerCase();
-
-    // Append the lowercase letter to the sequence
-    sequence += keyPressed;
-
-    // Check if the current sequence matches the target sequence
-    if (sequence === targetSequence) {
-      // Redirect to the specified URL
-      window.location.href = redirectUrl;
-
-      // Reset the sequence after redirection
-      sequence = '';
-    } else if (!targetSequence.startsWith(sequence)) {
-      // If the current sequence doesn't match any possible sequence,
-      // reset the sequence to start anew
-      sequence = '';
-    }
-  });
-</script>
+    });
+  </script>
 <body>
   <h1>GAMBLR</h1>
   <div class="cash-display">$</div>
