@@ -111,7 +111,7 @@
         }
 
         function decideIssue() {
-            // Check if the bill is passed
+            // Randomly decide if the bill is passed or denied
             const isPassed = Math.random() < 0.5; // 50% chance for demonstration
             return isPassed;
         }
@@ -141,14 +141,16 @@
             // Decide the issue after the timer stops
             const isPassed = decideIssue();
 
-            const resultMessage = isPassed ? `The bill for '${issue}' has been passed! You gained $500.` : `The bill for '${issue}' has been denied.`;
-            statusMessageElement.textContent = resultMessage;
-
-            // Update cash if the bill is passed
-            if (isPassed) {
+            let resultMessage;
+            if ((option === "Yes" && isPassed) || (option === "No" && !isPassed)) {
                 cash += 500;
-                localStorage.setItem('cash', cash);
+                resultMessage = `Congratulations! You earned $500 for voting '${option}' on the bill for '${issue}'.`;
+            } else {
+                resultMessage = `Unfortunately, the bill for '${issue}' has been denied.`;
             }
+
+            statusMessageElement.textContent = resultMessage;
+            localStorage.setItem('cash', cash);
 
             setTimeout(() => {
                 resetTimer();
