@@ -16,6 +16,22 @@ function updateDisplay() {
     document.getElementById("sharesOwned").textContent = numberWithCommas(sharesOwned);
 }
 
+function buyMax() {
+    const maxAmount = Math.floor(cash / stockPrice);
+    if (maxAmount > 0) {
+        buyStock(maxAmount);
+    } else {
+        alert("You don't have enough cash to buy any stocks.");
+    }
+}
+
+function buyStock(amount) {
+    cash -= amount * stockPrice;
+    sharesOwned += amount;
+    localStorage.setItem("cash", cash);
+    localStorage.setItem("sharesOwned", sharesOwned);
+    updateDisplay();
+}
 
 
  function buy() {
