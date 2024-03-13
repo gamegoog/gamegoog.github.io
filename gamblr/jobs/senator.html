@@ -54,6 +54,7 @@
         let timer = 10;
         let intervalId;
         let cash = localStorage.getItem('cash') ? parseInt(localStorage.getItem('cash')) : 0;
+        let previousIssue;
 
         // Fetch random issue from a JSON file
         fetch('/gamblr/js/poll.json')
@@ -73,12 +74,13 @@
                 const button = document.createElement('button');
                 button.textContent = option;
                 button.classList.add('option-button');
-                button.addEventListener('click', () => vote(issue.question, option, issue.passChance));
+                button.addEventListener('click', () => vote(issue.question, option, issue.passChance, issue.status));
                 issueContainer.appendChild(button);
             });
         }
 
         function startTimer() {
+            timerElement.textContent = timer;
             intervalId = setInterval(() => {
                 timer--;
                 timerElement.textContent = timer;
@@ -86,17 +88,51 @@
                 if (timer === 0) {
                     clearInterval(intervalId);
                     timerElement.textContent = 'Time\'s up!';
+                    setTimeout(() => {
+                        resetTimer();
+                        findNewIssue();
+                    }, 3000);
                 }
             }, 1000);
         }
 
-        function vote(issue, option, passChance) {
+        function resetTimer() {
+            timer = 10;
+            timerElement.textContent = timer;
+        }
+
+        function findNewIssue() {
+            // Fetch a new issue and display it
+            fetch('/gamblr/js/poll.json')
+                .then(response => response.json())
+                .then(data => {
+                    if (data !== previousIssue) {
+                        issueContainer.innerHTML = '';
+                        displayIssue(data);
+                        previousIssue = data;
+                        startTimer();
+                    } else {
+                        findNewIssue(); // If the same issue is fetched, try again
+                    }
+                })
+                .catch(error => console.error('Error fetching issue:', error));
+        }
+
+        function vote(issue, option, passChance, status) {
             clearInterval(intervalId);
             timerElement.textContent = 'Vote cast: ' + option;
             issueContainer.innerHTML = ''; // Clear the issue container
 
             // Check if the bill is passed
-            const isPassed = Math.random() < passChance;
+            let isPassed;
+            if (status === "passed") {
+                isPassed = true;
+            } else if (status === "denied") {
+                isPassed = false;
+            } else {
+                isPassed = Math.random() < passChance;
+            }
+
             const resultMessage = isPassed ? `The bill for '${issue}' has been passed! You gained $500.` : `The bill for '${issue}' has been denied.`;
             alert(resultMessage);
 
@@ -105,6 +141,11 @@
                 cash += 500;
                 localStorage.setItem('cash', cash);
             }
+
+            setTimeout(() => {
+                resetTimer();
+                findNewIssue();
+            }, 3000);
         }
     </script>
 </body>
