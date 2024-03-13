@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', async function () {
       printerLink.appendChild(printerEmoji);
       printerLink.appendChild(printerName);
       printerTile.appendChild(printerLink);
-      var investTile = document.querySelector('.tile:nth-child(3)');
-      investTile.parentNode.insertBefore(printerTile, investTile);
+      var shoppingTile = document.querySelector('.tile:nth-child(3)');
+      shoppingTile.parentNode.insertBefore(printerTile, shoppingTile);
     }
     
 if (parseInt(workgrade) >= 4) {
@@ -97,7 +97,7 @@ if (parseInt(workgrade) >= 4) {
   investTile.appendChild(investLink);
   
   // Select the tile with class 'name' equal to 'Workgrade'
-  var printrTile = document.querySelector('.tile:nth-child(3)');
+  var printrTile = document.querySelector('.tile:nth-child(4)');
   printrTile.parentNode.insertBefore(investTile, printrTile.nextSibling);
 }
 
