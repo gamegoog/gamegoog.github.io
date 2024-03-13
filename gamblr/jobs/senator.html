@@ -89,6 +89,7 @@
                     clearInterval(intervalId);
                     timerElement.textContent = 'Time\'s up!';
                     setTimeout(() => {
+                        decideIssue();
                         resetTimer();
                         findNewIssue();
                     }, 3000);
@@ -99,6 +100,12 @@
         function resetTimer() {
             timer = 10;
             timerElement.textContent = timer;
+        }
+
+        function decideIssue() {
+            // Check if the bill is passed
+            const isPassed = Math.random() < 0.5; // 50% chance for demonstration
+            return isPassed;
         }
 
         function findNewIssue() {
@@ -123,15 +130,8 @@
             timerElement.textContent = 'Vote cast: ' + option;
             issueContainer.innerHTML = ''; // Clear the issue container
 
-            // Check if the bill is passed
-            let isPassed;
-            if (status === "passed") {
-                isPassed = true;
-            } else if (status === "denied") {
-                isPassed = false;
-            } else {
-                isPassed = Math.random() < passChance;
-            }
+            // Decide the issue after the timer stops
+            const isPassed = decideIssue();
 
             const resultMessage = isPassed ? `The bill for '${issue}' has been passed! You gained $500.` : `The bill for '${issue}' has been denied.`;
             alert(resultMessage);
