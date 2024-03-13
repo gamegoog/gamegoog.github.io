@@ -1,160 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senator Job</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Senator Poll Game</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+}
 
-        .container {
-            text-align: center;
-            margin-top: 50px;
-        }
+h1 {
+  text-align: center;
+}
 
-        h1 {
-            color: #333;
-        }
+#question-container {
+  margin: 20px auto;
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-        #issue-container {
-            margin-top: 20px;
-        }
+#vote-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
 
-        .option-button {
-            margin: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-        }
+button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-        #timer {
-            font-size: 24px;
-            margin-top: 20px;
-            color: #FF5733;
-        }
-
-        #status-message {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
-        }
-
-        .passed {
-            color: green;
-        }
-
-        .denied {
-            color: red;
-        }
-    </style>
+#result {
+  text-align: center;
+  margin-top: 20px;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Senator Job - Vote Now!</h1>
-        <div id="issue-container"></div>
-        <div id="timer">10</div>
-        <div id="status-message"></div>
-    </div>
+<h1>Senator Poll Game</h1>
+<div id="question-container"></div>
+<div id="vote-buttons">
+  <button id="yes-btn">Yes</button>
+  <button id="no-btn">No</button>
+</div>
+<div id="result"></div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const questionContainer = document.getElementById('question-container');
+  const yesBtn = document.getElementById('yes-btn');
+  const noBtn = document.getElementById('no-btn');
+  const resultDiv = document.getElementById('result');
 
-    <script>
-        const issueContainer = document.getElementById('issue-container');
-        const timerElement = document.getElementById('timer');
-        const statusMessageElement = document.getElementById('status-message');
+  fetch('/gamblr/js/poll.json')
+    .then(response => response.json())
+    .then(data => {
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const question = data[randomIndex].question;
+      const correctAnswer = data[randomIndex].answer;
+      const billStatus = data[randomIndex].status;
 
-        let intervalId;
-        let cash = localStorage.getItem('cash') ? parseInt(localStorage.getItem('cash')) : 0;
-        let previousIssue;
+      questionContainer.textContent = question;
 
-        fetchIssue();
+      yesBtn.addEventListener('click', function() {
+        handleVote('Yes', correctAnswer, billStatus);
+      });
 
-        function fetchIssue() {
-            fetch('/gamblr/js/poll.json')
-                .then(response => response.json())
-                .then(data => {
-                    if (data && Array.isArray(data) && data.length > 0) {
-                        displayIssue(data[0]);
-                        startTimer();
-                    } else {
-                        throw new Error('Invalid JSON data');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching issue:', error);
-                    statusMessageElement.textContent = 'Error fetching issue. Please try again later.';
-                });
-        }
+      noBtn.addEventListener('click', function() {
+        handleVote('No', correctAnswer, billStatus);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching JSON:', error);
+    });
 
-        function displayIssue(issue) {
-            const question = document.createElement('div');
-            question.textContent = issue.question;
-            issueContainer.appendChild(question);
-
-            issue.options.forEach(option => {
-                const button = document.createElement('button');
-                button.textContent = option;
-                button.classList.add('option-button');
-                button.addEventListener('click', () => vote(issue.question, option, issue.passChance, issue.status));
-                issueContainer.appendChild(button);
-            });
-        }
-
-        function startTimer() {
-            let timer = 10;
-            timerElement.textContent = timer;
-            intervalId = setInterval(() => {
-                timer--;
-                timerElement.textContent = timer;
-
-                if (timer === 0) {
-                    clearInterval(intervalId);
-                    timerElement.textContent = 'Time\'s up!';
-                    setTimeout(() => {
-                        decideIssue();
-                        fetchIssue();
-                    }, 3000);
-                }
-            }, 1000);
-        }
-
-        function decideIssue() {
-            // Check if the bill is passed
-            const isPassed = Math.random() < 0.49; // 49% chance for demonstration
-            return isPassed;
-        }
-
-        function vote(issue, option, passChance, status) {
-            timerElement.textContent = 'Vote cast: ' + option;
-            issueContainer.innerHTML = ''; // Clear the issue container
-
-            // Decide the issue after the timer stops
-            const isPassed = decideIssue();
-
-            let resultMessage;
-            if ((option === "Yes" && isPassed) || (option === "No" && !isPassed)) {
-                if ((option === "Yes" && passChance) || (option === "No" && !passChance)) {
-                    cash += 500;
-                    resultMessage = `The bill for '${issue}' has been <span class="passed">passed</span>! You earned $500 for voting '${option}'.`;
-                } else {
-                    resultMessage = `The bill for '${issue}' has been <span class="denied">denied</span>. You didn't vote for the winning side.`;
-                }
-            } else {
-                if ((option === "Yes" && passChance) || (option === "No" && !passChance)) {
-                    cash += 500;
-                    resultMessage = `The bill for '${issue}' has been <span class="passed">passed</span>! You earned $500 for voting '${option}'.`;
-                } else {
-                    resultMessage = `The bill for '${issue}' has been <span class="denied">denied</span>. You didn't vote for the winning side.`;
-                }
-            }
-
-            statusMessageElement.innerHTML = resultMessage;
-            localStorage.setItem('cash', cash);
-        }
-    </script>
+  function handleVote(userVote, correctAnswer, billStatus) {
+    if (userVote === correctAnswer) {
+      resultDiv.textContent = `Congratulations! The bill was ${billStatus} and you voted correctly. You earned $500.`;
+    } else {
+      resultDiv.textContent = `Oops! The bill was ${billStatus} and you voted incorrectly.`;
+    }
+  }
+});
+</script>
 </body>
 </html>
