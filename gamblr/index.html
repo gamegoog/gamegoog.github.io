@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   var response = await fetch('jobs/workgrades.json');
   var workgrades = await response.json();
   var workgrade = localStorage.getItem('workgrade');
+  var printer = localStorage.getItem('printer');
   var cash = localStorage.getItem('cash');
 
   if (cash) {
@@ -59,9 +60,27 @@ document.addEventListener('DOMContentLoaded', async function () {
       shopLink.appendChild(shopName);
       shopTile.appendChild(shopLink);
       var workgradeTile = document.querySelector('.tile:nth-child(2)');
-      workgradeTile.parentNode.insertBefore(shopTile, workgradeTile);
+      workgradeTile.parentNode.insertBefore(shopTile, unknownTile.nextSibling);
     }
-
+    
+    if (parseInt(printer) > 0) {
+      var printerTile = document.createElement('div');
+      printerTile.classList.add('tile');
+      var printerLink = document.createElement('a');
+      printerLink.setAttribute('href', 'shop.html');
+      var printerEmoji = document.createElement('div');
+      printerEmoji.classList.add('emoji');
+      printerEmoji.textContent = '💰🖨️';
+      var printerName = document.createElement('div');
+      printerName.classList.add('name');
+      printerName.textContent = 'Money Printer';
+      printerLink.appendChild(printerEmoji);
+      printerLink.appendChild(printerName);
+      printerTile.appendChild(printerLink);
+      var investTile = document.querySelector('.tile:nth-child(3)');
+      investTile.parentNode.insertBefore(printerTile, investTile);
+    }
+    
     if (parseInt(workgrade) >= 4) {
       var investTile = document.createElement('div');
       investTile.classList.add('tile');
