@@ -165,11 +165,11 @@
                     resultMessage = `The bill for '${issue}' has been <span class="denied">denied</span>. You didn't vote for the winning side.`;
                 }
             } else {
-                if ((option === "Yes" && !passChance) || (option === "No" && passChance)) {
+                if ((option === "Yes" && passChance) || (option === "No" && !passChance)) {
                     cash += 500;
-                    resultMessage = `The bill for '${issue}' has been <span class="denied">denied</span>. You earned $500 for voting '${option}'.`;
+                    resultMessage = `The bill for '${issue}' has been <span class="passed">passed</span>! You earned $500 for voting '${option}'.`;
                 } else {
-                    resultMessage = `The bill for '${issue}' has been <span class="passed">passed</span>. You didn't vote for the winning side.`;
+                    resultMessage = `The bill for '${issue}' has been <span class="denied">denied</span>. You didn't vote for the winning side.`;
                 }
             }
 
