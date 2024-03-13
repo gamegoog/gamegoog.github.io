@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const randomIndex = Math.floor(Math.random() * data.length);
       const question = data[randomIndex].question;
       const correctAnswer = data[randomIndex].answer;
-      const billStatus = data[randomIndex].status;
+      const billStatus = data[randomIndex].status || "not specified";
 
       questionContainer.textContent = question;
 
