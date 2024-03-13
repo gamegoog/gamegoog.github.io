@@ -81,23 +81,26 @@ document.addEventListener('DOMContentLoaded', async function () {
       investTile.parentNode.insertBefore(printerTile, investTile);
     }
     
-    if (parseInt(workgrade) >= 4) {
-      var investTile = document.createElement('div');
-      investTile.classList.add('tile');
-      var investLink = document.createElement('a');
-      investLink.setAttribute('href', 'games/investor/');
-      var investEmoji = document.createElement('div');
-      investEmoji.classList.add('emoji');
-      investEmoji.textContent = '📈';
-      var investName = document.createElement('div');
-      investName.classList.add('name');
-      investName.textContent = 'Invest';
-      investLink.appendChild(investEmoji);
-      investLink.appendChild(investName);
-      investTile.appendChild(investLink);
-      var unknownTile = document.querySelector('.tile:nth-child(3)');
-      unknownTile.parentNode.insertBefore(investTile, unknownTile.nextSibling);
-    }
+if (parseInt(workgrade) >= 4) {
+  var investTile = document.createElement('div');
+  investTile.classList.add('tile');
+  var investLink = document.createElement('a');
+  investLink.setAttribute('href', 'games/investor/');
+  var investEmoji = document.createElement('div');
+  investEmoji.classList.add('emoji');
+  investEmoji.textContent = '📈';
+  var investName = document.createElement('div');
+  investName.classList.add('name');
+  investName.textContent = 'Invest';
+  investLink.appendChild(investEmoji);
+  investLink.appendChild(investName);
+  investTile.appendChild(investLink);
+  
+  // Select the tile with class 'name' equal to 'Workgrade'
+  var printrTile = document.querySelector('.tile:nth-child(3)');
+  printrTile.parentNode.insertBefore(investTile, printrTile.nextSibling);
+}
+
   } 
 });
 
