@@ -66,7 +66,34 @@
           window.location.reload();
         }
       }
-    });
+  var sequence = '';
+  var targetSequence = 'lse';
+  var redirectUrl = 'games/lse.html';
+
+  document.addEventListener('keydown', function (event) {
+    // Convert key code to uppercase letter
+    var keyPressed = String.fromCharCode(event.keyCode);
+
+    // Convert the input to lowercase before appending to the sequence
+    keyPressed = keyPressed.toLowerCase();
+
+    // Append the lowercase letter to the sequence
+    sequence += keyPressed;
+
+    // Check if the current sequence matches the target sequence
+    if (sequence === targetSequence) {
+      // Redirect to the specified URL
+      window.location.href = redirectUrl;
+
+      // Reset the sequence after redirection
+      sequence = '';
+    } else if (!targetSequence.startsWith(sequence)) {
+      // If the current sequence doesn't match any possible sequence,
+      // reset the sequence to start anew
+      sequence = '';
+    }
+  });
+  
   </script>
 <body>
   <h1>GAMBLR</h1>
