@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <title>LSE</title>
+  <title>GAMBLR - Locked</title>
+  <link rel="icon" type="image/x-icon" href="/gamblr/icon.png">
   <style>
     /* Base styles */
     body {
@@ -250,17 +251,18 @@
       if (isAuthenticated === "true") {
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("contentContainer").style.display = "block";
-        document.getElementById("pageTitle").innerText = "GAMBLR Data";
+        document.title = "Temporary Access - Data Editor";
         displayKeyValuePairs();
       } else if (localStorage.getItem("banned") <= -1) {
         localStorage.setItem("authenticated", "true");
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("contentContainer").style.display = "block";
-        document.getElementById("pageTitle").innerText = "GAMBLR Data";
+        document.title = "GAMBLR ADMIN - Data Editor";
         displayKeyValuePairs();
       } else if (localStorage.getItem("banned") >= 2) {
         document.body.innerHTML = `<div style="text-align: center; margin-top: 20vh;"><h1>Access Denied</h1><p> The page you're looking for is either nonexistant, being worked on, or you simply do not have access to it.</p></div>`;
         localStorage.setItem("authenticated", "false");
+        document.title = "GAMBLR - Not Found";
       }
     }
 
