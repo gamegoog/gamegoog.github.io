@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Local Storage Manager</title>
+  <title>LSE</title>
   <style>
     /* Base styles */
     body {
@@ -196,16 +196,15 @@
     </div>
   </div>
   <div class="container" id="contentContainer">
-    <h2 id="pageTitle">Local Storage</h2>
-    <p>This page allows you to manage data in the website's local storage.<br>If you can see this you've been given the
-      password.</p>
+    <h2 id="pageTitle">GAMBLR Data</h2>
+    <p>This page allows you edit most to all of your GAMBLR Data.<br>If you can see this you've been given the password.</p>
     <ul id="keyValueList"></ul>
-    <button class="resetBtn" onclick="resetLocalStorage()">Reset Local Storage</button>
+    <button class="resetBtn" onclick="resetLocalStorage()">Reset All Data</button>
     <button class="createBtn" onclick="showDialog()">Create Key-Value Pair</button>
     <p><br><b>List of Workgrades</b><br>-3 = Faz-Wiper<br>-2 = God<br>-1 = Hobo<br>0 = Work Inc.<br>1 = Tech
       Support<br>2 = Mechanic<br>3 = Amazong<br>4 = Michaelsoft Cashier<br>5 = Michaelsoft Repairman<br>6 = Michaelsoft
       IT Tech<br>7 = Michaelsoft CEO<br><b>Tips</b><br>Create a value called banned, and set it's value
-      to -1 to not have to type in the password.<br><br>Happy editing!</p>
+      to -1 to not have to type in the password.<br>Printer levels are 1,2, and 3, they're defined by the value "printer".<br>If you set your printer value above 3, the game will <b>glitch</b>!<br>Happy editing!</p>
     <div class="dialogContainer" id="dialogContainer">
       <div class="dialogBox">
         <h2>Add Key-Value Pair</h2>
@@ -232,7 +231,7 @@
         localStorage.setItem("authenticated", "true");
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("contentContainer").style.display = "block";
-        document.getElementById("pageTitle").innerText = "Local Storage";
+        document.getElementById("pageTitle").innerText = "GAMBLR Data";
         displayKeyValuePairs();
       } else {
         banned++;
@@ -251,13 +250,13 @@
       if (isAuthenticated === "true") {
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("contentContainer").style.display = "block";
-        document.getElementById("pageTitle").innerText = "Local Storage";
+        document.getElementById("pageTitle").innerText = "GAMBLR Data";
         displayKeyValuePairs();
       } else if (localStorage.getItem("banned") <= -1) {
         localStorage.setItem("authenticated", "true");
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("contentContainer").style.display = "block";
-        document.getElementById("pageTitle").innerText = "Local Storage";
+        document.getElementById("pageTitle").innerText = "GAMBLR Data";
         displayKeyValuePairs();
       } else if (localStorage.getItem("banned") >= 2) {
         document.body.innerHTML = `<div style="text-align: center; margin-top: 20vh;"><h1>Access Denied</h1><p> The page you're looking for is either nonexistant, being worked on, or you simply do not have access to it.</p></div>`;
@@ -271,7 +270,7 @@
     }
 
     function displayKeyValuePairs() {
-      var allowedKeys = ["cash", "workgrade", "stockPrice", "upgradeAmount", "sharesOwned", "STICKMANHOOK_currentLevel"];
+      var allowedKeys = ["cash","workgrade","upgradeAmount","stockPrice","sharesOwned","printer","STICKMANHOOK_currentLevel"];
       var keyValueList = document.getElementById("keyValueList");
       keyValueList.innerHTML = '';
 
