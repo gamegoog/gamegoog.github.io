@@ -44,24 +44,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     jobTile.textContent = jobInfo.title;
     jobEmoji.textContent = jobInfo.emoji;
     jobHref.setAttribute('href', jobInfo.href);
-    
-if (parseInt(workgrade) >= 7) {
-  var shopTile = document.createElement('div');
-  shopTile.classList.add('tile');
-  var shopLink = document.createElement('a');
-  shopLink.setAttribute('href', 'shop.html');
-  var shopEmoji = document.createElement('div');
-  shopEmoji.classList.add('emoji');
-  shopEmoji.textContent = '🏪';
-  var shopName = document.createElement('div');
-  shopName.classList.add('name');
-  shopName.textContent = 'Shop';
-  shopLink.appendChild(shopEmoji);
-  shopLink.appendChild(shopName);
-  shopTile.appendChild(shopLink);
-  var workgradeTile = document.querySelector('.tile:nth-child(2)');
-  workgradeTile.parentNode.insertBefore(shopTile, workgradeTile.nextSibling);
-}
 
 if (parseInt(printer) > 0) {
   var printerTile = document.createElement('div');
@@ -97,8 +79,26 @@ if (parseInt(workgrade) >= 4) {
   investTile.appendChild(investLink);
 
   // Insert after the money printer tile
-  var printerTile = document.querySelector('.tile:nth-child(4)'); // Change to 4th tile
-  printerTile.parentNode.insertBefore(investTile, printerTile.nextSibling);
+  var workgradeTile = document.querySelector('.tile:nth-child(3)'); // Change to 3rd tile
+  workgradeTile.parentNode.insertBefore(investTile, workgradeTile.nextSibling);
+}
+
+if (parseInt(workgrade) >= 7) {
+  var shopTile = document.createElement('div');
+  shopTile.classList.add('tile');
+  var shopLink = document.createElement('a');
+  shopLink.setAttribute('href', 'shop.html');
+  var shopEmoji = document.createElement('div');
+  shopEmoji.classList.add('emoji');
+  shopEmoji.textContent = '🏪';
+  var shopName = document.createElement('div');
+  shopName.classList.add('name');
+  shopName.textContent = 'Shop';
+  shopLink.appendChild(shopEmoji);
+  shopLink.appendChild(shopName);
+  shopTile.appendChild(shopLink);
+  var fanartTile = document.querySelector('.tile:nth-child(1)');
+  fanartTile.parentNode.insertBefore(shopTile, fanartTile.nextSibling);
 }
   } 
 });
