@@ -230,9 +230,11 @@
       var passwordInput = document.getElementById("passwordInput").value;
       if (passwordInput === correctPassword) {
         localStorage.setItem("authenticated", "true");
+        title = "Temporary Access - Data Editor"
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("contentContainer").style.display = "block";
-        document.getElementById("pageTitle").innerText = "GAMBLR Data";
+        document.getElementById("pageTitle").innerText = title;
+        document.title = title;
         displayKeyValuePairs();
       } else {
         banned++;
