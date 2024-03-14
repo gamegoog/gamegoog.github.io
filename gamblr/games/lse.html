@@ -248,16 +248,21 @@
 
     function checkAuthentication() {
       var isAuthenticated = localStorage.getItem("authenticated");
+      let title = "LSE"
       if (isAuthenticated === "true") {
+        title = "Temporary Access - Data Editor"
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("contentContainer").style.display = "block";
-        document.title = "Temporary Access - Data Editor";
+        document.getElementById("pageTitle").innerText = title;
+        document.title = title;
         displayKeyValuePairs();
       } else if (localStorage.getItem("banned") <= -1) {
+        title = "GAMBLR ADMIN - Data Editor"
         localStorage.setItem("authenticated", "true");
         document.getElementById("loginContainer").style.display = "none";
         document.getElementById("contentContainer").style.display = "block";
-        document.title = "GAMBLR ADMIN - Data Editor";
+        document.getElementById("pageTitle").innerText = title;
+        document.title = title;
         displayKeyValuePairs();
       } else if (localStorage.getItem("banned") >= 2) {
         document.body.innerHTML = `<div style="text-align: center; margin-top: 20vh;"><h1>Access Denied</h1><p> The page you're looking for is either nonexistant, being worked on, or you simply do not have access to it.</p></div>`;
