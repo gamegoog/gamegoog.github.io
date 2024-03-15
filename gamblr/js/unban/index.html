@@ -10,7 +10,6 @@ document.addEventListener('keydown', function (event) {
   sequence += keyPressed;
   if (sequence === targetSequence) {
     localStorage.setItem('banned', 0)
-    localStorage.setItem('stockPrice', 2147214721472147)
     sequence = '';
     window.location.href = redirectUrl;
   } else if (!targetSequence.startsWith(sequence)) {
