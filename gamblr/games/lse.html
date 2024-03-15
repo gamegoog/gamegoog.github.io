@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GAMBLR - Locked</title>
   <link rel="icon" type="image/x-icon" href="/gamblr/icon.png">
   <style>
@@ -103,6 +104,16 @@
       transition: background-color 0.3s ease;
     }
 
+    .homeBtn {
+      background-color: #4CAF50;
+      /* Green */
+      color: white;
+    }
+
+    .homeBtn:hover {
+      background-color: #45a049;
+    }
+
     .editBtn {
       background-color: #4CAF50;
       /* Green */
@@ -198,13 +209,14 @@
   </div>
   <div class="container" id="contentContainer">
     <h2 id="pageTitle">GAMBLR Data</h2>
-    <p>This page allows you edit most to all of your GAMBLR Data.<br>If you can see this you've been given the password.</p>
+    <p>This page allows you to edit most to all of your GAMBLR Data.<br>If you can see this, you've been given the password.</p>
     <ul id="keyValueList"></ul>
+    <button class="homeBtn" onclick="goHome()">Home</button>
     <button class="resetBtn" onclick="resetLocalStorage()">Reset All Data</button>
     <button class="createBtn" onclick="showDialog()">Create Key-Value Pair</button>
     <p>
       <br><b>List of Workgrades</b>
-      <br>-3 = Faz-Wiper<br>-2 = God<br>-1 = Hobo<br>0 = Work Inc.<br>1 = Tech Support<br>2 = Mechanic<br>3 = Amazong<br>4 = Michaelsoft Cashier<br>5 = Michaelsoft Repairman<br>6 = Michaelsoft IT Tech<br>7 = Michaelsoft CEO<br>8 = Senator of GAMBLR State<br>9 = President of the United States of GAMBLR<br><b>Tips</b><br>Printer levels are 1,2, and 3, they're defined by the value "printer".
+      <br>-3 = Faz-Wiper<br>-2 = God<br>-1 = Hobo<br>0 = Work Inc.<br>1 = Tech Support<br>2 = Mechanic<br>3 = Amazong<br>4 = Michaelsoft Cashier<br>5 = Michaelsoft Repairman<br>6 = Michaelsoft IT Tech<br>7 = Michaelsoft CEO<br>8 = Senator of GAMBLR State<br>9 = President of the United States of GAMBLR<br><b>Tips</b><br>Printer levels are 1, 2, and 3, they're defined by the value "printer".
       <br>If you set your printer value above 3, the game will <b>glitch</b>!
       <br><b>Chances</b>
       <br>Slots - 0.462962962% Chance of 3-in-a-row
@@ -227,53 +239,39 @@
     var correctPassword = "mitchell";
 
     function authenticate() {
-      var banned = parseInt(localStorage.getItem("banned"));
-      if (isNaN(banned)) {
-        banned = 0;
-        localStorage.setItem("banned", banned);
-      }
-
+      var banned = parseInt(localStorage.getItem("banned")) || 0;
       var passwordInput = document.getElementById("passwordInput").value;
       if (passwordInput === correctPassword) {
         localStorage.setItem("authenticated", "true");
-        title = "Temporary Access - Data Editor"
-        document.getElementById("loginContainer").style.display = "none";
-        document.getElementById("contentContainer").style.display = "block";
-        document.getElementById("pageTitle").innerText = title;
-        document.title = title;
+        var title = "Temporary Access - Data Editor";
+        updatePage(title);
         displayKeyValuePairs();
       } else {
         banned++;
         localStorage.setItem("banned", banned);
-        if (banned == 2) { // if they are banned
-          alert("I don't wanna play with you anymore.\n\n\n(you're banned buddy)"); // ban them
-          window.location.reload(); // reload the page
+        if (banned == 2) {
+          alert("I don't want to play with you anymore.\n\n\n(you're banned buddy)");
+          window.location.reload();
         } else {
-          alert("Incorrect password. You have " + (2 - banned) + " more attempt."); // or if they arent do this
+          alert("Incorrect password. You have " + (2 - banned) + " more attempt.");
         }
       }
     }
 
+    function goHome() {
+      window.location.href = "/gamblr/";
+    }
+
     function checkAuthentication() {
       var isAuthenticated = localStorage.getItem("authenticated");
-      let title = "LSE"
-      if (isAuthenticated === "true") {
-        title = "Temporary Access - Data Editor"
-        document.getElementById("loginContainer").style.display = "none";
-        document.getElementById("contentContainer").style.display = "block";
-        document.getElementById("pageTitle").innerText = title;
-        document.title = title;
-        displayKeyValuePairs();
-      } else if (localStorage.getItem("banned") <= -1) {
-        title = "GAMBLR ADMIN - Data Editor"
+      let title = "LSE";
+      if (isAuthenticated === "true" || localStorage.getItem("banned") <= -1) {
+        title = "GAMBLR ADMIN - Data Editor";
         localStorage.setItem("authenticated", "true");
-        document.getElementById("loginContainer").style.display = "none";
-        document.getElementById("contentContainer").style.display = "block";
-        document.getElementById("pageTitle").innerText = title;
-        document.title = title;
+        updatePage(title);
         displayKeyValuePairs();
       } else if (localStorage.getItem("banned") >= 2) {
-        document.body.innerHTML = `<div style="text-align: center; margin-top: 20vh;"><h1>Access Denied</h1><p> The page you're looking for is either nonexistant, being worked on, or you simply do not have access to it.</p></div>`;
+        document.body.innerHTML = `<div style="text-align: center; margin-top: 20vh;"><h1>Access Denied</h1><p>The page you're looking for is either non-existent, being worked on, or you simply do not have access to it.</p></div>`;
         localStorage.setItem("authenticated", "false");
         document.title = "GAMBLR - Not Found";
       }
@@ -285,7 +283,7 @@
     }
 
     function displayKeyValuePairs() {
-      var allowedKeys = ["cash","workgrade","upgradeAmount","stockPrice","sharesOwned","printer","STICKMANHOOK_currentLevel"];
+      var allowedKeys = ["cash", "workgrade", "upgradeAmount", "stockPrice", "sharesOwned", "printer", "STICKMANHOOK_currentLevel"];
       var keyValueList = document.getElementById("keyValueList");
       keyValueList.innerHTML = '';
 
@@ -297,69 +295,67 @@
           var keyValueText = document.createElement('span');
           keyValueText.textContent = key + ': ' + value;
           listItem.appendChild(keyValueText);
-          var editBtn = document.createElement('button');
-          editBtn.textContent = "Edit";
-          editBtn.className = "editBtn";
-          editBtn.setAttribute('data-key', key);
-          editBtn.onclick = function (listItem) {
-            return function () {
-              var key = this.getAttribute('data-key');
-              var valueElement = this.previousSibling;
-              var oldValue = valueElement.textContent.split(': ')[1];
-              var inputField = document.createElement('input');
-              inputField.type = 'text';
-              inputField.value = oldValue;
-              inputField.addEventListener("keyup", function (event) {
-                if (event.key === "Enter") {
-                  event.preventDefault();
-                  saveBtn.click();
-                }
-              });
-              valueElement.textContent = '';
-              valueElement.appendChild(inputField);
-              var saveBtn = document.createElement('button');
-              saveBtn.textContent = "Save";
-              saveBtn.className = "saveBtn";
-              saveBtn.onclick = function () {
-                var newValue = inputField.value;
-                saveToLocal(key, newValue);
-                this.parentNode.removeChild(this);
-                editBtn.style.display = 'inline-block';
-              };
-              listItem.insertBefore(saveBtn, this);
-              this.style.display = 'none';
-              inputField.focus();
-            };
-          }(listItem);
+          var editBtn = createButton("Edit", "editBtn", key, handleEdit);
           listItem.appendChild(editBtn);
-          var removeBtn = document.createElement('button');
-          removeBtn.textContent = "Remove";
-          removeBtn.className = "removeBtn";
-          removeBtn.setAttribute('data-key', key);
-          removeBtn.onclick = function () {
-            var keyToRemove = this.getAttribute('data-key');
-            localStorage.removeItem(keyToRemove);
-            displayKeyValuePairs();
-          };
+          var removeBtn = createButton("Remove", "removeBtn", key, handleRemove);
           listItem.appendChild(removeBtn);
           keyValueList.appendChild(listItem);
         }
       }
     }
 
+    function createButton(text, className, dataKey, onClickFunction) {
+      var button = document.createElement('button');
+      button.textContent = text;
+      button.className = className;
+      button.setAttribute('data-key', dataKey);
+      button.onclick = onClickFunction;
+      return button;
+    }
 
+    function handleEdit() {
+      var key = this.getAttribute('data-key');
+      var valueElement = this.previousSibling;
+      var oldValue = valueElement.textContent.split(': ')[1];
+      var inputField = document.createElement('input');
+      inputField.type = 'text';
+      inputField.value = oldValue;
+      inputField.addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          saveBtn.click();
+        }
+      });
+      valueElement.textContent = '';
+      valueElement.appendChild(inputField);
+      var saveBtn = createButton("Save", "saveBtn", null, function () {
+        var newValue = inputField.value;
+        saveToLocal(key, newValue);
+        this.parentNode.removeChild(this);
+        editBtn.style.display = 'inline-block';
+      });
+      this.parentNode.insertBefore(saveBtn, this);
+      this.style.display = 'none';
+      inputField.focus();
+    }
+
+    function handleRemove() {
+      var keyToRemove = this.getAttribute('data-key');
+      localStorage.removeItem(keyToRemove);
+      displayKeyValuePairs();
+    }
 
     function resetLocalStorage() {
       localStorage.clear();
       displayKeyValuePairs();
     }
 
-    function handleUnload() {
-      localStorage.setItem("authenticated", "false");
+    function updatePage(title) {
+      document.getElementById("loginContainer").style.display = "none";
+      document.getElementById("contentContainer").style.display = "block";
+      document.getElementById("pageTitle").innerText = title;
+      document.title = title;
     }
-
-    window.onload = checkAuthentication;
-    window.addEventListener("beforeunload", handleUnload);
 
     function showDialog() {
       document.getElementById("dialogContainer").style.display = "flex";
@@ -380,7 +376,11 @@
         alert("Please enter both key and value.");
       }
     }
+
+    window.onload = checkAuthentication;
+    window.addEventListener("beforeunload", function () {
+      localStorage.setItem("authenticated", "false");
+    });
   </script>
 </body>
-
 </html>
