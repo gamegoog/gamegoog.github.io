@@ -1,0 +1,37 @@
+[
+  {
+    "category": "Printers",
+    "items": [
+      {
+        "name": "Money Printer Lv. 1",
+        "emoji": "🖨️",
+        "price": 20000
+      },
+      {
+        "name": "Money Printer Lv. 2",
+        "emoji": "💰🖨️",
+        "price": 100000
+      },
+      {
+        "name": "Money Printer Lv. 3",
+        "emoji": "💰💰🖨️💰",
+        "price": 750000
+      }
+    ]
+  },
+  {
+    "category": "Cars",
+    "items": [
+      {
+        "name": "Lamborghini",
+        "emoji": "🚜",
+        "price": 3000000
+      },
+      {
+        "name": "Ferrari",
+        "emoji": "🏎️",
+        "price": 2500000
+      }
+    ]
+  }
+]
