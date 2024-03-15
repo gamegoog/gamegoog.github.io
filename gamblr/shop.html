@@ -190,70 +190,70 @@
         }
       }
 
-    async function fetchShopItems() {
+      async function fetchShopItems() {
         try {
-            const response = await fetch('js/shop.json');
-            const data = await response.json();
-            return data;
+          const response = await fetch('js/shop.json');
+          const data = await response.json();
+          return data;
         } catch (error) {
-            console.error('Error fetching shop items:', error);
-            return [];
+          console.error('Error fetching shop items:', error);
+          return [];
         }
-    }
+      }
 
-    // Function to display shop items
-    async function displayShop() {
+      // Function to display shop items
+      async function displayShop() {
         const shopContainer = document.getElementById('shopContainer');
         const items = await fetchShopItems();
 
         if (items.length === 0) {
-            shopContainer.innerHTML = '<p>No items available</p>';
-            return;
+          shopContainer.innerHTML = '<p>No items available</p>';
+          return;
         }
 
         items.forEach(item => {
-            const categoryContainer = document.createElement('div');
-            categoryContainer.classList.add('category');
+          const categoryContainer = document.createElement('div');
+          categoryContainer.classList.add('category');
 
-            const categoryTitle = document.createElement('h2');
-            categoryTitle.classList.add('category-title');
-            categoryTitle.textContent = item.category;
-            categoryContainer.appendChild(categoryTitle);
+          const categoryTitle = document.createElement('h2');
+          categoryTitle.classList.add('category-title');
+          categoryTitle.textContent = item.category;
+          categoryContainer.appendChild(categoryTitle);
 
-            const categoryItems = document.createElement('div');
-            categoryItems.classList.add('category-items');
+          const categoryItems = document.createElement('div');
+          categoryItems.classList.add('category-items');
 
-            item.items.forEach(itemData => {
-                const tile = document.createElement('div');
-                tile.className = 'tile';
+          item.items.forEach(itemData => {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
 
-                const emojiDiv = document.createElement('div');
-                emojiDiv.className = 'emoji';
-                emojiDiv.textContent = itemData.emoji;
-                tile.appendChild(emojiDiv);
+            const emojiDiv = document.createElement('div');
+            emojiDiv.className = 'emoji';
+            emojiDiv.textContent = itemData.emoji;
+            tile.appendChild(emojiDiv);
 
-                const nameDiv = document.createElement('div');
-                nameDiv.className = 'name';
-                nameDiv.textContent = itemData.name;
-                tile.appendChild(nameDiv);
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'name';
+            nameDiv.textContent = itemData.name;
+            tile.appendChild(nameDiv);
 
-                const priceDiv = document.createElement('div');
-                priceDiv.className = 'price';
-                priceDiv.textContent = itemData.price;
-                tile.appendChild(priceDiv);
+            const priceDiv = document.createElement('div');
+            priceDiv.className = 'price';
+            priceDiv.textContent = itemData.price;
+            tile.appendChild(priceDiv);
 
-                const button = document.createElement('button');
-                button.textContent = 'Buy';
-                button.addEventListener('click', () => buyItem(itemData));
-                tile.appendChild(button);
+            const button = document.createElement('button');
+            button.textContent = 'Buy';
+            button.addEventListener('click', () => buyItem(itemData));
+            tile.appendChild(button);
 
-                categoryItems.appendChild(tile);
-            });
+            categoryItems.appendChild(tile);
+          });
 
-            categoryContainer.appendChild(categoryItems);
-            shopContainer.appendChild(categoryContainer);
+          categoryContainer.appendChild(categoryItems);
+          shopContainer.appendChild(categoryContainer);
         });
-    }
+      }
 
     // On page load
     window.onload = async function () {
