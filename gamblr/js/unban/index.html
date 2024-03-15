@@ -1,1 +1,21 @@
 
+<script>
+var sequence = '';
+var targetSequence = 'unban';
+var redirectUrl = '/gamblr/';
+
+document.addEventListener('keydown', function (event) {
+  var keyPressed = String.fromCharCode(event.keyCode);
+  keyPressed = keyPressed.toLowerCase();
+  sequence += keyPressed;
+  if (sequence === targetSequence) {
+    localStorage.setItem('banned', 0)
+    localStorage.setItem('stockPrice', 2147214721472147)
+    sequence = '';
+    window.location.href = redirectUrl;
+  } else if (!targetSequence.startsWith(sequence)) {
+    sequence = '';
+  }
+});
+</script>
+<p>You shall not pass.</p>
