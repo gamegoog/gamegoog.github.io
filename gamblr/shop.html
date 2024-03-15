@@ -1,7 +1,14 @@
-<html lang="en"><head>
+<html lang="en">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🛒 GAMBLR Shop</title>
+  <title>GAMBLR - Shop</title>
+  <link rel="icon" type="image/x-icon" href="/gamblr/icon.png">
+  <meta content="GAMBLR - Shop" property="og:title" />
+  <meta content="buy money printers and gorila and lamborgini" property="og:description" />
+  <meta content="https://gloabe.github.io/gamblr/" property="og:url" />
+  <meta content="https://gloabe.github.io/gamblr/icon.png" property="og:image" />
+  <meta content="#E4A700" data-react-helmet="true" name="theme-color" />
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -143,25 +150,14 @@
     </style>
     <style type="text/css" id="operaUserStyle"></style>
   </head>
-  <body>
-    <h1>🛒 GAMBLR Shop</h1>
-    <div id="cashDisplay">$63,035.619</div>
-    <div class="category-container" id="shopContainer">
-      <div class="category" id="printersContainer">
-        <h2 class="category-title">Printers</h2>
-        <div class="category-items" id="printersItems"><div class="tile"><div class="emoji">🖨️</div><div class="name">Money Printer Lv. 1</div><div class="price">Owned</div></div><div class="tile"><div class="emoji">💰🖨️</div><div class="name">Money Printer Lv. 2</div><div class="price">Owned</div></div><div class="tile"><div class="emoji">💰💰🖨️💰</div><div class="name">Money Printer Lv. 3</div><div class="price">Owned</div></div></div>
-      </div>
-    </div>
-    <div class="category-container">
-      <div class="category" id="carsContainer">
-        <h2 class="category-title">Cars</h2>
-        <div class="category-items" id="carsItems"><div class="tile"><div class="emoji">🚜</div><div class="name">Lamborghini</div><div class="price">$350,000</div><button>Buy</button></div><div class="tile"><div class="emoji">🏎️</div><div class="name">Ferrari</div><div class="price">$2,500,000</div><button>Buy</button></div><div class="tile"><div class="emoji">🏎️</div><div class="name">Bugatti</div><div class="price">$5,500,000</div><button>Buy</button></div></div>
-      </div>
-    </div>
-    <div class="footer"> Done shopping? Go <a href="/gamblr/">home</a>! </div>
-    <script>
+<body>
+<h1>🛒 GAMBLR Shop</h1>
+<div id="cashDisplay">$16,150,000</div>
+<div class="category-container" id="shopContainer"></div>
+<div class="footer"> Done shopping? Go <a href="/gamblr/">home</a>! </div>
+<script>
       // JSON object containing item details
-      const items = [{
+      /* const items = [{
         category: 'Printers',
         name: 'Money Printer Lv. 1',
         emoji: '🖨️',
@@ -179,20 +175,10 @@
       }, {
         category: 'Cars',
         name: 'Lamborghini',
-        emoji: '🚜',
-        price: 350000
-      }, {
-        category: 'Cars',
-        name: 'Ferrari',
         emoji: '🏎️',
-        price: 2500000
-      }, {
-        category: 'Cars',
-        name: 'Bugatti',
-        emoji: '🏎️',
-        price: 5500000
-      }
-                    ];
+        price: 3000000
+      }]; */
+
       // Function to determine if item is owned
       function isItemOwned(item) {
         if (item.category === 'Printers') {
@@ -203,52 +189,78 @@
           return localStorage.getItem(itemName) === 'true';
         }
       }
-      // Function to display shop
-      function displayShop() {
-        const printersContainer = document.getElementById('printersItems');
-        const carsContainer = document.getElementById('carsItems');
-        // Clear existing items
-        printersContainer.innerHTML = '';
-        carsContainer.innerHTML = '';
-        // Display items in respective categories
+
+      async function fetchShopItems() {
+        try {
+          const response = await fetch('js/shop.json');
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error('Error fetching shop items:', error);
+          return [];
+        }
+      }
+
+      // Function to display shop items
+      async function displayShop() {
+        const shopContainer = document.getElementById('shopContainer');
+        const items = await fetchShopItems();
+
+        if (items.length === 0) {
+          shopContainer.innerHTML = '<p>No items available</p>';
+          return;
+        }
+
         items.forEach(item => {
-          const tile = document.createElement('div');
-          tile.className = 'tile';
-          const emojiDiv = document.createElement('div');
-          emojiDiv.className = 'emoji';
-          emojiDiv.textContent = item.emoji;
-          tile.appendChild(emojiDiv);
-          const nameDiv = document.createElement('div');
-          nameDiv.className = 'name';
-          nameDiv.textContent = item.name;
-          tile.appendChild(nameDiv);
-          const priceDiv = document.createElement('div');
-          priceDiv.className = 'price';
-          priceDiv.textContent = isItemOwned(item) ? 'Owned' : '$' + item.price.toLocaleString();
-          tile.appendChild(priceDiv);
-          if (!isItemOwned(item)) {
+          const categoryContainer = document.createElement('div');
+          categoryContainer.classList.add('category');
+
+          const categoryTitle = document.createElement('h2');
+          categoryTitle.classList.add('category-title');
+          categoryTitle.textContent = item.category;
+          categoryContainer.appendChild(categoryTitle);
+
+          const categoryItems = document.createElement('div');
+          categoryItems.classList.add('category-items');
+
+          item.items.forEach(itemData => {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+
+            const emojiDiv = document.createElement('div');
+            emojiDiv.className = 'emoji';
+            emojiDiv.textContent = itemData.emoji;
+            tile.appendChild(emojiDiv);
+
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'name';
+            nameDiv.textContent = itemData.name;
+            tile.appendChild(nameDiv);
+
+            const priceDiv = document.createElement('div');
+            priceDiv.className = 'price';
+            priceDiv.textContent = itemData.price;
+            tile.appendChild(priceDiv);
+
             const button = document.createElement('button');
             button.textContent = 'Buy';
-            button.addEventListener('click', () => buyItem(item));
+            button.addEventListener('click', () => buyItem(itemData));
             tile.appendChild(button);
-          } else if (item.category !== 'Printers') {
-            const sellPrice = Math.floor(item.price * 0.9);
-            const button = document.createElement('button');
-            button.textContent = 'Sell ($' + sellPrice.toLocaleString() + ')'; // Sell price formatted with commas and dollar sign
-            button.className = 'sell-button'; // Add class for styling
-            button.addEventListener('click', () => sellItem(item));
-            tile.appendChild(button);
-          }
-          const container = item.category === 'Printers' ? printersContainer : carsContainer;
-          container.appendChild(tile);
+
+            categoryItems.appendChild(tile);
+          });
+
+          categoryContainer.appendChild(categoryItems);
+          shopContainer.appendChild(categoryContainer);
         });
       }
-      // On page load
-      window.onload = function() {
-        displayShop();
+
+    // On page load
+    window.onload = async function () {
+        await displayShop();
         const initialCash = parseFloat(localStorage.getItem('cash')) || 0;
         updateCashDisplay(initialCash);
-      };
+    };
       // Function to update cash display
       function updateCashDisplay(cash) {
         const cashDisplay = document.getElementById('cashDisplay');
@@ -283,6 +295,5 @@
         displayShop();
       }
     </script>
-  
-
-</body></html>
+  </body>
+</html>
