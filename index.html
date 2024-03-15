@@ -1,0 +1,399 @@
+<html lang="en">
+<!-- Noowuhh!! Get out of my code!! Ugh! -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
+    <link rel="stylesheet" href="/catalog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
+    <script src="/src/index.js"></script>
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+    <style type="text/css" id="operaUserStyle"></style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🌎 Gloabe</h1>
+        <p class="quote" id="quote">Some games may not work.</p>
+    </div>
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search for games..." oninput="filterGames(this.value)">
+    </div>
+    <div class="feeling-lucky-container">
+        <a onclick="randomGame();" class="hyperlink">I'm Feeling Lucky</a>
+        <a href="/projects/beta/" class="hyperlink">Beta Branch</a>
+         <div class="category">
+            <h2 class="category">Recently Updated</h2>
+            <div class="game-grid" id="NewGames">   
+                <div class="game">
+                  <a href="/gamblr/">
+                  <img src="/images/GAMBLR.png" alt="GAMBLR">
+                  </a>
+                  <h3 href="/gamblr/">GAMBLR</h3>
+               </div>
+                <div class="game">
+                  <a href="https://possibly93.github.io/">
+                  <img src="/images/w93.png" alt="Windows 93 Logo">
+                  </a>
+                  <h3 href="https://possibly93.github.io/">Windows 93 (off-site)</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/stickmanhook/">
+                  <img src="/images/smh.jpg" alt="Stickman Hook">
+                  </a>
+                  <h3 href="/projects/stickmanhook/">Stickman Hook</h3>
+               </div>
+               <div class="game">
+                  <a href="https://cdn.i-ready.com/instruction/game-hpr/master/50/">
+                  <img src="/images/pspinners.png" alt="Path Spinners">
+                  </a>
+                  <h3 href="https://cdn.i-ready.com/instruction/game-hpr/master/50/">Path Spinners</h3>
+               </div>
+               <div class="game">
+                  <a href="https://cdn.i-ready.com/instruction/reward-games/master/49/game-bubbles/">
+                  <img src="/images/wpball.png" alt="Wizard Pinball">
+                  </a>
+                  <h3 href="https://cdn.i-ready.com/instruction/reward-games/master/49/game-bubbles/">Wizard Pinball</h3>
+               </div>
+            </div>
+         </div>
+         <div class="category">
+            <h2 class="category">Full Collection</h2>
+            <div class="game-grid" id="gameGrid">
+               <div class="sponsored">
+                  <a href="https://cornhub.website/">
+                  <img src="/images/cornhub.jpg" alt="Cornhub">
+                  </a>
+                  <h3 href="https://cornhub.website/">[<span style="color: Green;">Sponsored</span>] CornHub</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/webgl-fluid-simulation/">
+                  <img src="/images/fluid.png" alt="WebGL Fluid Simulation">
+                  </a>
+                  <h3 href="">WebGL Fluid Simulation</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/elastic-face/">
+                  <img src="/images/face.png" alt="Elastic Face">
+                  </a>
+                  <h3 href="/projects/elastic-face/">Elastic Face</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/jetpack-joyride/">
+                  <img src="/images/joyride.jpg" alt="Jetpack Joyride">
+                  </a>
+                  <h3 href="/projects/jetpack-joyride/">Jetpack Joyride</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/among-us/">
+                  <img src="/images/amongus.png" alt="Among Us">
+                  </a>
+                  <h3 href="/projects/among-us/">Among Us</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/impossiblequiz/">
+                  <img src="/images/impossiblequiz.png" alt="The Impossibe Quiz">
+                  </a>
+                  <h3 href="/projects/impossiblequiz/">The Impossible Quiz</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/impossiblequiz2/">
+                  <img src="/images/impossiblequiz2.png" alt="The Impossibe Quiz 2">
+                  </a>
+                  <h3 href="/projects/impossiblequiz/">The Impossible Quiz 2</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/1v1lol/">
+                  <img src="/images/1v1.png" alt="1v1.lol">
+                  </a>
+                  <h3 href="/projects/1v1lol/">1v1.lol</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/wordle/">
+                  <img src="/images/wordleplus.png" alt="Wordle+">
+                  </a>
+                  <h3 href="/projects/wordle/">Wordle+</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/eel-slap/">
+                  <img src="/images/favicon.ico" alt="eelslap">
+                  </a>
+                  <h3 href="/projects/eel-slap/">eelslap</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/slope/">
+                  <img src="/images/slope.png" alt="slope">
+                  </a>
+                  <h3 href="/projects/slope/">Slope</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/slope-2/">
+                  <img src="/images/slope2.png" alt="Slope 2">
+                  </a>
+                  <h3 href="/projects/slope-2/">Slope 2</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/sm64/">
+                  <img src="/images/sm64.png" alt="Super Mario 64">
+                  </a>
+                  <h3 href="/projects/sm64/">Super Mario 64 <span style="color: Red;">(Controller Required)</span></h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/bitlife/">
+                  <img src="/images/bitlife.png" alt="Bitlife">
+                  </a>
+                  <h3 href="/projects/bitlife/">Bitlife</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/minecraft/1.8/">
+                  <img src="/images/eagler.png" alt="Minecraft 1.8">
+                  </a>
+                  <h3 href="/projects/minecraft/1.8/">Minecraft 1.8 (Multiplayer)</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/minecraft/1.5.2/">
+                  <img src="/images/eagler.png" alt="Minecraft 1.5.2">
+                  </a>
+                  <h3 href="/projects/minecraft/1.5.2/">Minecraft 1.5.2 (Singleplayer)</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/jacksmith/">
+                  <img src="/images/jacksmith.png" alt="Jacksmith">
+                  </a>
+                  <h3 href="/projects/Jacksmith/">Jacksmith</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/paperio2/">
+                  <img src="/images/paperio2.png" alt="Paper.io 2">
+                  </a>
+                  <h3 href="/projects/paperio2/">Paper.io 2</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/paper-3/">
+                  <img src="/images/paper3.jpg" alt="Paper.io 3">
+                  </a>
+                  <h3 href="/projects/paper-3/">Paper.io 3</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/cc/">
+                  <img src="/images/cookieclicker.png" alt="Cookie Clicker">
+                  </a>
+                  <h3 href="/projects/cc/">Cookie Clicker</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/basket-random/">
+                  <img src="/images/basketrandom.png" alt="Basket Random">
+                  </a>
+                  <h3 href="/projects/basket-random/">Basket Random</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/basketball-stars/">
+                  <img src="/images/basketballstars.png" alt="Basketball Stars">
+                  </a>
+                  <h3 href="/projects/basketball-stars/">Basketball Stars</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/edge-surf/">
+                  <img src="/images/edgesurf.png" alt="Edge Surfing Game">
+                  </a>
+                  <h3 href="/projects/edge-surf/">Edge Surfing Game</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/subway-surfers-ny/">
+                  <img src="/images/subwaysurf.png" alt="Subway Surfers NY">
+                  </a>
+                  <h3 href="/projects/subway-surfers-ny/">Subway Surfers</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/retro-bowl/">
+                  <img src="/images/retrobowl.png" alt="Retrobowl">
+                  </a>
+                  <h3 href="/projects/retro-bowl/">Retrobowl</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/sandboxels/">
+                  <img src="/images/sandboxels.png" alt="Sandboxels">
+                  </a>
+                  <h3 href="/projects/sandboxels/">Sandboxels</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/HappyWheels/">
+                  <img src="/images/hw.png" alt="Happy Wheels">
+                  </a>
+                  <h3 href="/projects/HappyWheels/">Happy Wheels (<span style="color: Green;">Fixed</span>)</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/TempleRun2/">
+                  <img src="/images/tr2.png" alt="Temple Run 2">
+                  </a>
+                  <h3 href="/projects/TempleRun2/">Temple Run 2</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/minecraft-classic/">
+                  <img src="/images/mcc.png" alt="Minecraft Classic">
+                  </a>
+                  <h3 href="/projects/minecraft-classic/">Minecraft Classic</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/ctr/">
+                  <img src="/images/cuttherope.png" alt="Cut the Rope">
+                  </a>
+                  <h3 href="/projects/ctr/">Cut the Rope</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/run3/">
+                  <img src="/images/run.png" alt="Run 3">
+                  </a>
+                  <h3 href="/projects/run3/">Run 3</h3>
+               </div>
+                <div class="game">
+                  <a href="https://possibly93.github.io/">
+                  <img src="/images/w93.png" alt="Windows 93 Logo">
+                  </a>
+                  <h3 href="https://possibly93.github.io/">Windows 93 (off-site)</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/breakingthebank/">
+                  <img src="/images/btb.png" alt="Breaking the Bank">
+                  </a>
+                  <h3 href="/projects/breakingthebank/">Breaking the Bank</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/escapingtheprison/">
+                  <img src="/images/etp.png" alt="Escaping the prison">
+                  </a>
+                  <h3 href="/projects/escapingtheprison/">Escaping the Prison</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/stealingthediamond/">
+                  <img src="/images/std.png" alt="Stealing the Diamond">
+                  </a>
+                  <h3 href="/projects/stealingthediamond/">Stealing the Diamond</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/infiltratingtheairship/">
+                  <img src="/images/ita.png" alt="Infiltrating the Airship">
+                  </a>
+                  <h3 href="/projects/infiltratingtheairship/">Infiltrating the Airship</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/fleeingthecomplex/">
+                  <img src="/images/ftc.png" alt="Fleeing the Complex">
+                  </a>
+                  <h3 href="/projects/fleeingthecomplex/">Fleeing the Complex</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/pokemon-battlesim/">
+                  <img src="/images/pbs.png" alt="Pokemon Battle Simulator">
+                  </a>
+                  <h3 href="/projects/pokemon-battlesim/">Pokemon Battle Simulator</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/thebindingofisaac/">
+                  <img src="/images/tboi.png" alt="The Binding of Isaac">
+                  </a>
+                  <h3 href="/projects/pokemonruby/">The Binding of Isaac</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/pokemonruby/">
+                  <img src="/images/ruby.jpg" alt="Pokemon Ruby">
+                  </a>
+                  <h3 href="/projects/pokemonruby/">Pokemon Ruby</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/pokemonemerald/">
+                  <img src="/images/emerald.png" alt="Pokemon Emerald">
+                  </a>
+                  <h3 href="/projects/pokemonemerald/">Pokemon Emerald</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/pokemonfirered/">
+                  <img src="/images/red.jpg" alt="Pokemon Fire Red">
+                  </a>
+                  <h3 href="/projects/pokemonfirered/">Pokemon Fire Red</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/motox3m/">
+                  <img src="/images/x3m.png" alt="Moto X3M">
+                  </a>
+                  <h3 href="/projects/motox3m/">Moto X3M</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/infinitecraft/">
+                  <img src="/images/infcraftsandbox.png" alt="Infinite Craft Sandbox">
+                  </a>
+                  <h3 href="/projects/infinitecraft/">Infinite Craft Sandbox</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/stickmanhook/">
+                  <img src="/images/smh.jpg" alt="Stickman Hook">
+                  </a>
+                  <h3 href="/projects/stickmanhook/">Stickman Hook</h3>
+               </div>
+                <div class="game">
+                  <a href="/gamblr/">
+                  <img src="/images/GAMBLR.png" alt="GAMBLR">
+                  </a>
+                  <h3 href="/gamblr/">GAMBLR</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/riddleschool/">
+                  <img src="/images/riddleschool.png" alt="Riddleschool logo">
+                  </a>
+                  <h3 href="/projects/riddleschool/">Riddleschool 1</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/riddleschool2/">
+                  <img src="/images/riddleschool.png" alt="Riddleschool logo">
+                  </a>
+                  <h3 href="/projects/riddleschool2/">Riddleschool 2</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/riddleschool3/">
+                  <img src="/images/riddleschool.png" alt="Riddleschool logo">
+                  </a>
+                  <h3 href="/projects/riddleschool3/">Riddleschool 3</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/riddleschool4/">
+                  <img src="/images/riddleschool.png" alt="Riddleschool logo">
+                  </a>
+                  <h3 href="/projects/riddleschool4/">Riddleschool 4</h3>
+               </div>
+               <div class="game">
+                  <a href="/projects/riddleschool5/">
+                  <img src="/images/riddleschool.png" alt="Riddleschool logo">
+                  </a>
+                  <h3 href="/projects/riddleschool5/">Riddleschool 5</h3>
+               </div>
+               <div class="game">
+                  <a href="https://cdn.i-ready.com/instruction/game-hpr/master/50/">
+                  <img src="/images/pspinners.png" alt="Path Spinners">
+                  </a>
+                  <h3 href="https://cdn.i-ready.com/instruction/game-hpr/master/50/">Path Spinners</h3>
+               </div>
+               <div class="game">
+                  <a href="https://cdn.i-ready.com/instruction/reward-games/master/49/game-bubbles/">
+                  <img src="/images/wpball.png" alt="Wizard Pinball">
+                  </a>
+                  <h3 href="https://cdn.i-ready.com/instruction/reward-games/master/49/game-bubbles/">Wizard Pinball</h3>
+               </div>
+               <div class="game">
+                  <a href="https://cdn.i-ready.com/instruction/game-begooped/1.x/3/">
+                  <img src="/images/begooped.png" alt="Begooped">
+                  </a>
+                  <h3 href="https://cdn.i-ready.com/instruction/game-begooped/1.x/3/">Begooped</h3>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script>
+         document.addEventListener("DOMContentLoaded", function () {
+             new cursoreffects.trailingCursor({particles: 15, rate: 0.854454, baseImageSrc: "/images/cur.png"});
+         });
+         displayRandomQuote();
+      </script>
+      <canvas width="885" height="931" style="top: 0px; left: 0px; pointer-events: none; position: fixed;"></canvas>
+   </body>
+</html>
