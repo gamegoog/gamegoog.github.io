@@ -289,7 +289,7 @@
             localStorage.setItem('printer', printerLevel); // Update printer level
           } else {
             localStorage.setItem('cash', userCash - item.price);
-            localStorage.setItem(item.name, true); // Mark item as owned
+            localStorage.setItem(item.name, 1); // Mark item as owned
           }
           updateCashDisplay(userCash - item.price);
           displayShop();
@@ -302,7 +302,7 @@
         const userCash = parseFloat(localStorage.getItem('cash')) || 0;
         const sellPrice = item.price * 0.9; // Sell for 90% of original price
         localStorage.setItem('cash', userCash + sellPrice);
-        localStorage.setItem(item.name, false); // Mark item as not owned
+        localStorage.setItem(item.name, 0); // Mark item as not owned
         updateCashDisplay(userCash + sellPrice);
         displayShop();
       }
