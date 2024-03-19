@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   var response = await fetch('jobs/workgrades.json');
   var workgrades = await response.json();
   var workgrade = localStorage.getItem('workgrade');
+  var gorilla = localStorage.getItem('Gorilla');
   var printer = localStorage.getItem('printer');
   var cash = localStorage.getItem('cash');
 
@@ -101,6 +102,25 @@ if (parseInt(workgrade) >= 7) {
   var fanartTile = document.querySelector('.tile:nth-child(1)');
   fanartTile.parentNode.insertBefore(shopTile, fanartTile.nextSibling);
 }
+
+if (parseInt(gorilla) == "true") {
+  var gorillaTile = document.createElement('div');
+  gorillaTile.classList.add('tile');
+  var gorillaLink = document.createElement('a');
+  gorillaLink.setAttribute('href', 'pet.html');
+  var gorillaEmoji = document.createElement('div');
+  gorillaEmoji.classList.add('emoji');
+  gorillaEmoji.textContent = '🦍';
+  var gorillaName = document.createElement('div');
+  gorillaName.classList.add('name');
+  gorillaName.textContent = '(Pet) Gorilla';
+  gorillaLink.appendChild(gorillaEmoji);
+  gorillaLink.appendChild(gorillaName);
+  gorillaTile.appendChild(gorillaLink);
+  var fanartTile = document.querySelector('.tile:nth-child(1)');
+  fanartTile.parentNode.insertBefore(gorillaTile, fanartTile.previousElementSibling);
+}
+    
   } 
 });
 
