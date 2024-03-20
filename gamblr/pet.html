@@ -197,16 +197,14 @@
         }
 
 function resetProgress() {
-    localStorage.removeItem('hunger');
-    localStorage.removeItem('thirstiness');
-    localStorage.removeItem('happiness');
-    localStorage.removeItem('doritosCount');
-    localStorage.removeItem('gatoradeCount');
-    updateStatusMessage("Your gorilla died!");
-    setTimeout(() => {
-        localStorage.removeItem('Gorilla'); // Remove 'Gorilla' (assuming it's a different key)
-        window.location.reload();
-    }, 3000);
+    localStorage.setItem('hunger', 35);
+    localStorage.setItem('thirstiness', 10);
+    localStorage.setItem('happiness', 50);
+    localStorage.setItem('doritosCount', 0);
+    localStorage.setItem('gatoradeCount', 0);
+    alert("Your gorilla died!");
+    localStorage.setItem('Gorilla', 0); // Remove 'Gorilla' (assuming it's a different key)
+    window.location.href = "/gamblr/";
 }
 
 
