@@ -23,14 +23,11 @@ document.addEventListener('DOMContentLoaded', async function () {
   var printer = localStorage.getItem('printer');
   var cash = localStorage.getItem('cash');
 
-  if (cash) {
+  if (cash && workgrade) {
     var formattedCash = parseFloat(cash).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     cashDisplay.textContent = '$' + formattedCash; // Add dollar sign
   } else {
     localStorage.setItem('cash', 0);
-  }
-
-  if (!workgrade) {
     localStorage.setItem('workgrade', -1);
     workgrade = -1; 
     window.location.reload();
