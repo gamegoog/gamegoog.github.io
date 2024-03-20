@@ -152,6 +152,9 @@
         let thirstiness = parseFloat(localStorage.getItem('thirstiness')) || 10;
         let happiness = parseInt(localStorage.getItem('happiness')) || 50;
         let cash = parseInt(localStorage.getItem('cash')) || 0;
+        let hungerLoss = 0.00022
+        let thirstinessLoss = 0.00005
+        let happinessLoss = 0.0001
 
         function checkLastVisit() {
           const lastVisit = localStorage.getItem('lastVisit');
@@ -159,9 +162,9 @@
           if (lastVisit) {
             const timeDifference = (currentTime - parseInt(lastVisit)) / 1000; // Difference in seconds
             // Adjust hunger, thirstiness, and happiness based on the time difference
-            hunger = Math.max(hunger + (timeDifference * 0.00022), 0);
-            thirstiness = Math.max(thirstiness + (timeDifference * 0.00005), 0);
-            happiness = Math.max(happiness - (timeDifference * 0.0001), 0);
+            hunger = Math.max(hunger + (timeDifference * hungerLoss), 0);
+            thirstiness = Math.max(thirstiness + (timeDifference * thirstinessLoss), 0);
+            happiness = Math.max(happiness - (timeDifference * happinessLoss), 0);
             updateStats(); // Update local storage values
             updateUI(); // Update the UI with adjusted values
           }
@@ -178,7 +181,7 @@
         // Increase hunger and thirstiness every second
         setInterval(() => {
           hunger += 0.00025;
-          thirstiness += 0.00005;
+          thirstiness += thirstinessLoss;
           updateUI(); // Update UI to reflect changes
         }, 1000); // Run every second
         function updateStats() {
@@ -350,9 +353,9 @@
           }, 3000); // Clear the message after 3 seconds
         }
         setInterval(() => {
-          hunger = parseFloat((hunger + 0.00022).toFixed(5));
-          thirstiness = parseFloat((thirstiness + 0.00005).toFixed(5));
-          happiness = parseFloat((happiness - 0.0001).toFixed(5));
+          hunger = parseFloat((hunger + hungerLoss).toFixed(5));
+          thirstiness = parseFloat((thirstiness + thirstinessLoss).toFixed(5));
+          happiness = parseFloat((happiness - happinessLoss).toFixed(5));
           updateStats(); // Update local storage values
           updateUI();
         }, 1000);
