@@ -121,6 +121,10 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Function to format cash with commas
+      const workgrade = localStorage.getItem('workgrade');
+      if (!workgrade <= '-3') {
+        window.location.href = '/gamblr/';
+      }
         function formatCash(amount) {
             return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
