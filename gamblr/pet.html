@@ -255,6 +255,7 @@
               thirstiness += 2; // Increment thirstiness slightly when eating
               if (hunger < 0) {
                 hunger = 0;
+                happiness -= 0.9;
                 updateStatusMessage("Your gorilla is full on Cool Ranch Doritos!");
               }
             } else if (type === 'water') {
