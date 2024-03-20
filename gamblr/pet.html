@@ -342,18 +342,6 @@ function resetProgress() {
           }, 3000); // Clear the message after 3 seconds
         }
 
-        function resetProgress() {
-          localStorage.removeItem('hunger');
-          localStorage.removeItem('thirstiness');
-          localStorage.removeItem('happiness');
-          localStorage.removeItem('doritosCount');
-          localStorage.removeItem('gatoradeCount');
-          hunger = 50;
-          thirstiness = 50;
-          happiness = 50;
-          updateUI();
-          updateStatusMessage("Your gorilla died!");
-        }
         setInterval(() => {
           hunger = parseFloat((hunger + 0.00022).toFixed(5));
           thirstiness = parseFloat((thirstiness + 0.00005).toFixed(5));
