@@ -158,9 +158,9 @@
           if (lastVisit) {
             const timeDifference = (currentTime - parseInt(lastVisit)) / 1000; // Difference in seconds
             // Adjust hunger, thirstiness, and happiness based on the time difference
-            hunger = Math.max(hunger - (timeDifference * 0.00022), 0);
-            thirstiness = Math.max(thirstiness - (timeDifference * 0.00005), 0);
-            happiness = Math.max(happiness + (timeDifference * 0.0001), 0);
+            hunger = Math.max(hunger + (timeDifference * 0.00022), 0);
+            thirstiness = Math.max(thirstiness + (timeDifference * 0.00005), 0);
+            happiness = Math.max(happiness - (timeDifference * 0.0001), 0);
             updateStats(); // Update local storage values
             updateUI(); // Update the UI with adjusted values
           }
