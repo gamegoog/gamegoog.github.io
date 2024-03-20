@@ -149,22 +149,21 @@
     <div id="cashDisplay">$ ???</div>
     <div class="category-container" id="shopContainer">
       <div class="category" id="printersContainer">
-        <h2 class="category-title"></h2>
+        <h2 class="category-title">Printers</h2>
         <div class="category-items" id="printersItems">
         </div>
       </div>
     </div>
     <div class="category-container">
       <div class="category" id="carsContainer">
-        <h2 class="category-title"></h2>
+        <h2 class="category-title">Other</h2>
         <div class="category-items" id="carsItems">
         </div>
       </div>
     </div>
     <div class="footer"> Done shopping? Go <a href="/gamblr/">home</a>! </div>
     <script>
-  // JSON object containing item details
-  const items = [{
+      const items = [{
     category: 'Printers',
     name: 'Money Printer Lv. 1',
     emoji: '🖨️',
@@ -215,112 +214,95 @@
     emoji: '🚀🧠',
     price: 23966600001
   }];
-
-  // Function to determine if item is owned
-  function isItemOwned(item) {
-    if (item.category === 'Printers') {
-      const printerLevel = parseInt(localStorage.getItem('printer')) || 0;
-      return printerLevel >= items.indexOf(item) + 1;
-    } else {
-      const itemName = item.name;
-      return localStorage.getItem(itemName) === '1';
-    }
-  }
-// Function to display shop
-function displayShop() {
-  const categoryContainers = document.querySelectorAll('.category');
-
-  // Loop through each category container
-  categoryContainers.forEach(categoryContainer => {
-    const categoryTitle = categoryContainer.querySelector('.category-title');
-    const categoryItemsContainer = categoryContainer.querySelector('.category-items');
-
-    // Clear existing items
-    categoryItemsContainer.innerHTML = '';
-
-    // Display items in respective categories
-    items.forEach(item => {
-      if (item.category === categoryContainer.id) {
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        const emojiDiv = document.createElement('div');
-        emojiDiv.className = 'emoji';
-        emojiDiv.textContent = item.emoji;
-        tile.appendChild(emojiDiv);
-        const nameDiv = document.createElement('div');
-        nameDiv.className = 'name';
-        nameDiv.textContent = item.name;
-        tile.appendChild(nameDiv);
-        const priceDiv = document.createElement('div');
-        priceDiv.className = 'price';
-        priceDiv.textContent = isItemOwned(item) ? 'Owned' : '$' + item.price.toLocaleString();
-        tile.appendChild(priceDiv);
-        if (!isItemOwned(item)) {
-          const button = document.createElement('button');
-          button.textContent = 'Buy';
-          button.addEventListener('click', () => buyItem(item));
-          tile.appendChild(button);
-        } else if (item.category !== 'Printers') {
-          const sellPrice = Math.floor(item.price * 0.9);
-          const button = document.createElement('button');
-          button.textContent = 'Sell ($' + sellPrice.toLocaleString() + ')';
-          button.className = 'sell-button';
-          button.addEventListener('click', () => sellItem(item));
-          tile.appendChild(button);
+      // Function to determine if item is owned
+      function isItemOwned(item) {
+        if (item.category === 'Printers') {
+          const printerLevel = parseInt(localStorage.getItem('printer')) || 0;
+          return printerLevel >= items.indexOf(item) + 1;
+        } else {
+          const itemName = item.name;
+          return localStorage.getItem(itemName) === '1';
         }
-        categoryItemsContainer.appendChild(tile);
       }
-    });
-
-    // Set category title
-    items.forEach(item => { // Loop through items to find the category title
-      if (item.category === categoryContainer.id) {
-        categoryTitle.textContent = item.category;
+      // Function to display shop
+      function displayShop() {
+        const printersContainer = document.getElementById('printersItems');
+        const carsContainer = document.getElementById('carsItems');
+        // Clear existing items
+        printersContainer.innerHTML = '';
+        carsContainer.innerHTML = '';
+        // Display items in respective categories
+        items.forEach(item => {
+          const tile = document.createElement('div');
+          tile.className = 'tile';
+          const emojiDiv = document.createElement('div');
+          emojiDiv.className = 'emoji';
+          emojiDiv.textContent = item.emoji;
+          tile.appendChild(emojiDiv);
+          const nameDiv = document.createElement('div');
+          nameDiv.className = 'name';
+          nameDiv.textContent = item.name;
+          tile.appendChild(nameDiv);
+          const priceDiv = document.createElement('div');
+          priceDiv.className = 'price';
+          priceDiv.textContent = isItemOwned(item) ? 'Owned' : '$' + item.price.toLocaleString();
+          tile.appendChild(priceDiv);
+          if (!isItemOwned(item)) {
+            const button = document.createElement('button');
+            button.textContent = 'Buy';
+            button.addEventListener('click', () => buyItem(item));
+            tile.appendChild(button);
+          } else if (item.category !== 'Printers') {
+            const sellPrice = Math.floor(item.price * 0.9);
+            const button = document.createElement('button');
+            button.textContent = 'Sell ($' + sellPrice.toLocaleString() + ')'; // Sell price formatted with commas and dollar sign
+            button.className = 'sell-button'; // Add class for styling
+            button.addEventListener('click', () => sellItem(item));
+            tile.appendChild(button);
+          }
+          const container = item.category === 'Printers' ? printersContainer : carsContainer;
+          container.appendChild(tile);
+        });
       }
-    });
-  });
-}
-  // On page load
-  window.onload = function () {
-    displayShop();
-    const initialCash = parseFloat(localStorage.getItem('cash')) || 0;
-    updateCashDisplay(initialCash);
-  };
-
-  // Function to update cash display
-  function updateCashDisplay(cash) {
-    const cashDisplay = document.getElementById('cashDisplay');
-    cashDisplay.textContent = '$' + cash.toLocaleString();
-  }
-
-  // Function to buy an item
-  function buyItem(item) {
-    const userCash = parseFloat(localStorage.getItem('cash')) || 0;
-    if (userCash >= item.price) {
-      if (item.category === 'Printers') {
-        const printerLevel = items.indexOf(item) + 1;
-        localStorage.setItem('cash', userCash - item.price);
-        localStorage.setItem('printer', printerLevel);
-      } else {
-        localStorage.setItem('cash', userCash - item.price);
-        localStorage.setItem(item.name, 1);
+      // On page load
+      window.onload = function() {
+        displayShop();
+        const initialCash = parseFloat(localStorage.getItem('cash')) || 0;
+        updateCashDisplay(initialCash);
+      };
+      // Function to update cash display
+      function updateCashDisplay(cash) {
+        const cashDisplay = document.getElementById('cashDisplay');
+        cashDisplay.textContent = '$' + cash.toLocaleString();
       }
-      updateCashDisplay(userCash - item.price);
-      displayShop();
-    } else {
-      alert('Not enough cash!');
-    }
-  }
-
-  // Function to sell an item
-  function sellItem(item) {
-    const userCash = parseFloat(localStorage.getItem('cash')) || 0;
-    const sellPrice = item.price * 0.9;
-    localStorage.setItem('cash', userCash + sellPrice);
-    localStorage.setItem(item.name, 0);
-    updateCashDisplay(userCash + sellPrice);
-    displayShop();
-  }
-</script>
+      // Function to buy an item
+      // Function to buy an item
+      function buyItem(item) {
+        const userCash = parseFloat(localStorage.getItem('cash')) || 0;
+        if (userCash >= item.price) {
+          if (item.category === 'Printers') {
+            const printerLevel = items.indexOf(item) + 1;
+            localStorage.setItem('cash', userCash - item.price);
+            localStorage.setItem('printer', printerLevel); // Update printer level
+          } else {
+            localStorage.setItem('cash', userCash - item.price);
+            localStorage.setItem(item.name, 1); // Mark item as owned
+          }
+          updateCashDisplay(userCash - item.price);
+          displayShop();
+        } else {
+          alert('Not enough cash!');
+        }
+      }
+      // Function to sell an item
+      function sellItem(item) {
+        const userCash = parseFloat(localStorage.getItem('cash')) || 0;
+        const sellPrice = item.price * 0.9; // Sell for 90% of original price
+        localStorage.setItem('cash', userCash + sellPrice);
+        localStorage.setItem(item.name, 0); // Mark item as not owned
+        updateCashDisplay(userCash + sellPrice);
+        displayShop();
+      }
+    </script>
   </body>
 </html>
