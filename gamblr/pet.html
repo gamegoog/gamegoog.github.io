@@ -1,1 +1,351 @@
-Sorry, this feature is coming soon!
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorilla Simulator</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        overflow: hidden;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        width: 80%;
+        /* Adjust container width as needed */
+        margin: -5px auto 0;
+        /* Center the container and reduce top margin */
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #container {
+        width: 100%;
+        height: 60vh;
+        /* Adjust container height as needed */
+        border: 1px solid black;
+        position: relative;
+        overflow: hidden;
+        margin-top: 20px;
+      }
+
+      #gorilla {
+        position: absolute;
+        font-size: 30px;
+      }
+
+      #food,
+      #water {
+        position: absolute;
+        display: none;
+        font-size: 30px;
+      }
+
+      #stats,
+      #itemCounts,
+      #controls {
+        margin-top: 20px;
+      }
+
+      #stats {
+        font-size: 18px;
+        /* Adjusted font size for stats */
+      }
+
+      button {
+        font-size: 16px;
+        margin: 3px;
+        /* Reduce margin for buttons */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        /* Adjusted border radius */
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      button:disabled {
+        opacity: 0.7;
+        /* Reduce opacity to make the button appear slightly darker */
+        cursor: not-allowed;
+        /* Change cursor to indicate that the button is disabled */
+      }
+
+      #statusMessage {
+        font-size: 20px;
+        /* Larger font size for the status message */
+        margin-top: 15px;
+        /* Adjusted margin */
+      }
+
+      #cashDisplay {
+        font-size: 20px;
+        margin-top: 15px;
+        /* Adjusted margin */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="container">
+        <div id="gorilla">🦍</div>
+        <div id="food">🍟</div>
+        <div id="water">🥤</div>
+      </div>
+      <div id="statusMessage"></div>
+      <!-- Status message below the container -->
+      <div id="stats"> Hunger: <span id="hungerDisplay"></span>, Thirstiness: <span id="thirstinessDisplay"></span>, Happiness: <span id="happinessDisplay"></span>
+      </div>
+      <div id="itemCounts"> Doritos Count: <span id="doritosCountDisplay"></span> Gatorade Count: <span id="gatoradeCountDisplay"></span>, </div>
+      <div id="controls">
+        <button onclick="feed('food')">Feed Cool Ranch Doritos</button>
+        <button onclick="feed('water')">Give Gatorade</button>
+        <br>
+        <button onclick="buy('food', 10)">Buy Doritos ($10)</button>
+        <button onclick="buy('water', 7)">Buy Gatorade ($7)</button>
+      </div>
+      <div id="cashDisplay">Cash: $ <span id="cashDisplayValue"></span>
+      </div>
+    </div>
+    <script>
+      const gorillaValue = localStorage.getItem('Gorilla');
+      if (!gorillaValue >= '1') {
+        window.location.href = '/gamblr/';
+      } else {
+        let hunger = parseFloat(localStorage.getItem('hunger')) || 35;
+        let thirstiness = parseFloat(localStorage.getItem('thirstiness')) || 10;
+        let happiness = parseInt(localStorage.getItem('happiness')) || 50;
+        let cash = parseInt(localStorage.getItem('cash')) || 0;
+
+        function checkLastVisit() {
+          const lastVisit = localStorage.getItem('lastVisit');
+          const currentTime = new Date().getTime();
+          if (lastVisit) {
+            const timeDifference = (currentTime - parseInt(lastVisit)) / 1000; // Difference in seconds
+            // Adjust hunger, thirstiness, and happiness based on the time difference
+            hunger = Math.max(hunger - (timeDifference * 0.00022), 0);
+            thirstiness = Math.max(thirstiness - (timeDifference * 0.00005), 0);
+            happiness = Math.max(happiness + (timeDifference * 0.0001), 0);
+            updateStats(); // Update local storage values
+            updateUI(); // Update the UI with adjusted values
+          }
+          // Reset the last visit time to the current time
+          localStorage.setItem('lastVisit', currentTime);
+        }
+
+        function updateStats() {
+          localStorage.setItem('hunger', hunger);
+          localStorage.setItem('thirstiness', thirstiness);
+          localStorage.setItem('happiness', happiness);
+          localStorage.setItem('cash', cash);
+        }
+        // Increase hunger and thirstiness every second
+        setInterval(() => {
+          hunger += 0.00025;
+          thirstiness += 0.00005;
+          updateUI(); // Update UI to reflect changes
+        }, 1000); // Run every second
+        function updateStats() {
+          localStorage.setItem('hunger', hunger);
+          localStorage.setItem('thirstiness', thirstiness);
+          localStorage.setItem('happiness', happiness);
+          localStorage.setItem('cash', cash);
+        }
+        let movementInterval; // Variable to hold the interval for moving the gorilla
+        // Function to start moving the gorilla continuously
+        function startMovingGorilla() {
+          movementInterval = setInterval(moveGorilla, 1500);
+        }
+        // Function to stop moving the gorilla temporarily
+        function stopMovingGorilla() {
+          clearInterval(movementInterval);
+        }
+
+        function resetProgress() {
+          localStorage.removeItem('hunger');
+          localStorage.removeItem('thirstiness');
+          localStorage.removeItem('happiness');
+          localStorage.removeItem('cash');
+          localStorage.removeItem('doritosCount');
+          localStorage.removeItem('gatoradeCount');
+          hunger = 50;
+          thirstiness = 50;
+          happiness = 50;
+          cash = 100;
+          updateUI();
+          updateStatusMessage("Your gorilla died!");
+        }
+
+        function feed(type) {
+          if (hunger > 150 || thirstiness > 200) {
+            resetProgress();
+            return;
+          }
+          let foodCount = type === 'food' ? (parseInt(localStorage.getItem('doritosCount')) || 0) : (parseInt(localStorage.getItem('gatoradeCount')) || 0);
+          if (foodCount <= 0) {
+            updateStatusMessage("You have no " + (type === 'food' ? "Cool Ranch Doritos" : "Gatorade") + "!");
+            return;
+          }
+          foodCount--;
+          localStorage.setItem(type === 'food' ? 'doritosCount' : 'gatoradeCount', foodCount);
+          // Disable buttons
+          disableButtons();
+          // Pause the gorilla movement temporarily
+          stopMovingGorilla();
+          let foodElement = document.getElementById(type);
+          // Calculate random position within a radius around the center of the container
+          let container = document.getElementById('container');
+          let containerWidth = container.clientWidth;
+          let containerHeight = container.clientHeight;
+          let centerX = containerWidth / 2;
+          let centerY = containerHeight / 2;
+          let radius = 100; // Adjust radius as needed
+          let randomAngle = Math.random() * 2 * Math.PI;
+          let foodX = centerX + radius * Math.cos(randomAngle) - foodElement.offsetWidth / 2;
+          let foodY = centerY + radius * Math.sin(randomAngle) - foodElement.offsetHeight / 2;
+          foodElement.style.left = foodX + 'px';
+          foodElement.style.top = foodY + 'px';
+          foodElement.style.display = 'block';
+          // Move gorilla towards the food quickly
+          let gorilla = document.getElementById('gorilla');
+          let deltaX = foodX + foodElement.offsetWidth / 2 - (gorilla.offsetLeft + gorilla.offsetWidth / 2);
+          let deltaY = foodY + foodElement.offsetHeight / 2 - (gorilla.offsetTop + gorilla.offsetHeight / 2);
+          gorilla.style.transition = 'transform 1s linear';
+          gorilla.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+          // Wait for gorilla to reach food, then eat and update stats
+          setTimeout(function() {
+            if (type === 'food') {
+              hunger -= 10; // Adjust hunger decrement as needed
+              happiness += 5;
+              thirstiness += 2; // Increment thirstiness slightly when eating
+            } else if (type === 'water') {
+              thirstiness -= 10;
+              happiness += 3;
+            }
+            updateStats();
+            updateUI();
+            foodElement.style.display = 'none'; // Hide food after eating
+            // Enable buttons after delay
+            enableButtons();
+            // Resume the gorilla movement
+            startMovingGorilla();
+          }, 1000); // Wait for gorilla to reach food
+        }
+
+        function buy(item, price) {
+          if (cash < price) {
+            updateStatusMessage("Not enough cash!");
+            return;
+          }
+          if (hunger > 150 || thirstiness > 200) {
+            resetProgress();
+            return;
+          }
+          cash -= price;
+          updateCashDisplay();
+          if (item === 'food') {
+            localStorage.setItem('doritosCount', (parseInt(localStorage.getItem('doritosCount')) || 0) + 1); // Increment Doritos count
+          } else if (item === 'water') {
+            localStorage.setItem('gatoradeCount', (parseInt(localStorage.getItem('gatoradeCount')) || 0) + 1); // Increment Gatorade count
+          }
+          updateStats();
+          updateUI();
+        }
+
+        function moveGorilla() {
+          let container = document.getElementById('container');
+          let gorilla = document.getElementById('gorilla');
+          let containerWidth = container.clientWidth;
+          let containerHeight = container.clientHeight;
+          let radius = 100; // Adjust the radius of the circular area
+          let centerX = containerWidth / 2;
+          let centerY = containerHeight / 2;
+          let angle = Math.random() * 2 * Math.PI;
+          let newX = centerX + radius * Math.cos(angle) - gorilla.offsetWidth / 2;
+          let newY = centerY + radius * Math.sin(angle) - gorilla.offsetHeight / 2;
+          // Ensure the gorilla stays within the container bounds
+          newX = Math.min(Math.max(newX, 0), containerWidth - gorilla.offsetWidth);
+          newY = Math.min(Math.max(newY, 0), containerHeight - gorilla.offsetHeight);
+          gorilla.style.transition = 'transform 2s linear';
+          gorilla.style.transform = `translate(${newX}px, ${newY}px)`;
+          if (hunger > 150 || thirstiness > 200) {
+            resetProgress();
+          }
+        }
+
+        function updateUI() {
+          // Update stats
+          document.getElementById('hungerDisplay').innerText = hunger;
+          document.getElementById('thirstinessDisplay').innerText = thirstiness;
+          document.getElementById('happinessDisplay').innerText = happiness;
+          // Update item counts
+          document.getElementById('gatoradeCountDisplay').innerText = localStorage.getItem('gatoradeCount') || 0;
+          document.getElementById('doritosCountDisplay').innerText = localStorage.getItem('doritosCount') || 0;
+          // Update cash display with commas
+          document.getElementById('cashDisplayValue').innerText = cash.toLocaleString();
+          // Update cash display
+          updateCashDisplay();
+        }
+
+        function disableButtons() {
+          document.querySelectorAll('button').forEach(button => {
+            button.disabled = true;
+          });
+        }
+
+        function enableButtons() {
+          document.querySelectorAll('button').forEach(button => {
+            button.disabled = false;
+          });
+        }
+
+        function updateCashDisplay() {
+          document.getElementById('cashDisplayValue').innerText = cash.toLocaleString();
+        }
+
+        function updateStatusMessage(message) {
+          document.getElementById('statusMessage').innerText = message;
+          setTimeout(() => {
+            document.getElementById('statusMessage').innerText = '';
+          }, 3000); // Clear the message after 3 seconds
+        }
+
+        function resetProgress() {
+          localStorage.removeItem('hunger');
+          localStorage.removeItem('thirstiness');
+          localStorage.removeItem('happiness');
+          localStorage.removeItem('doritosCount');
+          localStorage.removeItem('gatoradeCount');
+          hunger = 50;
+          thirstiness = 50;
+          happiness = 50;
+          updateUI();
+          updateStatusMessage("Your gorilla died!");
+        }
+        setInterval(() => {
+          hunger = parseFloat((hunger + 0.00022).toFixed(5));
+          thirstiness = parseFloat((thirstiness + 0.00005).toFixed(5));
+          happiness = parseFloat((happiness - 0.0001).toFixed(5));
+          updateStats(); // Update local storage values
+          updateUI();
+        }, 1000);
+        startMovingGorilla();
+        updateUI();
+        updateCashDisplay();
+        checkLastVisit();
+      }
+    </script>
+  </body>
+</html>
