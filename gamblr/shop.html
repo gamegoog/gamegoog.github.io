@@ -228,56 +228,55 @@
   }
 
   // Function to display shop
-function displayShop() {
-  const categoryContainers = document.querySelectorAll('.category');
+  function displayShop() {
+    const categoryContainers = document.querySelectorAll('.category');
 
-  // Loop through each category container
-  categoryContainers.forEach(categoryContainer => {
-    const categoryTitle = categoryContainer.querySelector('.category-title');
-    const categoryItemsContainer = categoryContainer.querySelector('.category-items');
+    // Loop through each category container
+    categoryContainers.forEach(categoryContainer => {
+      const categoryTitle = categoryContainer.querySelector('.category-title');
+      const categoryItemsContainer = categoryContainer.querySelector('.category-items');
 
-    // Clear existing items
-    categoryItemsContainer.innerHTML = '';
+      // Clear existing items
+      categoryItemsContainer.innerHTML = '';
 
-    // Display items in respective categories
-    items.forEach(item => {
-      if (item.category === categoryContainer.id) { // Fix reference to categoryContainer.id
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        const emojiDiv = document.createElement('div');
-        emojiDiv.className = 'emoji';
-        emojiDiv.textContent = item.emoji;
-        tile.appendChild(emojiDiv);
-        const nameDiv = document.createElement('div');
-        nameDiv.className = 'name';
-        nameDiv.textContent = item.name;
-        tile.appendChild(nameDiv);
-        const priceDiv = document.createElement('div');
-        priceDiv.className = 'price';
-        priceDiv.textContent = isItemOwned(item) ? 'Owned' : '$' + item.price.toLocaleString();
-        tile.appendChild(priceDiv);
-        if (!isItemOwned(item)) {
-          const button = document.createElement('button');
-          button.textContent = 'Buy';
-          button.addEventListener('click', () => buyItem(item));
-          tile.appendChild(button);
-        } else if (item.category !== 'Printers') {
-          const sellPrice = Math.floor(item.price * 0.9);
-          const button = document.createElement('button');
-          button.textContent = 'Sell ($' + sellPrice.toLocaleString() + ')';
-          button.className = 'sell-button';
-          button.addEventListener('click', () => sellItem(item));
-          tile.appendChild(button);
+      // Display items in respective categories
+      items.forEach(item => {
+        if (item.category === categoryContainer.id) {
+          const tile = document.createElement('div');
+          tile.className = 'tile';
+          const emojiDiv = document.createElement('div');
+          emojiDiv.className = 'emoji';
+          emojiDiv.textContent = item.emoji;
+          tile.appendChild(emojiDiv);
+          const nameDiv = document.createElement('div');
+          nameDiv.className = 'name';
+          nameDiv.textContent = item.name;
+          tile.appendChild(nameDiv);
+          const priceDiv = document.createElement('div');
+          priceDiv.className = 'price';
+          priceDiv.textContent = isItemOwned(item) ? 'Owned' : '$' + item.price.toLocaleString();
+          tile.appendChild(priceDiv);
+          if (!isItemOwned(item)) {
+            const button = document.createElement('button');
+            button.textContent = 'Buy';
+            button.addEventListener('click', () => buyItem(item));
+            tile.appendChild(button);
+          } else if (item.category !== 'Printers') {
+            const sellPrice = Math.floor(item.price * 0.9);
+            const button = document.createElement('button');
+            button.textContent = 'Sell ($' + sellPrice.toLocaleString() + ')';
+            button.className = 'sell-button';
+            button.addEventListener('click', () => sellItem(item));
+            tile.appendChild(button);
+          }
+          categoryItemsContainer.appendChild(tile);
         }
-        categoryItemsContainer.appendChild(tile);
-      }
+      });
+
+      // Set category title
+      categoryTitle.textContent = item.category;
     });
-
-    // Set category title
-    categoryTitle.textContent = categoryContainer.id; // Fix reference to categoryContainer.id
-  });
-}
-
+  }
 
   // On page load
   window.onload = function () {
