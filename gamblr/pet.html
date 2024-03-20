@@ -129,7 +129,7 @@
       </div>
       <div id="statusMessage"></div>
       <!-- Status message below the container -->
-      <div id="stats"> Hunger: <span id="hungerDisplay">57.41606</span>, Thirstiness: <span id="thirstinessDisplay">51.68247</span>, Happiness: <span id="happinessDisplay">42.98882</span>
+      <div id="stats"> Hunger: <span id="hungerDisplay">57.41606</span><br>Thirstiness: <span id="thirstinessDisplay">51.68247</span>, Happiness: <span id="happinessDisplay">42.98882</span>
       </div>
       <div id="itemCounts"> Doritos Count: <span id="doritosCountDisplay">0</span> Gatorade Count: <span id="gatoradeCountDisplay">0</span>, </div>
       <div id="controls">
@@ -201,13 +201,13 @@
         }
 
         function resetProgress() {
+          alert("Your gorilla died!");
+          localStorage.setItem('Gorilla', 0);
           localStorage.setItem('hunger', 35);
           localStorage.setItem('thirstiness', 10);
           localStorage.setItem('happiness', 50);
           localStorage.setItem('doritosCount', 0);
-          localStorage.setItem('gatoradeCount', 0);
-          alert("Your gorilla died!");
-          localStorage.setItem('Gorilla', 0); // Remove 'Gorilla' (assuming it's a different key)
+          localStorage.setItem("gatoradeCount", "0");
           window.location.href = "/gamblr/";
         }
 
