@@ -118,7 +118,7 @@ if (parseInt(gorilla) >= 1) {
   gorillaLink.appendChild(gorillaName);
   gorillaTile.appendChild(gorillaLink);
   var slotsTile = document.querySelector('.tile:nth-child(4)'); // Change to 3rd tile
-  slotsTile.parentNode.insertBefore(gorillaTile, slotsTile);
+  slotsTile.parentNode.insertBefore(gorillaTile, slotsTile.nextSibling);
 }
     
   } 
