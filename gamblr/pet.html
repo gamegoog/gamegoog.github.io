@@ -1,15 +1,14 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAMBLR - Pet Gorilla</title>
     <link rel="icon" type="image/x-icon" href="/gamblr/icon.png">
-    <meta content="GAMBLR - Pet Gorilla" property="og:title" />
-    <meta content="take care of a pet gorilla, if you don't, it dies." property="og:description" />
-    <meta content="https://gloabe.github.io/gamblr/" property="og:url" />
-    <meta content="https://gloabe.github.io/gamblr/icon.png" property="og:image" />
-    <meta content="#E4A700" data-react-helmet="true" name="theme-color" />
+    <meta content="GAMBLR - Pet Gorilla" property="og:title">
+    <meta content="take care of a pet gorilla, if you don't, it dies." property="og:description">
+    <meta content="https://gloabe.github.io/gamblr/" property="og:url">
+    <meta content="https://gloabe.github.io/gamblr/icon.png" property="og:image">
+    <meta content="#E4A700" data-react-helmet="true" name="theme-color">
     <style>
       body {
         margin: 0;
@@ -33,8 +32,8 @@
 
       #container {
         width: 100%;
-        height: 60vh;
-        /* Adjust container height as needed */
+        height: 50vh;
+        /* Decreased height to 50vh */
         border: 1px solid black;
         position: relative;
         overflow: hidden;
@@ -101,6 +100,7 @@
         margin-top: 15px;
         /* Adjusted margin */
       }
+
       footer {
         text-align: center;
         margin-top: auto;
@@ -110,27 +110,28 @@
       }
 
       footer a {
-        color: #337ab7; 
+        color: #337ab7;
         text-decoration: none;
       }
 
       footer a:hover {
-        text-decoration: underline; 
+        text-decoration: underline;
       }
     </style>
+    <style type="text/css" id="operaUserStyle"></style>
   </head>
   <body>
     <div class="container">
       <div id="container">
-        <div id="gorilla">🦍</div>
+        <div id="gorilla" style="transition: transform 2s linear 0s; transform: translate(256.711px, 73.1848px);">🦍</div>
         <div id="food">🍟</div>
         <div id="water">🥤</div>
       </div>
       <div id="statusMessage"></div>
       <!-- Status message below the container -->
-      <div id="stats"> Hunger: <span id="hungerDisplay"></span>, Thirstiness: <span id="thirstinessDisplay"></span>, Happiness: <span id="happinessDisplay"></span>
+      <div id="stats"> Hunger: <span id="hungerDisplay">57.41606</span>, Thirstiness: <span id="thirstinessDisplay">51.68247</span>, Happiness: <span id="happinessDisplay">42.98882</span>
       </div>
-      <div id="itemCounts"> Doritos Count: <span id="doritosCountDisplay"></span> Gatorade Count: <span id="gatoradeCountDisplay"></span>, </div>
+      <div id="itemCounts"> Doritos Count: <span id="doritosCountDisplay">0</span> Gatorade Count: <span id="gatoradeCountDisplay">0</span>, </div>
       <div id="controls">
         <button onclick="feed('food')">Feed Cool Ranch Doritos</button>
         <button onclick="feed('water')">Give Gatorade</button>
@@ -138,10 +139,10 @@
         <button onclick="buy('food', 10)">Buy Doritos ($10)</button>
         <button onclick="buy('water', 7)">Buy Gatorade ($7)</button>
       </div>
-      <div id="cashDisplay">Cash: $ <span id="cashDisplayValue"></span>
+      <div id="cashDisplay">Cash: $ <span id="cashDisplayValue">63,035</span>
       </div>
     </div>
-    <footer>Done caring for your pet gorilla? Go <a href="/gamblr/" target="_blank">home</a>!</footer>
+    <footer>Done caring for your pet gorilla? Go <a href="/gamblr/" target="_blank">home</a>! </footer>
     <script>
       const gorillaValue = localStorage.getItem('Gorilla');
       if (!gorillaValue >= '1') {
@@ -196,17 +197,16 @@
           clearInterval(movementInterval);
         }
 
-function resetProgress() {
-    localStorage.setItem('hunger', 35);
-    localStorage.setItem('thirstiness', 10);
-    localStorage.setItem('happiness', 50);
-    localStorage.setItem('doritosCount', 0);
-    localStorage.setItem('gatoradeCount', 0);
-    alert("Your gorilla died!");
-    localStorage.setItem('Gorilla', 0); // Remove 'Gorilla' (assuming it's a different key)
-    window.location.href = "/gamblr/";
-}
-
+        function resetProgress() {
+          localStorage.setItem('hunger', 35);
+          localStorage.setItem('thirstiness', 10);
+          localStorage.setItem('happiness', 50);
+          localStorage.setItem('doritosCount', 0);
+          localStorage.setItem('gatoradeCount', 0);
+          alert("Your gorilla died!");
+          localStorage.setItem('Gorilla', 0); // Remove 'Gorilla' (assuming it's a different key)
+          window.location.href = "/gamblr/";
+        }
 
         function feed(type) {
           if (hunger > 150 || thirstiness > 200) {
@@ -247,12 +247,20 @@ function resetProgress() {
           // Wait for gorilla to reach food, then eat and update stats
           setTimeout(function() {
             if (type === 'food') {
-              hunger -= 10; // Adjust hunger decrement as needed
-              happiness += 5;
+              hunger -= 6; // Adjust hunger decrement as needed
+              happiness += 6.2;
               thirstiness += 2; // Increment thirstiness slightly when eating
+              if (hunger < 0) {
+                hunger = 0;
+                updateStatusMessage("Your gorilla is full on Cool Ranch Doritos!");
+              }
             } else if (type === 'water') {
               thirstiness -= 10;
               happiness += 3;
+              if (thirstiness < 0) {
+                thirstiness = 0;
+                updateStatusMessage("Your gorilla is full on Gatorade!");
+              }
             }
             updateStats();
             updateUI();
@@ -341,7 +349,6 @@ function resetProgress() {
             document.getElementById('statusMessage').innerText = '';
           }, 3000); // Clear the message after 3 seconds
         }
-
         setInterval(() => {
           hunger = parseFloat((hunger + 0.00022).toFixed(5));
           thirstiness = parseFloat((thirstiness + 0.00005).toFixed(5));
