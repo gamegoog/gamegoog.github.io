@@ -196,19 +196,19 @@
           clearInterval(movementInterval);
         }
 
-        function resetProgress() {
-          localStorage.removeItem('hunger');
-          localStorage.removeItem('thirstiness');
-          localStorage.removeItem('happiness');
-          localStorage.removeItem('doritosCount');
-          localStorage.removeItem('gatoradeCount');
-          localStorage.removeItem('Gorilla');
-          updateUI();
-          updateStatusMessage("Your gorilla died!");
-          setInterval(() => {
-          window.location.reload();
-        }, 3000);
-        }
+function resetProgress() {
+    localStorage.removeItem('hunger');
+    localStorage.removeItem('thirstiness');
+    localStorage.removeItem('happiness');
+    localStorage.removeItem('doritosCount');
+    localStorage.removeItem('gatoradeCount');
+    updateStatusMessage("Your gorilla died!");
+    setTimeout(() => {
+        localStorage.removeItem('Gorilla'); // Remove 'Gorilla' (assuming it's a different key)
+        window.location.reload();
+    }, 3000);
+}
+
 
         function feed(type) {
           if (hunger > 150 || thirstiness > 200) {
