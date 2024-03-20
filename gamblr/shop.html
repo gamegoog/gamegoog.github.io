@@ -163,6 +163,9 @@
     </div>
     <div class="footer"> Done shopping? Go <a href="/gamblr/">home</a>! </div>
     <script>
+      if(!localStorage.getItem('workgrade') >= 7){
+        window.location.href = "/gamblr/"
+      } else {
       const items = [{
     category: 'Printers',
     name: 'Money Printer Lv. 1',
@@ -182,7 +185,7 @@
     category: 'Other',
     name: 'Gorilla',
     emoji: '🦍',
-    price: 85000
+    price: 92000
   }, {
     category: 'Other',
     name: 'Lamborghini',
@@ -202,7 +205,7 @@
     category: 'Other',
     name: 'Lykan Hypersport',
     emoji: '🏎️',
-    price: 120000000
+    price: 15700000
   }, {
     category: 'Other',
     name: "The Chick-Fil-A' Company",
@@ -302,6 +305,7 @@
         localStorage.setItem(item.name, 0); // Mark item as not owned
         updateCashDisplay(userCash + sellPrice);
         displayShop();
+      }
       }
     </script>
   </body>
