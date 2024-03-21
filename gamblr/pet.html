@@ -155,6 +155,7 @@
         let hungerLoss = 0.00022
         let thirstinessLoss = 0.00005
         let happinessLoss = 0.0001
+        let overfeedingCount = 0
 
         function checkLastVisit() {
           const lastVisit = localStorage.getItem('lastVisit');
@@ -170,13 +171,6 @@
           }
           // Reset the last visit time to the current time
           localStorage.setItem('lastVisit', currentTime);
-        }
-
-        function updateStats() {
-          localStorage.setItem('hunger', hunger);
-          localStorage.setItem('thirstiness', thirstiness);
-          localStorage.setItem('happiness', happiness);
-          localStorage.setItem('cash', cash);
         }
         // Increase hunger and thirstiness every second
         setInterval(() => {
@@ -199,16 +193,35 @@
         function stopMovingGorilla() {
           clearInterval(movementInterval);
         }
-
-        function resetProgress() {
-          alert("Your gorilla died!");
+        
+        function gorillaExplode() {
+          disableButtons();stopMovingGorilla();
+          document.getElementById('gorilla').innerText = "💥";
+          updateStatusMessage("Your gorilla just fucking exploded 🤯");
           localStorage.setItem('Gorilla', 0);
           localStorage.setItem('hunger', 35);
           localStorage.setItem('thirstiness', 10);
           localStorage.setItem('happiness', 50);
           localStorage.setItem('doritosCount', 0);
           localStorage.setItem("gatoradeCount", "0");
-          window.location.href = "/gamblr/";
+          setInterval(() => {
+            window.location.href = "/gamblr/";
+          }, 3000);
+        }
+        
+        function resetProgress() {
+          disableButtons();stopMovingGorilla();
+          document.getElementById('gorilla').innerText = "";
+          updateStatusMessage("Your gorilla died!");
+          localStorage.setItem('Gorilla', 0);
+          localStorage.setItem('hunger', 35);
+          localStorage.setItem('thirstiness', 10);
+          localStorage.setItem('happiness', 50);
+          localStorage.setItem('doritosCount', 0);
+          localStorage.setItem("gatoradeCount", "0");
+          setInterval(() => {
+            window.location.href = "/gamblr/";
+          }, 3000);
         }
 
         function feed(type) {
@@ -255,8 +268,13 @@
               thirstiness += 2; // Increment thirstiness slightly when eating
               if (hunger < 0) {
                 hunger = 0;
+                overfeedingCount++;
                 happiness -= 0.9;
+                if (overfeedingCount >= 10) {
+                  gorillaExplode();
+                } else {
                 updateStatusMessage("Your gorilla is full on Cool Ranch Doritos!");
+                }
               }
             } else if (type === 'water') {
               thirstiness -= 10;
@@ -298,7 +316,7 @@
 
         function moveGorilla() {
           let container = document.getElementById('container');
-          let gorilla = document.getElementById('gorilla');
+          let gorilla = document.getElementById('gorilla'); 
           let containerWidth = container.clientWidth;
           let containerHeight = container.clientHeight;
           let radius = 100; // Adjust the radius of the circular area
@@ -312,7 +330,7 @@
           newY = Math.min(Math.max(newY, 0), containerHeight - gorilla.offsetHeight);
           gorilla.style.transition = 'transform 2s linear';
           gorilla.style.transform = `translate(${newX}px, ${newY}px)`;
-          if (hunger > 150 || thirstiness > 200) {
+          if (hunger >= 100 || thirstiness >= 150) {
             resetProgress();
           }
         }
@@ -351,7 +369,7 @@
           document.getElementById('statusMessage').innerText = message;
           setTimeout(() => {
             document.getElementById('statusMessage').innerText = '';
-          }, 3000); // Clear the message after 3 seconds
+          }, 3100); // Clear the message after 3 seconds
         }
         setInterval(() => {
           hunger = parseFloat((hunger + hungerLoss).toFixed(5));
