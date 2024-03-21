@@ -198,14 +198,14 @@
           disableButtons();stopMovingGorilla();
           document.getElementById('gorilla').innerText = "💥";
           updateStatusMessage("Your gorilla just fucking exploded 🤯");
+          setInterval(() => {
           localStorage.setItem('Gorilla', 0);
           localStorage.setItem('hunger', 35);
           localStorage.setItem('thirstiness', 10);
           localStorage.setItem('happiness', 50);
           localStorage.setItem('doritosCount', 0);
           localStorage.setItem("gatoradeCount", "0");
-          setInterval(() => {
-            window.location.href = "/gamblr/";
+          window.location.href = "/gamblr/";
           }, 3000);
         }
         
@@ -213,14 +213,14 @@
           disableButtons();stopMovingGorilla();
           document.getElementById('gorilla').innerText = "";
           updateStatusMessage("Your gorilla died!");
+          setInterval(() => {
           localStorage.setItem('Gorilla', 0);
           localStorage.setItem('hunger', 35);
           localStorage.setItem('thirstiness', 10);
           localStorage.setItem('happiness', 50);
           localStorage.setItem('doritosCount', 0);
           localStorage.setItem("gatoradeCount", "0");
-          setInterval(() => {
-            window.location.href = "/gamblr/";
+          window.location.href = "/gamblr/";
           }, 3000);
         }
 
