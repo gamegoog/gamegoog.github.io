@@ -94,10 +94,10 @@
 
       function incrementCash() {
         if (typeof (Storage) !== "undefined") {
-          var cashierValue = randomIntFromInterval(5, 28);
-          var repairmanValue = randomIntFromInterval(17, 37);
-          var ITValue = randomIntFromInterval(26, 50);
-          var CEOValue = randomIntFromInterval(30, 79);
+          var cashierValue = randomIntFromInterval(5, 25);
+          var repairmanValue = randomIntFromInterval(15, 32);
+          var ITValue = randomIntFromInterval(23, 39);
+          var CEOValue = randomIntFromInterval(26, 46);
           if (cash) {
             cash = parseInt(cash) + cashierValue;
           } else if (workgrade === "5") {
