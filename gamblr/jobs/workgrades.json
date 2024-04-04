@@ -49,36 +49,42 @@
   },
   {
     "grade": 4,
+    "title": "Car Dealer",
+    "emoji": "🏢🚗",
+    "href": "jobs/cardealer.html"
+  },
+  {
+    "grade": 5,
     "title": "Michaelsoft Corp.",
     "emoji": "💻",
     "href": "jobs/michaelsoft.html"
   },
   {
-    "grade": 5,
+    "grade": 6,
     "title": "Michaelsoft Repairman",
     "emoji": "💻🛠️",
     "href": "jobs/michaelsoft.html"
   },
   {
-    "grade": 6,
+    "grade": 7,
     "title": "Michaelsoft IT",
     "emoji": "💻🐛",
     "href": "jobs/michaelsoft.html"
   },
   {
-    "grade": 7,
+    "grade": 8,
     "title": "Michaelsoft CEO",
     "emoji": "💻🤵",
     "href": "jobs/michaelsoft.html"
   },
   {
-    "grade": 8,
+    "grade": 9,
     "title": "Senator",
     "emoji": "💼🤵",
     "href": "jobs/whitehouse.html"
   },
   {
-    "grade": 9,
+    "grade": 10,
     "title": "President",
     "emoji": "🇺🇸🤵",
     "href": "jobs/whitehouse.html"
