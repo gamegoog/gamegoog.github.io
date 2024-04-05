@@ -85,10 +85,9 @@
     <p>Done working with unc? Go <a href="/gamblr/">home</a> and gamble all your cash away!</p>
   </footer>
   <script>
-    if (typeof (Storage) !== "undefined" && (!localStorage.workgrade || parseInt(localStorage.workgrade) >= 4)) {
+    if (typeof (Storage) !== "undefined" && (!localStorage.workgrade || parseInt(localStorage.workgrade) <= 4)) {
       window.location.href = "/gamblr/";
     } else {
-
       function incrementCash() {
         if (typeof (Storage) !== "undefined") {
           var randomValue = Math.round(Math.random() * (18 - 4) + 4);
