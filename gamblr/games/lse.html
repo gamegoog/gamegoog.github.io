@@ -392,11 +392,10 @@
           hideDialog();
           alert("This button is useless, considering the LocalStorage editor only shows stats that are IN THE GAME. \nSo the value you just created?\n\nIt exists..\n\n\n...just doesnt show it")
         }
+      else {
+        alert("Please enter both key and value.");
       }
-        else 
-          alert("Please enter both key and value.");
-        }
-       }
+   }
     window.onload = checkAuthentication;
     window.addEventListener("beforeunload", function () {
       localStorage.setItem("authenticated", "false");
