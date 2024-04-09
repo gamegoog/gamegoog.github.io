@@ -209,7 +209,7 @@
   </div>
   <div class="container" id="contentContainer">
     <h2 id="pageTitle">GAMBLR Data</h2>
-    <p>This page allows you to edit most to all of your GAMBLR Data.<br>If you can see this, you've been given the password.</p>
+    <p>This page allows you to edit all of your GAMBLR Data.<br>If you can see this, you've been given the password, or you just let yourself in.<br>Scroll down for more information.</p>
     <ul id="keyValueList"></ul>
     <button class="homeBtn" onclick="goHome()">Home</button>
     <button class="resetBtn" onclick="resetLocalStorage()">Reset All Data</button>
@@ -227,7 +227,7 @@
       <br>Loss of 4.32 thirstiness per day (0.00005 p/s)
       <br>Loss of 8.64 happiness per day  (0.0001 p/s)
       <br>If the gorillas' hunger goes above 100, or thirstiness over 150, your gorilla will die!
-      <br><br>Happy editing!
+      <br><br>Happy editing!<br>
     </p>
     <div class="dialogContainer" id="dialogContainer">
       <div class="dialogBox">
@@ -287,14 +287,22 @@
       displayKeyValuePairs();
     }
 
+    /* HUGE NOTE: Allowing users to add a localstorage value will allow users to OVERWRITE values that
+    exist, so maybe later in the futute, me, make a system of where theres an alert if it exists? Oh wait
+    thats so easy I'll brb*/
+    
     function displayKeyValuePairs() {
-      var allowedKeys = ["cash", "workgrade", "upgradeAmount", "stockPrice", "sharesOwned", "printer", "happiness", "thirstiness", "hunger", "doritosCount", "gatoradeCount"];
+      /* 
+         Note, allowing edits of the "banned" value allows users to ban themself.
+         Edits of "authenticated" do nothing, considering they are filler, unless you have banned set to -1 
+      */
+      var StatList = ["workgrade","cash","stockPrice","sharesOwned","printer","Gorilla","doritosCount","gatoradeCount","hunger","thirstiness","happiness"/* For shop items, everything else non-important. */,"Lamborghini","Ferrari","Bugatti","Lykan Hypersport","The Chick-Fil-A' Company","SpaceX"];
       var keyValueList = document.getElementById("keyValueList");
       keyValueList.innerHTML = '';
 
       for (var i = 0; i < localStorage.length; i++) {
         var key = localStorage.key(i);
-        if (allowedKeys.includes(key)) {
+        if (StatList.includes(key)) {
           var value = localStorage.getItem(key);
           var listItem = document.createElement('li');
           var keyValueText = document.createElement('span');
@@ -373,14 +381,21 @@
     function addKeyValue() {
       var keyInput = document.getElementById("keyInput").value;
       var valueInput = document.getElementById("valueInput").value;
-      if (keyInput && valueInput) {
-        localStorage.setItem(keyInput, valueInput);
-        displayKeyValuePairs();
-        hideDialog();
-      } else {
-        alert("Please enter both key and value.");
+      // this handles the adding of stats and whether they exist or not :p
+      if (keyInput && valueInput) { // if both key & value exist
+        if localStorage.getItem(keyInput) { // if the value alr exists make it say that
+          alert(keyInput+" already exists!");
+        else {
+          localStorage.setItem(keyInput, valueInput); // otherwise create it
+          displayKeyValuePairs();
+          hideDialog();
+          alert("This button is useless, considering the LocalStorage editor only shows stats that are IN THE GAME. \nSo the value you just created?\n\nIt exists..\n\n\n...just doesnt show it")
+        }
       }
-    }
+        else {
+          alert("Please enter both key and value.");
+        }
+      }
 
     window.onload = checkAuthentication;
     window.addEventListener("beforeunload", function () {
