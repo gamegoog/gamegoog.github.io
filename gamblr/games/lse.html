@@ -386,13 +386,13 @@
       if (keyInput && valueInput) { // if both key & value exist
         if (localStorage.getItem(keyInput)) { // if the value alr exists make it say that
           alert(keyInput+" already exists!");
-        else {
+        } else {
           localStorage.setItem(keyInput, valueInput); // otherwise create it
           displayKeyValuePairs();
           hideDialog();
           alert("This button is useless, considering the LocalStorage editor only shows stats that are IN THE GAME. \nSo the value you just created?\n\nIt exists..\n\n\n...just doesnt show it")
         }
-      else {
+      } else {
         alert("Please enter both key and value.");
       }
    }
