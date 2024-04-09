@@ -243,12 +243,11 @@
   </div>
 
   <script>
-    var correctPassword = "sketch";
-
+    var hash = "bWl0Y2hlbGw="; // Congratulations, you're one step closer to "hacking" GAMBLR!
     function authenticate() {
       var banned = parseInt(localStorage.getItem("banned")) || 0;
       var passwordInput = document.getElementById("passwordInput").value;
-      if (passwordInput === correctPassword) {
+      if (passwordInput === atob(hash)) {
         localStorage.setItem("authenticated", "true");
         var title = "Temporary Access - Data Editor";
         updatePage(title);
