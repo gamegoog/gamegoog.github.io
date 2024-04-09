@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   var gorilla = localStorage.getItem('Gorilla');
   var printer = localStorage.getItem('printer');
   var cash = localStorage.getItem('cash');
-
+    // stop this is so ugly whyyyy ughhhh ^^^^^^
   if (cash && workgrade) {
     var formattedCash = parseFloat(cash).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     cashDisplay.textContent = '$' + formattedCash; // Add dollar sign
@@ -173,7 +173,7 @@ document.addEventListener('keydown', function (event) {
     </div>
   </div>
   <footer>
-        GAMBLR© 2024 - Created by Nathan Symonds, with inspiration from Isaac Kling.
+        GAMBLR© 2024 - Developed by Nathan Symonds, with contribution from Isaac Kling.<br>Note:Jacob Mitchell is a monkey.
   </footer>
 </body>
 </html>
