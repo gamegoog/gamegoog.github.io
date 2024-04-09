@@ -118,7 +118,12 @@ if (parseInt(gorilla) >= 1) {
   var slotsTile = document.querySelector('.tile:nth-child(4)'); // Change to 3rd tile
   slotsTile.parentNode.insertBefore(gorillaTile, slotsTile.nextSibling);
 }
-    
+
+if (localStorage.getItem("banned") <= -1) {
+  var Fanart = document.querySelector('.tile:nth-child(1)');
+  Fanart.childNode.getElementById("Name").InnerHTML = "Admin"
+  Fanart.childNode.getElementById("Emoji").InnerHTML = "🤵🎰"
+  Fanart.childNode.href = "js/admin.html"
   } 
 });
 
@@ -144,8 +149,8 @@ document.addEventListener('keydown', function (event) {
   <div class="tile-container">
     <div class="tile">
       <a href="/gamblr/fanart.html">
-        <div class="emoji">🖼️</div>
-        <div class="name">Fan-Art</div>
+        <div class="emoji" id="Emoji">🖼️</div>
+        <div class="name" id="Name">Fan-Art</div>
       </a>
     </div>
     <div class="tile">
