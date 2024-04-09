@@ -383,9 +383,9 @@
     function addKeyValue() {
       var keyInput = document.getElementById("keyInput").value;
       var valueInput = document.getElementById("valueInput").value;
-      // this handles the adding of stats and whether they exist or not :p
+      var theLocalStorageValuefuckingKeyInputinparenthesisTHENAMEOFTHESTAT = localStorage.getItem(keyInput)
       if (keyInput && valueInput) { // if both key & value exist
-        if localStorage.getItem(keyInput) { // if the value alr exists make it say that
+        if theLocalStorageValuefuckingKeyInputinparenthesisTHENAMEOFTHESTAT { // if the value alr exists make it say that
           alert(keyInput+" already exists!");
         else {
           localStorage.setItem(keyInput, valueInput); // otherwise create it
