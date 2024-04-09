@@ -276,7 +276,7 @@
         updatePage(title);
         displayKeyValuePairs();
       } else if (localStorage.getItem("banned") >= 2) {
-        document.body.innerHTML = `<div style="text-align: center; margin-top: 20vh;"><h1>Access Denied</h1><p>The page you're looking for is either non-existent, being worked on, or you simply do not have access to it.</p></div>`;
+        document.body.innerHTML = `<div style="text-align: center; margin-top: 20vh;"><h1>Banned</h1><p>The page you're looking for is either non-existent, being worked on, or you simply do not have access to it.<br>(pro tip, you're banned from stat editing cause u suck at password guessing 😋)</p></div>`;
         localStorage.setItem("authenticated", "false");
         document.title = "GAMBLR - Not Found";
       }
@@ -395,7 +395,9 @@
         else {
           alert("Please enter both key and value.");
         }
+       }
       }
+    
 
     window.onload = checkAuthentication;
     window.addEventListener("beforeunload", function () {
