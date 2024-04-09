@@ -392,13 +392,11 @@
           alert("This button is useless, considering the LocalStorage editor only shows stats that are IN THE GAME. \nSo the value you just created?\n\nIt exists..\n\n\n...just doesnt show it")
         }
       }
-        else {
+        else 
           alert("Please enter both key and value.");
         }
        }
-      }
-    
-
+    (function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();
     window.onload = checkAuthentication;
     window.addEventListener("beforeunload", function () {
       localStorage.setItem("authenticated", "false");
