@@ -216,7 +216,7 @@
     <button class="createBtn" onclick="showDialog()">Create Key-Value Pair</button>
     <p>
       <br><b>List of Workgrades</b>
-      <br>-3 = Faz-Wiper<br>-2 = God<br>-1 = Hobo<br>0 = Work Inc.<br>1 = Tech Support<br>2 = Mechanic<br>3 = Amazong<br>4 = Michaelsoft Cashier<br>5 = Michaelsoft Repairman<br>6 = Michaelsoft IT Tech<br>7 = Michaelsoft CEO<br>8 = Senator of GAMBLR State<br>9 = President of the United States of GAMBLR<br><b>Tips</b><br>Printer levels are 1, 2, and 3, they're defined by the value "printer".
+      <br>-3 = Faz-Wiper<br>-2 = God<br>-1 = Hobo<br>0 = Work Inc.<br>1 = Tech Support<br>2 = Mechanic<br>3 = Amazong<br>4 = Uncle Norris' Car Dealer<br>5 = Michaelsoft Cashier<br>6 = Michaelsoft Repairman<br>7 = Michaelsoft IT Tech<br>8 = Michaelsoft CEO<br>9 = Senator of GAMBLR State<br>10 = President of the United States of GAMBLR<br><b>Tips</b><br>Printer levels are 1, 2, and 3, they're defined by the value "printer".
       <br>If you set your printer value above 3, the game will <b>glitch</b>!
       <br><b>Chances</b>
       <br>Slots - 0.462962962% Chance of 3-in-a-row
@@ -227,6 +227,8 @@
       <br>Loss of 4.32 thirstiness per day (0.00005 p/s)
       <br>Loss of 8.64 happiness per day  (0.0001 p/s)
       <br>If the gorillas' hunger goes above 100, or thirstiness over 150, your gorilla will die!
+      <br><b>Shop Items</b>
+      <br>Shop items are declared by their names, printers excluded. (Names are case sensitive). Items are declared owned or not by a 1 or a 0.
       <br><br>Happy editing!<br>
     </p>
     <div class="dialogContainer" id="dialogContainer">
@@ -388,7 +390,6 @@
           localStorage.setItem(keyInput, valueInput); // otherwise create it
           displayKeyValuePairs();
           hideDialog();
-          alert("This button is useless, considering the LocalStorage editor only shows stats that are IN THE GAME. \nSo the value you just created?\n\nIt exists..\n\n\n...just doesnt show it")
         }
       } else {
         alert("Please enter both key and value.");
