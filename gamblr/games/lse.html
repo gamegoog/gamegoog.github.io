@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GAMBLR - Locked</title>
   <link rel="icon" type="image/x-icon" href="/gamblr/icon.png">
+  <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+  <script>eruda.init();</script>
   <style>
     /* Base styles */
     body {
@@ -396,7 +398,6 @@
           alert("Please enter both key and value.");
         }
        }
-    (function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();
     window.onload = checkAuthentication;
     window.addEventListener("beforeunload", function () {
       localStorage.setItem("authenticated", "false");
