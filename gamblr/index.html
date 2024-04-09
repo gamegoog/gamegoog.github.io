@@ -13,7 +13,6 @@
   <meta content="https://gloabe.github.io/gamblr/icon.png" property="og:image" />
   <meta content="#E4A700" data-react-helmet="true" name="theme-color" />
   <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-  <script>eruda.init();</script>
 </head>
 <script>
 document.addEventListener('DOMContentLoaded', async function () {
@@ -119,7 +118,9 @@ if (parseInt(gorilla) >= 1) {
   var slotsTile = document.querySelector('.tile:nth-child(4)'); // Change to 3rd tile
   slotsTile.parentNode.insertBefore(gorillaTile, slotsTile.nextSibling);
 }
+
 });
+
 var sequence = '';
 var targetSequence = 'lse';
 var redirectUrl = 'js/admin.html';
