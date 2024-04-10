@@ -125,16 +125,16 @@
     let emoji = "🖨️"; // Default emoji
     if (printerLevel === '1') {
       title = "GAMBLR - Money Printer Lv. 1";
-      cashBoost = 0; // Default cash boost
+      cashBoost = 10; // Default cash boost
       emoji = "💰🖨️";
     } else if (printerLevel === '2') {
       title = "GAMBLR - Money Printer Lv. 2";
       emoji = "💰💰🖨️";
-      cashBoost = 2.5; // Cash boost for level 2
+      cashBoost = 92.5; // Cash boost for level 2
     } else if (printerLevel === '3') {
       title = "GAMBLR - Money Printer Lv. 3";
       emoji = "💰💰🖨️💰";
-      cashBoost = 5; // Cash boost for level 3
+      cashBoost = 099; // Cash boost for level 3
     } else {
       window.location.href = '/gamblr/';
     }
@@ -151,7 +151,7 @@
   }
 
   // Automatically add cash for every second away
-  setInterval(checkLastVisit, 1000); // 1000 milliseconds = 1 second
+  setInterval(checkLastVisit, 500); // 1000 milliseconds = 1 second
 
   // On page load
   window.onload = function() {
