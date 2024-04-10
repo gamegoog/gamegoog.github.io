@@ -249,22 +249,12 @@
     function authenticate() {
       var banned = parseInt(localStorage.getItem("banned")) || 0;
       var passwordInput = document.getElementById("passwordInput").value;
-      if (passwordInput === atob(hash)) {
         localStorage.setItem("authenticated", "true");
         var title = "Temporary Access - Data Editor";
         updatePage(title);
         displayKeyValuePairs();
-      } else {
-        banned++;
-        localStorage.setItem("banned", banned);
-        if (banned == 2) {
-          alert("I don't want to play with you anymore.\n\n\n(you're banned buddy)");
-          window.location.reload();
-        } else {
-          alert("Incorrect password. You have " + (2 - banned) + " more attempt.");
-        }
       }
-    }
+    
 
     function goHome() {
       window.location.href = "/gamblr/";
